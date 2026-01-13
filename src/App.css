@@ -150,9 +150,7 @@ body {
 
 /* Sound Controls */
 .sound-controls {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  position: relative;
   z-index: 1000;
 }
 
@@ -160,22 +158,25 @@ body {
   background: linear-gradient(45deg, #ffbe29, #eb7400);
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sound-toggle-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .sound-panel {
   position: absolute;
-  top: 60px;
+  top: 50px;
   right: 0;
   background: white;
   border-radius: 15px;
@@ -269,14 +270,13 @@ body {
 }
 
 .sound-controls-warning {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  position: relative;
   background: #f8d7da;
   color: #721c24;
-  padding: 10px 15px;
+  padding: 8px 12px;
   border-radius: 8px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -1347,5 +1347,480 @@ body {
   .progress-badge {
     padding: 2px 6px;
     font-size: 0.75rem;
+  }
+}
+
+/* ==========================================
+   MOBILE OPTIMIZATIONS
+   ========================================== */
+
+/* Mobile Header */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .header-left {
+    text-align: center;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+
+  .sinhala-title {
+    font-size: 0.9rem;
+  }
+
+  .user-info {
+    display: none;
+  }
+
+  .logout-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .sound-toggle-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Main Layout */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .grade-selector {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 5px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .grade-selector::before {
+    display: none;
+  }
+
+  .grade-selector:hover {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .grade-btn {
+    opacity: 1;
+    transform: none;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    min-width: fit-content;
+    flex-shrink: 0;
+  }
+
+  .content {
+    padding: 15px 10px;
+  }
+
+  .grade-info {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .grade-info h2 {
+    font-size: 1.3rem;
+  }
+
+  .grade-info p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .navigation {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 10px 5px;
+    margin-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .navigation::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 44px;
+  }
+
+  .nav-item-wrapper {
+    flex-shrink: 0;
+  }
+}
+
+/* Mobile Cards */
+@media (max-width: 768px) {
+  .letter-card,
+  .word-card {
+    padding: 15px;
+    margin: 10px 5px;
+  }
+
+  .letter-card .sinhala-letter,
+  .letter {
+    font-size: 3rem;
+  }
+
+  .letter-card .pronunciation,
+  .word-card .pronunciation {
+    font-size: 1rem;
+  }
+
+  .card-grid,
+  .letter-grid,
+  .word-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+}
+
+/* Mobile Quiz */
+@media (max-width: 768px) {
+  .quiz-container {
+    padding: 15px;
+  }
+
+  .quiz-question {
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .quiz-option {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+
+  .quiz-btn,
+  .next-btn,
+  .prev-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+}
+
+/* Mobile Sound Panel */
+@media (max-width: 768px) {
+  .sound-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 320px;
+    min-width: unset;
+  }
+
+  .sound-controls-warning {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+  }
+}
+
+/* Mobile Progress Modal */
+@media (max-width: 768px) {
+  .progress-modal-content {
+    width: 95%;
+    max-height: 85vh;
+    padding: 20px 15px;
+  }
+
+  .progress-modal h2 {
+    font-size: 1.3rem;
+  }
+
+  .grade-progress-item {
+    padding: 12px;
+  }
+}
+
+/* Mobile Auth Pages */
+@media (max-width: 768px) {
+  .auth-page {
+    padding: 15px;
+  }
+
+  .auth-container {
+    padding: 25px 20px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .auth-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .auth-form input {
+    padding: 14px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .auth-btn {
+    padding: 14px;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .auth-btn.google {
+    min-height: 48px;
+  }
+}
+
+/* Mobile Pronunciation Practice */
+@media (max-width: 768px) {
+  .pronunciation-practice {
+    padding: 20px 15px;
+  }
+
+  .practice-card {
+    padding: 20px 15px;
+  }
+
+  .sinhala-word {
+    font-size: 2.5rem !important;
+  }
+
+  .english-word {
+    font-size: 1.1rem !important;
+  }
+
+  .practice-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mic-btn,
+  .listen-example-btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+    min-height: 50px;
+  }
+
+  .nav-btn-practice {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    min-height: 48px;
+  }
+
+  .reset-btn-practice {
+    min-height: 48px;
+  }
+
+  .practice-stats {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stat {
+    width: 100%;
+    text-align: center;
+  }
+
+  .practice-tips {
+    padding: 15px;
+  }
+
+  .practice-tips li {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Story & Reading Sections */
+@media (max-width: 768px) {
+  .story-card,
+  .reading-passage {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .story-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .reading-sinhala,
+  .reading-english {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .activity-card {
+    padding: 15px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (max-width: 768px) {
+  button,
+  .btn,
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Prevent text selection on buttons */
+  button {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Better tap highlighting */
+  button:active,
+  .btn:active {
+    opacity: 0.8;
+  }
+}
+
+/* Very small screens (phones in portrait) */
+@media (max-width: 375px) {
+  .header {
+    padding: 8px 10px;
+  }
+
+  .logo {
+    font-size: 1rem;
+  }
+
+  .content {
+    padding: 10px 8px;
+  }
+
+  .grade-btn {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  .nav-btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .sinhala-word {
+    font-size: 2rem !important;
+  }
+
+  .section h2 {
+    font-size: 1.1rem;
+  }
+
+  .card-grid,
+  .letter-grid,
+  .word-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .header {
+    padding: 5px 15px;
+  }
+
+  .main-layout {
+    flex-direction: row;
+  }
+
+  .grade-selector {
+    width: 50px;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .content {
+    padding: 10px;
+  }
+}
+
+/* iOS Safe Area Support */
+@supports (padding: max(0px)) {
+  .header {
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-left: max(15px, env(safe-area-inset-left));
+    padding-right: max(15px, env(safe-area-inset-right));
+  }
+
+  .content {
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: none) {
+  .grade-btn:hover,
+  .nav-btn:hover,
+  .sound-toggle-btn:hover,
+  .quiz-option:hover {
+    transform: none;
+    box-shadow: inherit;
+  }
+
+  .grade-selector:hover {
+    width: 100%;
   }
 }

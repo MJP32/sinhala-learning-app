@@ -1,4 +1,7 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase/config';
+import { useAuth } from './AuthContext';
 
 const ProgressContext = createContext();
 
@@ -11,18 +14,61 @@ export const useProgress = () => {
 };
 
 export const ProgressProvider = ({ children }) => {
-  // Initialize from localStorage or default
-  const [completedSections, setCompletedSections] = useState(() => {
-    const saved = localStorage.getItem('sinhala-learning-progress');
-    return saved ? JSON.parse(saved) : {};
-  });
-
+  const [completedSections, setCompletedSections] = useState({});
   const [showProgressModal, setShowProgressModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const { user } = useAuth();
 
-  // Save to localStorage whenever progress changes
+  // Load progress from Firebase when user logs in
   useEffect(() => {
-    localStorage.setItem('sinhala-learning-progress', JSON.stringify(completedSections));
-  }, [completedSections]);
+    const loadProgress = async () => {
+      if (user) {
+        setIsLoading(true);
+        try {
+          const docRef = doc(db, 'users', user.uid);
+          const docSnap = await getDoc(docRef);
+
+          if (docSnap.exists() && docSnap.data().progress) {
+            setCompletedSections(docSnap.data().progress);
+          } else {
+            // No saved progress, start fresh
+            setCompletedSections({});
+          }
+        } catch (error) {
+          console.error('Error loading progress:', error);
+          // Fall back to localStorage if Firebase fails
+          const saved = localStorage.getItem(`sinhala-progress-${user.uid}`);
+          if (saved) {
+            setCompletedSections(JSON.parse(saved));
+          }
+        } finally {
+          setIsLoading(false);
+        }
+      } else {
+        // User logged out, clear progress
+        setCompletedSections({});
+        setIsLoading(false);
+      }
+    };
+
+    loadProgress();
+  }, [user]);
+
+  // Save progress to Firebase whenever it changes
+  const saveProgress = useCallback(async (newProgress) => {
+    if (user) {
+      try {
+        const docRef = doc(db, 'users', user.uid);
+        await setDoc(docRef, { progress: newProgress }, { merge: true });
+        // Also save to localStorage as backup
+        localStorage.setItem(`sinhala-progress-${user.uid}`, JSON.stringify(newProgress));
+      } catch (error) {
+        console.error('Error saving progress:', error);
+        // Save to localStorage if Firebase fails
+        localStorage.setItem(`sinhala-progress-${user.uid}`, JSON.stringify(newProgress));
+      }
+    }
+  }, [user]);
 
   // Mark a section as complete/incomplete
   const toggleSectionComplete = (gradeId, sectionId) => {
@@ -34,6 +80,8 @@ export const ProgressProvider = ({ children }) => {
       } else {
         newState[key] = true;
       }
+      // Save to Firebase
+      saveProgress(newState);
       return newState;
     });
   };
@@ -93,9 +141,17 @@ export const ProgressProvider = ({ children }) => {
   };
 
   // Reset all progress
-  const resetProgress = () => {
+  const resetProgress = async () => {
     setCompletedSections({});
-    localStorage.removeItem('sinhala-learning-progress');
+    if (user) {
+      try {
+        const docRef = doc(db, 'users', user.uid);
+        await setDoc(docRef, { progress: {} }, { merge: true });
+        localStorage.removeItem(`sinhala-progress-${user.uid}`);
+      } catch (error) {
+        console.error('Error resetting progress:', error);
+      }
+    }
   };
 
   const value = {
@@ -107,7 +163,8 @@ export const ProgressProvider = ({ children }) => {
     getDetailedProgress,
     resetProgress,
     showProgressModal,
-    setShowProgressModal
+    setShowProgressModal,
+    isLoading
   };
 
   return (

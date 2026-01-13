@@ -3,41 +3,181 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <!-- Primary Meta Tags -->
+    <title>Learn Sinhala Online | Free Sinhala Language Lessons - සිංහල ඉගෙන ගන්න</title>
+    <meta name="title" content="Learn Sinhala Online | Free Sinhala Language Lessons - සිංහල ඉගෙන ගන්න" />
+    <meta name="description" content="Learn Sinhala language online for free. Interactive lessons for beginners to advanced learners. Master the Sinhala alphabet, vocabulary, grammar, and pronunciation with our comprehensive course covering Grades 1-6." />
+    <meta name="keywords" content="learn Sinhala, Sinhala language, Sri Lanka language, Sinhala lessons, Sinhala alphabet, Sinhala grammar, Sinhala vocabulary, Sinhala for beginners, සිංහල, Sinhala online course, Sinhala pronunciation, Sinhalese language, learn Sinhalese" />
+    <meta name="author" content="Learn Sinhala App" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <link rel="canonical" href="https://sinhala-learning.web.app/" />
+
+    <!-- Theme and Mobile -->
+    <meta name="theme-color" content="#8d153a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Learn Sinhala" />
+    <meta name="application-name" content="Learn Sinhala" />
+    <meta name="msapplication-TileColor" content="#8d153a" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sinhala-learning.web.app/" />
+    <meta property="og:title" content="Learn Sinhala Online | Free Sinhala Language Lessons" />
+    <meta property="og:description" content="Learn Sinhala language online for free. Interactive lessons covering alphabet, vocabulary, grammar, and pronunciation. Perfect for beginners and advanced learners." />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="si_LK" />
+    <meta property="og:site_name" content="Learn Sinhala" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://sinhala-learning.web.app/" />
+    <meta name="twitter:title" content="Learn Sinhala Online | Free Sinhala Language Lessons" />
+    <meta name="twitter:description" content="Learn Sinhala language online for free. Interactive lessons covering alphabet, vocabulary, grammar, and pronunciation." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="https://sinhala-learning.web.app/" />
+    <link rel="alternate" hreflang="si" href="https://sinhala-learning.web.app/" />
+    <link rel="alternate" hreflang="x-default" href="https://sinhala-learning.web.app/" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon.ico" />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://firebaseapp.com" />
+
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Learn Sinhala",
+      "alternateName": "සිංහල ඉගෙන ගන්න",
+      "description": "Interactive Sinhala language learning application with lessons from Grade 1 to Grade 6. Learn alphabet, vocabulary, grammar, and pronunciation.",
+      "url": "https://sinhala-learning.web.app/",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "inLanguage": ["en", "si"],
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student"
+      }
+    }
+    </script>
+
+    <!-- Structured Data - Course -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Sinhala Language Course",
+      "description": "Comprehensive Sinhala language course covering basics to advanced topics including alphabet, vocabulary, grammar, reading, and writing.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Learn Sinhala",
+        "url": "https://sinhala-learning.web.app/"
+      },
+      "educationalLevel": "Beginner to Intermediate",
+      "inLanguage": "si",
+      "teaches": ["Sinhala Alphabet", "Sinhala Vocabulary", "Sinhala Grammar", "Sinhala Pronunciation", "Sinhala Reading", "Sinhala Writing"],
+      "isAccessibleForFree": true,
+      "hasCourseInstance": [
+        {
+          "@type": "CourseInstance",
+          "name": "Grade 1 - Basic Sinhala",
+          "description": "Learn letters, numbers, simple words, colors, animals"
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "Grade 2 - Building Vocabulary",
+          "description": "Learn family, colors, numbers 11-20, days, months, food"
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "Grade 3 - Grammar & Conversation",
+          "description": "Learn basic grammar, tenses, everyday conversation"
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "Grade 4 - Advanced Learning",
+          "description": "Reading comprehension, complex grammar, cultural studies"
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "Grade 5 - Intermediate Advanced",
+          "description": "Complex grammar, formal writing, idioms, literature"
+        },
+        {
+          "@type": "CourseInstance",
+          "name": "Grade 6 - Advanced Mastery",
+          "description": "Critical thinking, academic writing, literary analysis"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is learning Sinhala difficult?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sinhala has its own unique alphabet, but with structured lessons and regular practice, it can be learned effectively. Our app breaks down the learning into manageable grades from basic to advanced."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to learn Sinhala?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With consistent practice, you can learn basic Sinhala in a few months. Our course covers 6 grades of content, allowing you to progress at your own pace from beginner to advanced level."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this Sinhala course free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our Sinhala learning app is completely free to use. You can access all lessons from Grade 1 to Grade 6 without any payment."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <h1>Learn Sinhala - සිංහල ඉගෙන ගන්න</h1>
+      <p>Learn Sinhala language online for free. Our interactive app offers comprehensive lessons covering the Sinhala alphabet, vocabulary, grammar, and pronunciation.</p>
+      <p>You need to enable JavaScript to run this app.</p>
+    </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
