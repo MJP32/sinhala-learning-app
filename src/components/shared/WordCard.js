@@ -4,23 +4,21 @@ import soundService from "../../utils/soundService";
 const WordCard = ({ sinhalaWord, englishWord, pronunciation, onClick }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (onClick) onClick(pronunciation);
 
-    // Play the word using our sound service
+    // Play the actual Sinhala word using Google Translate TTS
     if (soundService.isSupported()) {
       setIsPlaying(true);
-      soundService.speakSinhalaWord(sinhalaWord, pronunciation);
-
-      // Reset playing state after a delay (longer for words)
-      setTimeout(() => {
-        setIsPlaying(false);
-      }, 3000);
+      try {
+        await soundService.speakSinhalaWord(sinhalaWord, pronunciation);
+      } catch (error) {
+        console.error("Error playing sound:", error);
+      }
+      setIsPlaying(false);
     } else {
-      console.warn("Speech synthesis not supported in this browser");
-      alert(
-        "Sound not supported in this browser. Please try Chrome, Firefox, or Safari."
-      );
+      console.warn("Audio not supported in this browser");
+      alert("Sound not supported in this browser.");
     }
   };
 

@@ -1,181 +1,154 @@
-// Sound service for Sinhala learning app
+// Sound service for Sinhala learning app using pre-recorded audio files
 class SoundService {
   constructor() {
-    this.synth = window.speechSynthesis;
-    this.voices = [];
-    this.currentVoice = null;
+    this.audio = null;
     this.volume = 0.8;
-    this.rate = 0.8;
-    this.pitch = 1.0;
-    
-    // Initialize voices when they're loaded
-    this.loadVoices();
-    
-    // Handle voice loading for different browsers
-    if (this.synth.onvoiceschanged !== undefined) {
-      this.synth.onvoiceschanged = () => this.loadVoices();
+    this.isPlaying = false;
+    this.audioCache = {};
+  }
+
+  // Get audio file path for a letter
+  getLetterAudioPath(sinhalaLetter) {
+    // Use Unicode code point as filename to avoid file system issues
+    const codePoint = sinhalaLetter.codePointAt(0).toString(16);
+    return `/audio/letters/${codePoint}.mp3`;
+  }
+
+  // Get audio file path for a word
+  getWordAudioPath(sinhalaWord) {
+    // Use base64 or hash of the word as filename
+    const encoded = btoa(unescape(encodeURIComponent(sinhalaWord)));
+    return `/audio/words/${encoded}.mp3`;
+  }
+
+  // Check if audio file exists
+  async audioExists(path) {
+    try {
+      const response = await fetch(path, { method: 'HEAD' });
+      return response.ok;
+    } catch {
+      return false;
     }
   }
 
-  loadVoices() {
-    this.voices = this.synth.getVoices();
-    
-    // Try to find a suitable voice for Sinhala or English
-    this.currentVoice = this.findBestVoice();
-  }
-
-  findBestVoice() {
-    // Priority order for voice selection
-    const voicePreferences = [
-      'si-LK', // Sinhala (Sri Lanka)
-      'si',    // Sinhala
-      'en-US', // English (US)
-      'en-GB', // English (UK)
-      'en'     // English (generic)
-    ];
-
-    for (const preference of voicePreferences) {
-      const voice = this.voices.find(v => 
-        v.lang.toLowerCase().startsWith(preference.toLowerCase())
-      );
-      if (voice) return voice;
-    }
-
-    // Fallback to first available voice
-    return this.voices[0] || null;
-  }
-
-  speak(text, options = {}) {
-    // Stop any currently playing speech
-    this.synth.cancel();
+  // Play audio from file or use TTS fallback
+  async speak(audioPath, text, lang = 'si') {
+    this.stop();
 
     if (!text || text.trim() === '') {
       console.warn('No text provided to speak');
       return;
     }
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    
-    // Set voice properties
-    utterance.voice = options.voice || this.currentVoice;
-    utterance.volume = options.volume !== undefined ? options.volume : this.volume;
-    utterance.rate = options.rate !== undefined ? options.rate : this.rate;
-    utterance.pitch = options.pitch !== undefined ? options.pitch : this.pitch;
+    // Try to play pre-recorded audio
+    const hasAudio = await this.audioExists(audioPath);
 
-    // Add event listeners
-    utterance.onstart = () => {
-      console.log('Speech started:', text);
-    };
-
-    utterance.onend = () => {
-      console.log('Speech ended:', text);
-    };
-
-    utterance.onerror = (event) => {
-      console.error('Speech error:', event.error);
-    };
-
-    // Speak the text
-    this.synth.speak(utterance);
-  }
-
-  speakSinhalaLetter(sound) {
-    // For Sinhala letters, we'll use the romanized sound
-    // and speak it slowly for better pronunciation learning
-    this.speak(sound, {
-      rate: 0.6, // Slower for letter pronunciation
-      pitch: 1.1  // Slightly higher pitch for letters
-    });
-  }
-
-  speakSinhalaWord(sinhalaText, pronunciation) {
-    // First speak the Sinhala word (if browser supports it)
-    // Then speak the pronunciation guide
-    
-    if (this.hasSinhalaVoice()) {
-      // Speak Sinhala text first
-      this.speak(sinhalaText, {
-        rate: 0.7,
-        pitch: 1.0
-      });
-      
-      // Wait a bit, then speak pronunciation
-      setTimeout(() => {
-        this.speak(pronunciation, {
-          rate: 0.6,
-          pitch: 0.9
-        });
-      }, 1500);
+    if (hasAudio) {
+      return this.playAudioFile(audioPath);
     } else {
-      // Just speak the pronunciation guide
-      this.speak(pronunciation, {
-        rate: 0.6,
-        pitch: 1.0
-      });
+      // Fallback to Web Speech API
+      return this.speakWithTTS(text, lang);
     }
   }
 
-  speakEnglishWord(englishText) {
-    this.speak(englishText, {
-      rate: 0.8,
-      pitch: 1.0
+  playAudioFile(path) {
+    return new Promise((resolve, reject) => {
+      this.audio = new Audio(path);
+      this.audio.volume = this.volume;
+
+      this.audio.onplay = () => {
+        this.isPlaying = true;
+      };
+
+      this.audio.onended = () => {
+        this.isPlaying = false;
+        resolve();
+      };
+
+      this.audio.onerror = (error) => {
+        this.isPlaying = false;
+        console.error('Audio file error:', error);
+        resolve(); // Don't reject to prevent UI errors
+      };
+
+      this.audio.play().catch((err) => {
+        console.error('Error playing audio:', err);
+        resolve();
+      });
     });
   }
 
-  hasSinhalaVoice() {
-    return this.voices.some(voice => 
-      voice.lang.toLowerCase().startsWith('si')
-    );
+  speakWithTTS(text, lang = 'si') {
+    return new Promise((resolve) => {
+      if (!('speechSynthesis' in window)) {
+        console.warn('Speech synthesis not supported');
+        resolve();
+        return;
+      }
+
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(text);
+
+      utterance.lang = lang === 'si' ? 'si-LK' : 'en-US';
+      utterance.volume = this.volume;
+      utterance.rate = 0.7;
+      utterance.pitch = 1.0;
+
+      utterance.onend = () => {
+        this.isPlaying = false;
+        resolve();
+      };
+
+      utterance.onerror = () => {
+        this.isPlaying = false;
+        resolve();
+      };
+
+      this.isPlaying = true;
+      synth.speak(utterance);
+    });
   }
 
-  getAvailableVoices() {
-    return this.voices.map(voice => ({
-      name: voice.name,
-      lang: voice.lang,
-      localService: voice.localService,
-      default: voice.default
-    }));
+  async speakSinhalaLetter(sinhalaLetter) {
+    const audioPath = this.getLetterAudioPath(sinhalaLetter);
+    return this.speak(audioPath, sinhalaLetter, 'si');
   }
 
-  setVoice(voiceName) {
-    const voice = this.voices.find(v => v.name === voiceName);
-    if (voice) {
-      this.currentVoice = voice;
-      return true;
-    }
-    return false;
+  async speakSinhalaWord(sinhalaText, pronunciation) {
+    const audioPath = this.getWordAudioPath(sinhalaText);
+    return this.speak(audioPath, sinhalaText, 'si');
+  }
+
+  async speakEnglishWord(englishText) {
+    return this.speakWithTTS(englishText, 'en');
   }
 
   setVolume(volume) {
     this.volume = Math.max(0, Math.min(1, volume));
-  }
-
-  setRate(rate) {
-    this.rate = Math.max(0.1, Math.min(2, rate));
-  }
-
-  setPitch(pitch) {
-    this.pitch = Math.max(0, Math.min(2, pitch));
+    if (this.audio) {
+      this.audio.volume = this.volume;
+    }
   }
 
   stop() {
-    this.synth.cancel();
+    if (this.audio) {
+      this.audio.pause();
+      this.audio.currentTime = 0;
+    }
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    this.isPlaying = false;
   }
 
-  // Test if speech synthesis is supported
   isSupported() {
-    return 'speechSynthesis' in window;
+    return typeof Audio !== 'undefined';
   }
 
-  // Get current settings
   getSettings() {
     return {
       volume: this.volume,
-      rate: this.rate,
-      pitch: this.pitch,
-      currentVoice: this.currentVoice ? this.currentVoice.name : 'None',
-      voicesAvailable: this.voices.length,
-      hasSinhalaVoice: this.hasSinhalaVoice()
+      isPlaying: this.isPlaying
     };
   }
 }

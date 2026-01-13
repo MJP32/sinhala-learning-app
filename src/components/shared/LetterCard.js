@@ -4,23 +4,21 @@ import soundService from "../../utils/soundService";
 const LetterCard = ({ sinhalaLetter, romanLetter, sound, onClick }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (onClick) onClick(sound);
 
-    // Play the sound using our sound service
+    // Play the actual Sinhala letter using Google Translate TTS
     if (soundService.isSupported()) {
       setIsPlaying(true);
-      soundService.speakSinhalaLetter(sound);
-
-      // Reset playing state after a delay
-      setTimeout(() => {
-        setIsPlaying(false);
-      }, 1500);
+      try {
+        await soundService.speakSinhalaLetter(sinhalaLetter);
+      } catch (error) {
+        console.error("Error playing sound:", error);
+      }
+      setIsPlaying(false);
     } else {
-      console.warn("Speech synthesis not supported in this browser");
-      alert(
-        "Sound not supported in this browser. Please try Chrome, Firefox, or Safari."
-      );
+      console.warn("Audio not supported in this browser");
+      alert("Sound not supported in this browser.");
     }
   };
 
