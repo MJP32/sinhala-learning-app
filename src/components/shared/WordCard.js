@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import soundService from "../../utils/soundService";
 
-const WordCard = ({ sinhalaWord, englishWord, pronunciation, onClick }) => {
+const WordCard = ({ sinhalaWord, englishWord, pronunciation, image, onClick }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleClick = async () => {
@@ -24,10 +24,11 @@ const WordCard = ({ sinhalaWord, englishWord, pronunciation, onClick }) => {
 
   return (
     <div
-      className={`word-card ${isPlaying ? "playing" : ""}`}
+      className={`word-card ${isPlaying ? "playing" : ""} ${image ? "has-image" : ""}`}
       onClick={handleClick}
       title={`Click to hear: ${sinhalaWord} (${pronunciation})`}
     >
+      {image && <div className="word-image">{image}</div>}
       <div className="word-sinhala">{sinhalaWord}</div>
       <div className="word-english">{englishWord}</div>
       <div className="word-pronunciation">{pronunciation}</div>

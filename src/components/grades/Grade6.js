@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import Navigation from "../shared/Navigation";
-import ProgressBar from "../shared/ProgressBar";
+import React, { useState, useEffect } from "react";
 import WordCard from "../shared/WordCard";
 import Quiz from "../shared/Quiz";
 import PronunciationPractice from "../shared/PronunciationPractice";
+import ReadAloudButton from "../shared/ReadAloudButton";
 
-const Grade6 = () => {
+const Grade6 = ({ initialSection }) => {
   const [currentSection, setCurrentSection] = useState("reading");
+
+  useEffect(() => {
+    if (initialSection) {
+      setCurrentSection(initialSection);
+    }
+  }, [initialSection]);
 
   const sections = [
     { id: "reading", label: "Critical Reading" },
@@ -36,74 +41,74 @@ const Grade6 = () => {
   ];
 
   const advancedVocabulary = [
-    { sinhala: "ප්‍රජාතන්ත්‍රවාදය", english: "Democracy", pronunciation: "pruh-jaa-thun-thruh-vaa-duh-yuh" },
-    { sinhala: "ආර්ථිකය", english: "Economy", pronunciation: "aar-thi-kuh-yuh" },
-    { sinhala: "තාක්ෂණය", english: "Technology", pronunciation: "thaak-shuh-nuh-yuh" },
-    { sinhala: "සංවර්ධනය", english: "Development", pronunciation: "sun-var-dhuh-nuh-yuh" },
-    { sinhala: "නිදහස", english: "Independence", pronunciation: "ni-duh-huh-suh" },
-    { sinhala: "සාමය", english: "Peace", pronunciation: "saa-muh-yuh" },
-    { sinhala: "යුක්තිය", english: "Justice", pronunciation: "yuk-thi-yuh" },
-    { sinhala: "සමානාත්මතාව", english: "Equality", pronunciation: "suh-maa-naa-thuh-muh-thaa-vuh" },
-    { sinhala: "පරිසරය", english: "Environment", pronunciation: "puh-ri-suh-ruh-yuh" },
-    { sinhala: "අධිකාරය", english: "Authority", pronunciation: "uh-dhi-kaa-ruh-yuh" },
-    { sinhala: "ව්‍යවස්ථාව", english: "Constitution", pronunciation: "vyuh-vus-thaa-vuh" },
-    { sinhala: "පුරවැසි භාවය", english: "Citizenship", pronunciation: "poo-ruh-vae-si bhaa-vuh-yuh" },
+    { sinhala: "ප්‍රජාතන්ත්‍රවාදය", english: "Democracy", pronunciation: "pruh-jaa-thun-thruh-vaa-duh-yuh", image: "🗳️" },
+    { sinhala: "ආර්ථිකය", english: "Economy", pronunciation: "aar-thi-kuh-yuh", image: "💰" },
+    { sinhala: "තාක්ෂණය", english: "Technology", pronunciation: "thaak-shuh-nuh-yuh", image: "💻" },
+    { sinhala: "සංවර්ධනය", english: "Development", pronunciation: "sun-var-dhuh-nuh-yuh", image: "📈" },
+    { sinhala: "නිදහස", english: "Independence", pronunciation: "ni-duh-huh-suh", image: "🕊️" },
+    { sinhala: "සාමය", english: "Peace", pronunciation: "saa-muh-yuh", image: "☮️" },
+    { sinhala: "යුක්තිය", english: "Justice", pronunciation: "yuk-thi-yuh", image: "⚖️" },
+    { sinhala: "සමානාත්මතාව", english: "Equality", pronunciation: "suh-maa-naa-thuh-muh-thaa-vuh", image: "🤝" },
+    { sinhala: "පරිසරය", english: "Environment", pronunciation: "puh-ri-suh-ruh-yuh", image: "🌿" },
+    { sinhala: "අධිකාරය", english: "Authority", pronunciation: "uh-dhi-kaa-ruh-yuh", image: "👔" },
+    { sinhala: "ව්‍යවස්ථාව", english: "Constitution", pronunciation: "vyuh-vus-thaa-vuh", image: "📜" },
+    { sinhala: "පුරවැසි භාවය", english: "Citizenship", pronunciation: "poo-ruh-vae-si bhaa-vuh-yuh", image: "🪪" },
   ];
 
   const modernTerms = [
-    { sinhala: "අන්තර්ජාලය", english: "Internet", pronunciation: "un-thur-jaa-luh-yuh" },
-    { sinhala: "ගෝලීයකරණය", english: "Globalization", pronunciation: "goh-lee-yuh-kuh-ruh-nuh-yuh" },
-    { sinhala: "දේශගුණ විපර්යාසය", english: "Climate Change", pronunciation: "day-shuh-goo-nuh vi-pur-yaa-suh-yuh" },
-    { sinhala: "සමාජ මාධ්‍ය", english: "Social Media", pronunciation: "suh-maa-juh maa-dhyuh" },
-    { sinhala: "කෘත්‍රිම බුද්ධිය", english: "Artificial Intelligence", pronunciation: "krith-ri-muh bud-dhi-yuh" },
-    { sinhala: "තිරසාර සංවර්ධනය", english: "Sustainable Development", pronunciation: "thi-ruh-saa-ruh sun-var-dhuh-nuh-yuh" },
-    { sinhala: "සයිබර් ආරක්ෂාව", english: "Cyber Security", pronunciation: "sy-bur aa-ruk-shaa-vuh" },
-    { sinhala: "ඩිජිටල් සාක්ෂරතාව", english: "Digital Literacy", pronunciation: "di-ji-tul saak-shuh-ruh-thaa-vuh" },
-    { sinhala: "දුරස්ථ අධ්‍යාපනය", english: "Distance Learning", pronunciation: "doo-rus-thuh uh-dhyaa-puh-nuh-yuh" },
-    { sinhala: "නවෝත්පාදනය", english: "Innovation", pronunciation: "nuh-voh-thpaa-duh-nuh-yuh" },
-    { sinhala: "ආයෝජනය", english: "Investment", pronunciation: "aa-yoh-juh-nuh-yuh" },
-    { sinhala: "ව්‍යවසායකත්වය", english: "Entrepreneurship", pronunciation: "vyuh-vuh-saa-yuh-kuh-thvuh-yuh" },
+    { sinhala: "අන්තර්ජාලය", english: "Internet", pronunciation: "un-thur-jaa-luh-yuh", image: "🌐" },
+    { sinhala: "ගෝලීයකරණය", english: "Globalization", pronunciation: "goh-lee-yuh-kuh-ruh-nuh-yuh", image: "🌍" },
+    { sinhala: "දේශගුණ විපර්යාසය", english: "Climate Change", pronunciation: "day-shuh-goo-nuh vi-pur-yaa-suh-yuh", image: "🌡️" },
+    { sinhala: "සමාජ මාධ්‍ය", english: "Social Media", pronunciation: "suh-maa-juh maa-dhyuh", image: "📱" },
+    { sinhala: "කෘත්‍රිම බුද්ධිය", english: "Artificial Intelligence", pronunciation: "krith-ri-muh bud-dhi-yuh", image: "🤖" },
+    { sinhala: "තිරසාර සංවර්ධනය", english: "Sustainable Development", pronunciation: "thi-ruh-saa-ruh sun-var-dhuh-nuh-yuh", image: "♻️" },
+    { sinhala: "සයිබර් ආරක්ෂාව", english: "Cyber Security", pronunciation: "sy-bur aa-ruk-shaa-vuh", image: "🔒" },
+    { sinhala: "ඩිජිටල් සාක්ෂරතාව", english: "Digital Literacy", pronunciation: "di-ji-tul saak-shuh-ruh-thaa-vuh", image: "💡" },
+    { sinhala: "දුරස්ථ අධ්‍යාපනය", english: "Distance Learning", pronunciation: "doo-rus-thuh uh-dhyaa-puh-nuh-yuh", image: "🎓" },
+    { sinhala: "නවෝත්පාදනය", english: "Innovation", pronunciation: "nuh-voh-thpaa-duh-nuh-yuh", image: "💡" },
+    { sinhala: "ආයෝජනය", english: "Investment", pronunciation: "aa-yoh-juh-nuh-yuh", image: "📊" },
+    { sinhala: "ව්‍යවසායකත්වය", english: "Entrepreneurship", pronunciation: "vyuh-vuh-saa-yuh-kuh-thvuh-yuh", image: "🚀" },
   ];
 
   const literaryVocabulary = [
-    { sinhala: "විචාරය", english: "Criticism/Review", pronunciation: "vi-chaa-ruh-yuh" },
-    { sinhala: "රූපකය", english: "Allegory", pronunciation: "roo-puh-kuh-yuh" },
-    { sinhala: "ව්‍යංගය", english: "Irony", pronunciation: "vyun-guh-yuh" },
-    { sinhala: "ප්‍රහසනය", english: "Satire", pronunciation: "pruh-huh-suh-nuh-yuh" },
-    { sinhala: "සංකේතය", english: "Symbol", pronunciation: "sun-kay-thuh-yuh" },
-    { sinhala: "තේමාව", english: "Theme", pronunciation: "thay-maa-vuh" },
-    { sinhala: "උපමාව", english: "Simile", pronunciation: "oo-puh-maa-vuh" },
-    { sinhala: "රූපකාලංකාරය", english: "Metaphor", pronunciation: "roo-puh-kaa-lun-kaa-ruh-yuh" },
-    { sinhala: "අතිශයෝක්තිය", english: "Hyperbole", pronunciation: "uh-thi-shuh-yohk-thi-yuh" },
-    { sinhala: "පුද්ගලීකරණය", english: "Personification", pronunciation: "pud-guh-lee-kuh-ruh-nuh-yuh" },
-    { sinhala: "අනුප්‍රාසය", english: "Alliteration", pronunciation: "uh-noo-praa-suh-yuh" },
-    { sinhala: "ප්‍රතිරූපකය", english: "Imagery", pronunciation: "pruh-thi-roo-puh-kuh-yuh" },
+    { sinhala: "විචාරය", english: "Criticism/Review", pronunciation: "vi-chaa-ruh-yuh", image: "📝" },
+    { sinhala: "රූපකය", english: "Allegory", pronunciation: "roo-puh-kuh-yuh", image: "🎭" },
+    { sinhala: "ව්‍යංගය", english: "Irony", pronunciation: "vyun-guh-yuh", image: "🔄" },
+    { sinhala: "ප්‍රහසනය", english: "Satire", pronunciation: "pruh-huh-suh-nuh-yuh", image: "😏" },
+    { sinhala: "සංකේතය", english: "Symbol", pronunciation: "sun-kay-thuh-yuh", image: "🔣" },
+    { sinhala: "තේමාව", english: "Theme", pronunciation: "thay-maa-vuh", image: "📖" },
+    { sinhala: "උපමාව", english: "Simile", pronunciation: "oo-puh-maa-vuh", image: "🔗" },
+    { sinhala: "රූපකාලංකාරය", english: "Metaphor", pronunciation: "roo-puh-kaa-lun-kaa-ruh-yuh", image: "🎨" },
+    { sinhala: "අතිශයෝක්තිය", english: "Hyperbole", pronunciation: "uh-thi-shuh-yohk-thi-yuh", image: "📢" },
+    { sinhala: "පුද්ගලීකරණය", english: "Personification", pronunciation: "pud-guh-lee-kuh-ruh-nuh-yuh", image: "🌸" },
+    { sinhala: "අනුප්‍රාසය", english: "Alliteration", pronunciation: "uh-noo-praa-suh-yuh", image: "🔤" },
+    { sinhala: "ප්‍රතිරූපකය", english: "Imagery", pronunciation: "pruh-thi-roo-puh-kuh-yuh", image: "🖼️" },
   ];
 
   // Academic and formal vocabulary
   const academicVocabulary = [
-    { sinhala: "පර්යේෂණය", english: "Research", pronunciation: "pur-yay-shuh-nuh-yuh" },
-    { sinhala: "විශ්ලේෂණය", english: "Analysis", pronunciation: "vish-lay-shuh-nuh-yuh" },
-    { sinhala: "නිගමනය", english: "Conclusion", pronunciation: "ni-guh-muh-nuh-yuh" },
-    { sinhala: "උපකල්පනය", english: "Hypothesis", pronunciation: "oo-puh-kul-puh-nuh-yuh" },
-    { sinhala: "සාක්ෂි", english: "Evidence", pronunciation: "saak-shi" },
-    { sinhala: "තර්කය", english: "Argument", pronunciation: "thur-kuh-yuh" },
-    { sinhala: "මූලාශ්‍රය", english: "Source", pronunciation: "moo-laash-ruh-yuh" },
-    { sinhala: "සාරාංශය", english: "Summary", pronunciation: "saa-raan-shuh-yuh" },
-    { sinhala: "ප්‍රශ්නාවලිය", english: "Questionnaire", pronunciation: "prush-naa-vuh-lee-yuh" },
-    { sinhala: "සමීක්ෂණය", english: "Survey", pronunciation: "suh-meek-shuh-nuh-yuh" },
-    { sinhala: "දත්ත", english: "Data", pronunciation: "duth-thuh" },
-    { sinhala: "ප්‍රතිඵල", english: "Results", pronunciation: "pruh-thi-phuh-luh" },
+    { sinhala: "පර්යේෂණය", english: "Research", pronunciation: "pur-yay-shuh-nuh-yuh", image: "🔍" },
+    { sinhala: "විශ්ලේෂණය", english: "Analysis", pronunciation: "vish-lay-shuh-nuh-yuh", image: "📊" },
+    { sinhala: "නිගමනය", english: "Conclusion", pronunciation: "ni-guh-muh-nuh-yuh", image: "✅" },
+    { sinhala: "උපකල්පනය", english: "Hypothesis", pronunciation: "oo-puh-kul-puh-nuh-yuh", image: "❓" },
+    { sinhala: "සාක්ෂි", english: "Evidence", pronunciation: "saak-shi", image: "📋" },
+    { sinhala: "තර්කය", english: "Argument", pronunciation: "thur-kuh-yuh", image: "💬" },
+    { sinhala: "මූලාශ්‍රය", english: "Source", pronunciation: "moo-laash-ruh-yuh", image: "📚" },
+    { sinhala: "සාරාංශය", english: "Summary", pronunciation: "saa-raan-shuh-yuh", image: "📝" },
+    { sinhala: "ප්‍රශ්නාවලිය", english: "Questionnaire", pronunciation: "prush-naa-vuh-lee-yuh", image: "📋" },
+    { sinhala: "සමීක්ෂණය", english: "Survey", pronunciation: "suh-meek-shuh-nuh-yuh", image: "📈" },
+    { sinhala: "දත්ත", english: "Data", pronunciation: "duth-thuh", image: "🗃️" },
+    { sinhala: "ප්‍රතිඵල", english: "Results", pronunciation: "pruh-thi-phuh-luh", image: "📉" },
   ];
 
   // Famous Sri Lankan figures
   const famousPersonalities = [
-    { sinhala: "මහාත්මා ගාන්ධි", english: "Mahatma Gandhi (Influence)", pronunciation: "muh-haath-maa gaan-dhee" },
-    { sinhala: "ඩී.එස්. සේනානායක", english: "D.S. Senanayake (First PM)", pronunciation: "dee es say-naa-naa-yuh-kuh" },
-    { sinhala: "සිරිමාවෝ බණ්ඩාරනායක", english: "Sirimavo Bandaranaike (First Female PM)", pronunciation: "si-ri-maa-voh bun-daa-ruh-naa-yuh-kuh" },
-    { sinhala: "මාටින් වික්‍රමසිංහ", english: "Martin Wickramasinghe (Author)", pronunciation: "maar-tin vik-ruh-muh-sin-huh" },
-    { sinhala: "අනගාරික ධර්මපාල", english: "Anagarika Dharmapala (Buddhist Revivalist)", pronunciation: "uh-nuh-gaa-ri-kuh dhur-muh-paa-luh" },
-    { sinhala: "ආතර් සී. ක්ලාක්", english: "Arthur C. Clarke (Sci-Fi Author)", pronunciation: "aa-thur see klaak" },
+    { sinhala: "මහාත්මා ගාන්ධි", english: "Mahatma Gandhi (Influence)", pronunciation: "muh-haath-maa gaan-dhee", image: "🕊️" },
+    { sinhala: "ඩී.එස්. සේනානායක", english: "D.S. Senanayake (First PM)", pronunciation: "dee es say-naa-naa-yuh-kuh", image: "🎖️" },
+    { sinhala: "සිරිමාවෝ බණ්ඩාරනායක", english: "Sirimavo Bandaranaike (First Female PM)", pronunciation: "si-ri-maa-voh bun-daa-ruh-naa-yuh-kuh", image: "👩‍💼" },
+    { sinhala: "මාටින් වික්‍රමසිංහ", english: "Martin Wickramasinghe (Author)", pronunciation: "maar-tin vik-ruh-muh-sin-huh", image: "✍️" },
+    { sinhala: "අනගාරික ධර්මපාල", english: "Anagarika Dharmapala (Buddhist Revivalist)", pronunciation: "uh-nuh-gaa-ri-kuh dhur-muh-paa-luh", image: "🙏" },
+    { sinhala: "ආතර් සී. ක්ලාක්", english: "Arthur C. Clarke (Sci-Fi Author)", pronunciation: "aa-thur see klaak", image: "🚀" },
   ];
 
   const quizQuestions = [
@@ -228,6 +233,7 @@ const Grade6 = () => {
                 මේ අභියෝගවලට මුහුණ දී ඉදිරියට පැමිණියා. අද ශ්‍රී ලංකාව සංවර්ධනය
                 වෙමින් පවතින රටකි.
               </div>
+              <ReadAloudButton text="1948 පෙබරවාරි 4 වැනි දා ශ්‍රී ලංකාවට බ්‍රිතාන්‍ය පාලනයෙන් නිදහස ලැබුණා. මේ නිදහස ලබා ගැනීමට ඩී.එස්. සේනානායක, එස්.ඩබ්ලිව්.ආර්.ඩී. බණ්ඩාරනායක වැනි නායකයන් මහත් කැපවීමක් කළා. නිදහසින් පසු ශ්‍රී ලංකාව ප්‍රජාතන්ත්‍රික රටක් බවට පත් වුණා. නිදහසින් පසු ශ්‍රී ලංකාව බොහෝ අභියෝගවලට මුහුණ දුන්නා. ආර්ථික දුෂ්කරතා, ජාතිවාදය සහ සංවර්ධන අභියෝග ඒ අතර විය. නමුත් ශ්‍රී ලාංකිකයෝ මේ අභියෝගවලට මුහුණ දී ඉදිරියට පැමිණියා. අද ශ්‍රී ලංකාව සංවර්ධනය වෙමින් පවතින රටකි." />
               <div className="reading-english">
                 Sri Lanka gained independence from British rule on February 4,
                 1948. Leaders like D.S. Senanayake and S.W.R.D. Bandaranaike made
@@ -261,6 +267,7 @@ const Grade6 = () => {
                 වෙනසක් කළා. නමුත් පෞද්ගලිකත්වය, සයිබර් ආරක්ෂාව සහ තොරතුරු
                 විශ්වසනීයත්වය වැනි ගැටලුද ඇති වී තිබෙනවා.
               </div>
+              <ReadAloudButton text="වර්තමානයේ තාක්ෂණය අපේ ජීවිතයේ වැදගත් කොටසක් බවට පත්ව තිබෙනවා. අන්තර්ජාලය, ස්මාර්ට් දුරකථන සහ සමාජ මාධ්‍ය අපේ සන්නිවේදනය සහ ජීවන රටාව වෙනස් කළා. මේ වෙනස්කම් හොඳ ප්‍රතිඵල මෙන්ම අභියෝගද ගෙන එනවා. තාක්ෂණය හරහා අපට ලෝකයේ ඕනෑම තැනක සිට තොරතුරු ලබා ගත හැකියි. අධ්‍යාපනය, සෞඛ්‍යය සහ ව්‍යාපාර ක්ෂේත්‍රවල තාක්ෂණය විශාල වෙනසක් කළා. නමුත් පෞද්ගලිකත්වය, සයිබර් ආරක්ෂාව සහ තොරතුරු විශ්වසනීයත්වය වැනි ගැටලුද ඇති වී තිබෙනවා." />
               <div className="reading-english">
                 Today, technology has become an important part of our lives. The
                 internet, smartphones, and social media have changed our
@@ -391,6 +398,7 @@ const Grade6 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -402,6 +410,7 @@ const Grade6 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -413,6 +422,7 @@ const Grade6 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -424,6 +434,7 @@ const Grade6 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -436,6 +447,7 @@ const Grade6 = () => {
                     sinhalaWord={item.sinhala}
                     englishWord={item.english}
                     pronunciation={item.pronunciation}
+                    image={item.image}
                   />
                 ))}
               </div>
@@ -762,7 +774,7 @@ const Grade6 = () => {
         return (
           <section className="section active">
             <h2>Final Examination</h2>
-            <Quiz questions={quizQuestions} gradeKey="g6" />
+            <Quiz questions={quizQuestions} gradeKey="g6" gradeNumber={6} />
           </section>
         );
 
@@ -773,21 +785,9 @@ const Grade6 = () => {
 
   return (
     <div className="grade-content active">
-      <div className="grade-info">
-        <h2>Grade 6 - Advanced Mastery</h2>
-        <p>
-          Critical thinking, academic writing, literary analysis, and contemporary issues
-        </p>
+      <div className="grade-info-compact">
+        <h2>Grade 6 - හයවන ශ්‍රේණිය</h2>
       </div>
-
-      <Navigation
-        sections={sections}
-        currentSection={currentSection}
-        onSectionChange={setCurrentSection}
-        gradeId="g6"
-      />
-
-      <ProgressBar progress={86} />
 
       {renderSection()}
     </div>

@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import Navigation from "../shared/Navigation";
-import ProgressBar from "../shared/ProgressBar";
+import React, { useState, useEffect } from "react";
 import WordCard from "../shared/WordCard";
 import Quiz from "../shared/Quiz";
 import PronunciationPractice from "../shared/PronunciationPractice";
+import ReadAloudButton from "../shared/ReadAloudButton";
 
-const Grade5 = () => {
+const Grade5 = ({ initialSection }) => {
   const [currentSection, setCurrentSection] = useState("reading");
+
+  useEffect(() => {
+    if (initialSection) {
+      setCurrentSection(initialSection);
+    }
+  }, [initialSection]);
 
   const sections = [
     { id: "reading", label: "Advanced Reading" },
@@ -37,50 +42,50 @@ const Grade5 = () => {
 
   // Academic vocabulary - expanded
   const academicVocabulary = [
-    { sinhala: "විද්‍යාව", english: "Science", pronunciation: "vid-yaa-vuh" },
-    { sinhala: "ඉතිහාසය", english: "History", pronunciation: "i-thi-haa-suh-yuh" },
-    { sinhala: "භූගෝලය", english: "Geography", pronunciation: "bhoo-goh-luh-yuh" },
-    { sinhala: "ගණිතය", english: "Mathematics", pronunciation: "guh-ni-thuh-yuh" },
-    { sinhala: "පරිසරය", english: "Environment", pronunciation: "puh-ri-suh-ruh-yuh" },
-    { sinhala: "සමාජය", english: "Society", pronunciation: "suh-maa-juh-yuh" },
-    { sinhala: "ආර්ථිකය", english: "Economy", pronunciation: "aar-thee-kuh-yuh" },
-    { sinhala: "රාජ්‍යයය", english: "Government", pronunciation: "raaj-yuh-yuh" },
-    { sinhala: "සෞඛ්‍යය", english: "Health", pronunciation: "sow-khyuh-yuh" },
-    { sinhala: "තාක්ෂණය", english: "Technology", pronunciation: "thaak-shuh-nuh-yuh" },
-    { sinhala: "කෘෂිකර්මය", english: "Agriculture", pronunciation: "kroo-shee-kur-muh-yuh" },
-    { sinhala: "අධ්‍යාපනය", english: "Education", pronunciation: "uhd-yaa-puh-nuh-yuh" },
+    { sinhala: "විද්‍යාව", english: "Science", pronunciation: "vid-yaa-vuh", image: "🔬" },
+    { sinhala: "ඉතිහාසය", english: "History", pronunciation: "i-thi-haa-suh-yuh", image: "📜" },
+    { sinhala: "භූගෝලය", english: "Geography", pronunciation: "bhoo-goh-luh-yuh", image: "🌍" },
+    { sinhala: "ගණිතය", english: "Mathematics", pronunciation: "guh-ni-thuh-yuh", image: "🔢" },
+    { sinhala: "පරිසරය", english: "Environment", pronunciation: "puh-ri-suh-ruh-yuh", image: "🌿" },
+    { sinhala: "සමාජය", english: "Society", pronunciation: "suh-maa-juh-yuh", image: "👥" },
+    { sinhala: "ආර්ථිකය", english: "Economy", pronunciation: "aar-thee-kuh-yuh", image: "💰" },
+    { sinhala: "රාජ්‍යයය", english: "Government", pronunciation: "raaj-yuh-yuh", image: "🏛️" },
+    { sinhala: "සෞඛ්‍යය", english: "Health", pronunciation: "sow-khyuh-yuh", image: "🏥" },
+    { sinhala: "තාක්ෂණය", english: "Technology", pronunciation: "thaak-shuh-nuh-yuh", image: "💻" },
+    { sinhala: "කෘෂිකර්මය", english: "Agriculture", pronunciation: "kroo-shee-kur-muh-yuh", image: "🌾" },
+    { sinhala: "අධ්‍යාපනය", english: "Education", pronunciation: "uhd-yaa-puh-nuh-yuh", image: "📚" },
   ];
 
   // Advanced culture items - expanded
   const advancedCulture = [
-    { sinhala: "දළදා මාලිගාව", english: "Temple of the Tooth", pronunciation: "duh-luh-daa maa-li-gaa-vuh" },
-    { sinhala: "ලංකාතිලක", english: "Pride of Lanka", pronunciation: "luhn-kaa-thi-luh-kuh" },
-    { sinhala: "රාවණ රජ", english: "King Ravana", pronunciation: "raa-vuh-nuh ruh-juh" },
-    { sinhala: "විජය කුමාරයා", english: "Prince Vijaya", pronunciation: "vi-juh-yuh koo-maa-ruh-yaa" },
-    { sinhala: "මහාවංශය", english: "The Mahavamsa", pronunciation: "muh-haa-vuhn-shuh-yuh" },
-    { sinhala: "සිංහ ධජය", english: "Lion Flag", pronunciation: "sin-huh dhuh-juh-yuh" },
-    { sinhala: "දුටුගැමුණු", english: "King Dutugemunu", pronunciation: "doo-too-geh-moo-noo" },
-    { sinhala: "පරාක්‍රමබාහු", english: "Parakramabahu", pronunciation: "puh-raak-ruh-muh-baa-hoo" },
-    { sinhala: "ශ්‍රී මහා බෝධිය", english: "Sri Maha Bodhi", pronunciation: "shree muh-haa boh-dhee-yuh" },
-    { sinhala: "රුවන්වැලිසෑය", english: "Ruwanweliseya", pronunciation: "roo-vuhn-veh-lee-seh-yuh" },
-    { sinhala: "ගල් විහාරය", english: "Rock Temple", pronunciation: "guhl vee-haa-ruh-yuh" },
-    { sinhala: "පුරාණ ශිලාලේඛන", english: "Ancient Inscriptions", pronunciation: "poo-raa-nuh shee-laa-lay-khuh-nuh" },
+    { sinhala: "දළදා මාලිගාව", english: "Temple of the Tooth", pronunciation: "duh-luh-daa maa-li-gaa-vuh", image: "🛕" },
+    { sinhala: "ලංකාතිලක", english: "Pride of Lanka", pronunciation: "luhn-kaa-thi-luh-kuh", image: "🏆" },
+    { sinhala: "රාවණ රජ", english: "King Ravana", pronunciation: "raa-vuh-nuh ruh-juh", image: "👑" },
+    { sinhala: "විජය කුමාරයා", english: "Prince Vijaya", pronunciation: "vi-juh-yuh koo-maa-ruh-yaa", image: "🤴" },
+    { sinhala: "මහාවංශය", english: "The Mahavamsa", pronunciation: "muh-haa-vuhn-shuh-yuh", image: "📖" },
+    { sinhala: "සිංහ ධජය", english: "Lion Flag", pronunciation: "sin-huh dhuh-juh-yuh", image: "🦁" },
+    { sinhala: "දුටුගැමුණු", english: "King Dutugemunu", pronunciation: "doo-too-geh-moo-noo", image: "⚔️" },
+    { sinhala: "පරාක්‍රමබාහු", english: "Parakramabahu", pronunciation: "puh-raak-ruh-muh-baa-hoo", image: "🏰" },
+    { sinhala: "ශ්‍රී මහා බෝධිය", english: "Sri Maha Bodhi", pronunciation: "shree muh-haa boh-dhee-yuh", image: "🌳" },
+    { sinhala: "රුවන්වැලිසෑය", english: "Ruwanweliseya", pronunciation: "roo-vuhn-veh-lee-seh-yuh", image: "🕌" },
+    { sinhala: "ගල් විහාරය", english: "Rock Temple", pronunciation: "guhl vee-haa-ruh-yuh", image: "🗿" },
+    { sinhala: "පුරාණ ශිලාලේඛන", english: "Ancient Inscriptions", pronunciation: "poo-raa-nuh shee-laa-lay-khuh-nuh", image: "📝" },
   ];
 
   // Literary terms - expanded
   const literaryTerms = [
-    { sinhala: "කවිය", english: "Poetry", pronunciation: "kuh-vi-yuh" },
-    { sinhala: "නවකතාව", english: "Novel", pronunciation: "nuh-vuh-kuh-thaa-vuh" },
-    { sinhala: "කෙටිකතාව", english: "Short Story", pronunciation: "keh-ti-kuh-thaa-vuh" },
-    { sinhala: "නාටකය", english: "Drama", pronunciation: "naa-tuh-kuh-yuh" },
-    { sinhala: "අලංකාරය", english: "Metaphor", pronunciation: "uh-luhn-kaa-ruh-yuh" },
-    { sinhala: "උපමාව", english: "Simile", pronunciation: "oo-puh-maa-vuh" },
-    { sinhala: "රසය", english: "Sentiment/Mood", pronunciation: "ruh-suh-yuh" },
-    { sinhala: "ලක්ෂණය", english: "Characteristic", pronunciation: "luhk-shuh-nuh-yuh" },
-    { sinhala: "පාඨකයා", english: "Reader", pronunciation: "paa-thuh-kuh-yaa" },
-    { sinhala: "කතෘ", english: "Author", pronunciation: "kuh-throo" },
-    { sinhala: "ඡන්දස්", english: "Metre/Rhythm", pronunciation: "chun-duhs" },
-    { sinhala: "සංකේතය", english: "Symbol", pronunciation: "suhn-kay-thuh-yuh" },
+    { sinhala: "කවිය", english: "Poetry", pronunciation: "kuh-vi-yuh", image: "📝" },
+    { sinhala: "නවකතාව", english: "Novel", pronunciation: "nuh-vuh-kuh-thaa-vuh", image: "📕" },
+    { sinhala: "කෙටිකතාව", english: "Short Story", pronunciation: "keh-ti-kuh-thaa-vuh", image: "📃" },
+    { sinhala: "නාටකය", english: "Drama", pronunciation: "naa-tuh-kuh-yuh", image: "🎭" },
+    { sinhala: "අලංකාරය", english: "Metaphor", pronunciation: "uh-luhn-kaa-ruh-yuh", image: "🎨" },
+    { sinhala: "උපමාව", english: "Simile", pronunciation: "oo-puh-maa-vuh", image: "🔗" },
+    { sinhala: "රසය", english: "Sentiment/Mood", pronunciation: "ruh-suh-yuh", image: "🎵" },
+    { sinhala: "ලක්ෂණය", english: "Characteristic", pronunciation: "luhk-shuh-nuh-yuh", image: "✨" },
+    { sinhala: "පාඨකයා", english: "Reader", pronunciation: "paa-thuh-kuh-yaa", image: "👤" },
+    { sinhala: "කතෘ", english: "Author", pronunciation: "kuh-throo", image: "✍️" },
+    { sinhala: "ඡන්දස්", english: "Metre/Rhythm", pronunciation: "chun-duhs", image: "🎼" },
+    { sinhala: "සංකේතය", english: "Symbol", pronunciation: "suhn-kay-thuh-yuh", image: "🔣" },
   ];
 
   // Sinhala idioms
@@ -305,6 +310,7 @@ const Grade5 = () => {
                 සංස්කෘතික දියුණුවක් ඇති වුණා. බුදු දහම ආගමන වී වසර දෙදහසකට වඩා
                 ඉතිහාසයක් තියෙනවා.
               </div>
+              <ReadAloudButton text="ශ්‍රී ලංකාවට අවුරුදු දෙදහස් පන්සියයකට වඩා පැරණි ලිඛිත ඉතිහාසයක් තියෙනවා. මහාවංශය සහ දීපවංශය වැනි පුරාණ ග්‍රන්ථවල අපේ රටේ ඉතිහාසය ලියැවී තියෙනවා. විජය කුමාරයා ඉන්දියාවෙන් ශ්‍රී ලංකාවට පැමිණි පළමු සිංහල රජු විය. ඔහු සිංහල ජාතියේ ආරම්භකයා ලෙස සැලකෙනවා. අනුරාධපුරය, පොළොන්නරුව, දඹදෙණිය, යාපනය, කෝට්ටේ සහ කන්ද යන රාජධානි පිළිවෙලින් පැවතුණා. එක් එක් කාලයේ විශේෂ ස්ථාපනයන් සහ සංස්කෘතික දියුණුවක් ඇති වුණා. බුදු දහම ආගමන වී වසර දෙදහසකට වඩා ඉතිහාසයක් තියෙනවා." />
               <div className="reading-english">
                 Sri Lanka has a written history of more than two thousand five
                 hundred years. Our country's history is recorded in ancient
@@ -331,6 +337,7 @@ const Grade5 = () => {
                 වගකීමකි. ජාතික වනෝද්‍යාන සහ රක්ෂිත ප්‍රදේශ මේ සඳහා උපකාර
                 කරනවා.
               </div>
+              <ReadAloudButton text="අපේ පරිසරය ආරක්ෂා කිරීම අපේ වගකීමකි. වනාන්තර කප්පාදුව, ජල දූෂණය සහ වාතය දූෂණය වැනි ගැටලු අපේ පරිසරයට හානි කරනවා. ශ්‍රී ලංකාවේ විශේෂ සත්ත්ව හා ශාක විශේෂ බොහොමයක් වෙනත් රටවල නැහැ. හාතිය, මුවා, තැඹිලි මැසි, ශ්‍රී ලාංකික කුරුළු විශේෂ අපේ රටට සුවිශේෂයි. මේ සත්ත්වයින් සහ ශාක ආරක්ෂා කිරීම අපි කාගේම වගකීමකි. ජාතික වනෝද්‍යාන සහ රක්ෂිත ප්‍රදේශ මේ සඳහා උපකාර කරනවා." />
               <div className="reading-english">
                 Protecting our environment is our responsibility. Problems like
                 deforestation, water pollution, and air pollution harm our
@@ -356,6 +363,7 @@ const Grade5 = () => {
                 ඇති පුද්ගලයෙකුට රැකියා අවස්ථා වැඩියි. අධ්‍යාපනය රටේ සංවර්ධනයට
                 ඉතා වැදගත්.
               </div>
+              <ReadAloudButton text="අධ්‍යාපනය මිනිසාගේ ජීවිතයේ ඉතාමත් වැදගත් කොටසකි. එය අපට දැනුම, කුසලතා සහ ජීවිතයට අවශ්‍ය හැකියාවන් ලබා දෙනවා. අධ්‍යාපනය තුළින් අපට ලෝකය තේරුම් ගන්න පුළුවන්. ශ්‍රී ලංකාවේ සාමාන්‍ය අධ්‍යාපනය නොමිලේ ලබා දෙනවා. මෙය සෑම දරුවෙකුටම අධ්‍යාපනය ලැබීමේ අයිතිය සහතික කරනවා. හොඳ අධ්‍යාපනයක් ඇති පුද්ගලයෙකුට රැකියා අවස්ථා වැඩියි. අධ්‍යාපනය රටේ සංවර්ධනයට ඉතා වැදගත්." />
               <div className="reading-english">
                 Education is a very important part of human life. It gives us
                 knowledge, skills, and abilities needed for life. Through
@@ -555,6 +563,7 @@ const Grade5 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -569,6 +578,7 @@ const Grade5 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -739,6 +749,7 @@ const Grade5 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -909,7 +920,7 @@ const Grade5 = () => {
         return (
           <section className="section active">
             <h2>Comprehensive Assessment Quiz</h2>
-            <Quiz questions={quizQuestions} gradeKey="g5" />
+            <Quiz questions={quizQuestions} gradeKey="g5" gradeNumber={5} />
           </section>
         );
 
@@ -920,21 +931,9 @@ const Grade5 = () => {
 
   return (
     <div className="grade-content active">
-      <div className="grade-info">
-        <h2>Grade 5 - Intermediate Advanced</h2>
-        <p>
-          Complex grammar, formal writing, idioms, classical literature, and heritage studies
-        </p>
+      <div className="grade-info-compact">
+        <h2>Grade 5 - පස්වන ශ්‍රේණිය</h2>
       </div>
-
-      <Navigation
-        sections={sections}
-        currentSection={currentSection}
-        onSectionChange={setCurrentSection}
-        gradeId="g5"
-      />
-
-      <ProgressBar progress={71} />
 
       {renderSection()}
 

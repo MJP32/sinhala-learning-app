@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useChallenges } from "../../context/ChallengesContext";
+import { useProgress } from "../../context/ProgressContext";
 
-const Quiz = ({ questions, gradeKey }) => {
+const Quiz = ({ questions, gradeKey, gradeNumber }) => {
+  const { trackQuizComplete } = useChallenges();
+  const { unlockNextGrade } = useProgress();
+  const [gradeUnlocked, setGradeUnlocked] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -21,6 +26,16 @@ const Quiz = ({ questions, gradeKey }) => {
       setSelectedAnswer(null);
       setShowResult(false);
     } else {
+      // Track quiz completion (score already updated in handleAnswerSelect)
+      const percentage = Math.round((score / questions.length) * 100);
+      trackQuizComplete(percentage);
+
+      // Unlock next grade if score >= 80%
+      if (percentage >= 80 && gradeNumber && gradeNumber < 6) {
+        const wasUnlocked = unlockNextGrade(gradeNumber);
+        setGradeUnlocked(wasUnlocked);
+      }
+
       setQuizCompleted(true);
     }
   };
@@ -42,6 +57,8 @@ const Quiz = ({ questions, gradeKey }) => {
     else if (percentage >= 60) gradeLevel = "Keep Practicing! 📚";
     else gradeLevel = "Need More Practice! 💪";
 
+    const passedQuiz = percentage >= 80;
+
     return (
       <div className="quiz-container">
         <div className="quiz-question">
@@ -50,7 +67,9 @@ const Quiz = ({ questions, gradeKey }) => {
         <div
           className="quiz-result correct"
           style={{
-            background: "linear-gradient(135deg, #00534e 0%, #ffbe29 100%)",
+            background: passedQuiz
+              ? "linear-gradient(135deg, #00534e 0%, #ffbe29 100%)"
+              : "linear-gradient(135deg, #666 0%, #444 100%)",
             color: "white",
             padding: "20px",
             borderRadius: "10px",
@@ -59,16 +78,30 @@ const Quiz = ({ questions, gradeKey }) => {
         >
           🎊 {gradeLevel} 🎊
           <br />
-          {percentage >= 70
-            ? `Great work! You're ready for the next challenge!`
-            : `Keep practicing to improve your Sinhala skills!`}
+          {passedQuiz
+            ? gradeUnlocked
+              ? `🔓 Grade ${gradeNumber + 1} Unlocked! You can now proceed to the next grade!`
+              : `Great work! You've mastered this grade!`
+            : `You need 80% or higher to unlock the next grade. Keep practicing!`}
         </div>
+        {!passedQuiz && (
+          <div style={{
+            background: "#fff3cd",
+            color: "#856404",
+            padding: "12px 16px",
+            borderRadius: "8px",
+            marginTop: "12px",
+            fontSize: "0.9rem"
+          }}>
+            💡 Tip: Review the lessons and try again to unlock Grade {gradeNumber + 1}
+          </div>
+        )}
         <button
           className="nav-btn"
           onClick={restartQuiz}
           style={{ marginTop: "20px" }}
         >
-          Restart Quiz
+          {passedQuiz ? "Practice Again" : "Try Again"}
         </button>
       </div>
     );

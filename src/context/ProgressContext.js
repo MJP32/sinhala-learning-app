@@ -15,6 +15,7 @@ export const useProgress = () => {
 
 export const ProgressProvider = ({ children }) => {
   const [completedSections, setCompletedSections] = useState({});
+  const [unlockedGrades, setUnlockedGrades] = useState([1]); // Grade 1 is always unlocked
   const [showProgressModal, setShowProgressModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { user } = useAuth();
@@ -23,30 +24,77 @@ export const ProgressProvider = ({ children }) => {
   useEffect(() => {
     const loadProgress = async () => {
       if (user) {
+        // Guest users - load from localStorage
+        if (user.isGuest) {
+          const savedProgress = localStorage.getItem('sinhala-progress-guest');
+          const savedGrades = localStorage.getItem('sinhala-unlocked-guest');
+          console.log('Loading guest progress from localStorage:', savedProgress);
+
+          if (savedProgress) {
+            const parsed = JSON.parse(savedProgress);
+            console.log('Parsed progress:', parsed);
+            setCompletedSections(parsed);
+          } else {
+            console.log('No saved progress found for guest');
+            setCompletedSections({});
+          }
+
+          if (savedGrades) {
+            setUnlockedGrades(JSON.parse(savedGrades));
+          } else {
+            setUnlockedGrades([1, 2, 3, 4, 5, 6]); // Guest users have all grades unlocked by default
+          }
+
+          setIsLoading(false);
+          return;
+        }
+
         setIsLoading(true);
+
+        // Always try localStorage first for immediate loading
+        const localProgress = localStorage.getItem(`sinhala-progress-${user.uid}`);
+        const localGrades = localStorage.getItem(`sinhala-unlocked-${user.uid}`);
+
+        if (localProgress) {
+          console.log('Loading from localStorage:', localProgress);
+          setCompletedSections(JSON.parse(localProgress));
+        }
+        if (localGrades) {
+          setUnlockedGrades(JSON.parse(localGrades));
+        }
+
+        // Then try Firebase to sync (will update if newer data exists)
         try {
           const docRef = doc(db, 'users', user.uid);
           const docSnap = await getDoc(docRef);
 
-          if (docSnap.exists() && docSnap.data().progress) {
-            setCompletedSections(docSnap.data().progress);
-          } else {
-            // No saved progress, start fresh
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            if (data.progress && Object.keys(data.progress).length > 0) {
+              console.log('Loading from Firebase:', data.progress);
+              setCompletedSections(data.progress);
+              // Also update localStorage with Firebase data
+              localStorage.setItem(`sinhala-progress-${user.uid}`, JSON.stringify(data.progress));
+            }
+            if (data.unlockedGrades && data.unlockedGrades.length > 0) {
+              setUnlockedGrades(data.unlockedGrades);
+              localStorage.setItem(`sinhala-unlocked-${user.uid}`, JSON.stringify(data.unlockedGrades));
+            }
+          } else if (!localProgress) {
+            // No saved progress anywhere, start fresh
             setCompletedSections({});
+            setUnlockedGrades([1]);
           }
         } catch (error) {
-          console.error('Error loading progress:', error);
-          // Fall back to localStorage if Firebase fails
-          const saved = localStorage.getItem(`sinhala-progress-${user.uid}`);
-          if (saved) {
-            setCompletedSections(JSON.parse(saved));
-          }
+          console.error('Error loading from Firebase (using localStorage):', error);
+          // Already loaded from localStorage above, so no action needed
         } finally {
           setIsLoading(false);
         }
       } else {
         // User logged out, clear progress
         setCompletedSections({});
+        setUnlockedGrades([1]);
         setIsLoading(false);
       }
     };
@@ -56,22 +104,71 @@ export const ProgressProvider = ({ children }) => {
 
   // Save progress to Firebase whenever it changes
   const saveProgress = useCallback(async (newProgress) => {
+    console.log('saveProgress called, user:', user, 'newProgress:', newProgress);
     if (user) {
+      // Guest users - save to localStorage only
+      if (user.isGuest) {
+        console.log('Saving guest progress to localStorage:', newProgress);
+        localStorage.setItem('sinhala-progress-guest', JSON.stringify(newProgress));
+        return;
+      }
+
+      // Registered users - save to localStorage first (always works), then try Firebase
+      localStorage.setItem(`sinhala-progress-${user.uid}`, JSON.stringify(newProgress));
+      console.log('Saved to localStorage for user:', user.uid);
+
+      // Then try Firebase (non-blocking)
       try {
         const docRef = doc(db, 'users', user.uid);
         await setDoc(docRef, { progress: newProgress }, { merge: true });
-        // Also save to localStorage as backup
-        localStorage.setItem(`sinhala-progress-${user.uid}`, JSON.stringify(newProgress));
+        console.log('Saved to Firebase successfully');
       } catch (error) {
-        console.error('Error saving progress:', error);
-        // Save to localStorage if Firebase fails
-        localStorage.setItem(`sinhala-progress-${user.uid}`, JSON.stringify(newProgress));
+        console.error('Error saving to Firebase (localStorage backup exists):', error);
       }
     }
   }, [user]);
 
+  // Save unlocked grades to Firebase
+  const saveUnlockedGrades = useCallback(async (grades) => {
+    if (user) {
+      // Guest users - save to localStorage only
+      if (user.isGuest) {
+        localStorage.setItem('sinhala-unlocked-guest', JSON.stringify(grades));
+        return;
+      }
+
+      // Registered users - save to localStorage first (always works), then try Firebase
+      localStorage.setItem(`sinhala-unlocked-${user.uid}`, JSON.stringify(grades));
+
+      try {
+        const docRef = doc(db, 'users', user.uid);
+        await setDoc(docRef, { unlockedGrades: grades }, { merge: true });
+      } catch (error) {
+        console.error('Error saving unlocked grades to Firebase:', error);
+      }
+    }
+  }, [user]);
+
+  // Check if a grade is unlocked
+  const isGradeUnlocked = (gradeNumber) => {
+    return unlockedGrades.includes(gradeNumber);
+  };
+
+  // Unlock the next grade (called when quiz score >= 80%)
+  const unlockNextGrade = useCallback((currentGrade) => {
+    const nextGrade = currentGrade + 1;
+    if (nextGrade <= 6 && !unlockedGrades.includes(nextGrade)) {
+      const newUnlockedGrades = [...unlockedGrades, nextGrade].sort((a, b) => a - b);
+      setUnlockedGrades(newUnlockedGrades);
+      saveUnlockedGrades(newUnlockedGrades);
+      return true; // Successfully unlocked
+    }
+    return false; // Already unlocked or no next grade
+  }, [unlockedGrades, saveUnlockedGrades]);
+
   // Mark a section as complete/incomplete
   const toggleSectionComplete = (gradeId, sectionId) => {
+    console.log('toggleSectionComplete called:', gradeId, sectionId);
     setCompletedSections(prev => {
       const key = `${gradeId}-${sectionId}`;
       const newState = { ...prev };
@@ -80,6 +177,7 @@ export const ProgressProvider = ({ children }) => {
       } else {
         newState[key] = true;
       }
+      console.log('New state after toggle:', newState);
       // Save to Firebase
       saveProgress(newState);
       return newState;
@@ -143,13 +241,24 @@ export const ProgressProvider = ({ children }) => {
   // Reset all progress
   const resetProgress = async () => {
     setCompletedSections({});
+
     if (user) {
-      try {
-        const docRef = doc(db, 'users', user.uid);
-        await setDoc(docRef, { progress: {} }, { merge: true });
-        localStorage.removeItem(`sinhala-progress-${user.uid}`);
-      } catch (error) {
-        console.error('Error resetting progress:', error);
+      if (user.isGuest) {
+        // Guest users - reset localStorage and keep all grades unlocked
+        setUnlockedGrades([1, 2, 3, 4, 5, 6]);
+        localStorage.removeItem('sinhala-progress-guest');
+        localStorage.setItem('sinhala-unlocked-guest', JSON.stringify([1, 2, 3, 4, 5, 6]));
+      } else {
+        // Registered users - reset Firebase and localStorage
+        setUnlockedGrades([1]);
+        try {
+          const docRef = doc(db, 'users', user.uid);
+          await setDoc(docRef, { progress: {}, unlockedGrades: [1] }, { merge: true });
+          localStorage.removeItem(`sinhala-progress-${user.uid}`);
+          localStorage.removeItem(`sinhala-unlocked-${user.uid}`);
+        } catch (error) {
+          console.error('Error resetting progress:', error);
+        }
       }
     }
   };
@@ -164,7 +273,10 @@ export const ProgressProvider = ({ children }) => {
     resetProgress,
     showProgressModal,
     setShowProgressModal,
-    isLoading
+    isLoading,
+    unlockedGrades,
+    isGradeUnlocked,
+    unlockNextGrade
   };
 
   return (

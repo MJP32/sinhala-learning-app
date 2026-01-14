@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import Navigation from "../shared/Navigation";
-import ProgressBar from "../shared/ProgressBar";
+import React, { useState, useEffect } from "react";
 import WordCard from "../shared/WordCard";
 import Quiz from "../shared/Quiz";
 import PronunciationPractice from "../shared/PronunciationPractice";
+import ReadAloudButton from "../shared/ReadAloudButton";
 
-const Grade4 = () => {
+const Grade4 = ({ initialSection }) => {
   const [currentSection, setCurrentSection] = useState("reading");
+
+  useEffect(() => {
+    if (initialSection) {
+      setCurrentSection(initialSection);
+    }
+  }, [initialSection]);
 
   const sections = [
     { id: "reading", label: "Reading" },
@@ -37,82 +42,82 @@ const Grade4 = () => {
 
   // Cultural items - expanded
   const culturalItems = [
-    { sinhala: "කිරි බත්", english: "Milk Rice", pronunciation: "kee-ree buht" },
-    { sinhala: "කොකිස්", english: "Oil Cakes", pronunciation: "koh-kis" },
-    { sinhala: "වෙසක් කුඩු", english: "Vesak Lantern", pronunciation: "veh-suhk koo-doo" },
-    { sinhala: "පෙරහර", english: "Procession", pronunciation: "peh-ruh-huh-ruh" },
-    { sinhala: "කන්දියන් නර්තනය", english: "Kandyan Dance", pronunciation: "kuhn-dee-yuhn nur-thuh-nuh-yuh" },
-    { sinhala: "ඇලවතුර", english: "Traditional Sweet", pronunciation: "ah-luh-vuh-thoo-ruh" },
-    { sinhala: "අවුරුදු කුමාරි", english: "New Year Queen", pronunciation: "uh-voo-roo-doo koo-maa-ree" },
-    { sinhala: "ගෙදර ඔලුව", english: "Coconut Splashing", pronunciation: "geh-duh-ruh oh-loo-vuh" },
-    { sinhala: "බණ", english: "Buddhist Sermon", pronunciation: "buh-nuh" },
-    { sinhala: "පිරිත්", english: "Pirith Chanting", pronunciation: "pee-rith" },
-    { sinhala: "සිල්", english: "Religious Observance", pronunciation: "seel" },
-    { sinhala: "දන්සල", english: "Free Food Stall", pronunciation: "duhn-suh-luh" },
+    { sinhala: "කිරි බත්", english: "Milk Rice", pronunciation: "kee-ree buht", image: "🍚" },
+    { sinhala: "කොකිස්", english: "Oil Cakes", pronunciation: "koh-kis", image: "🍪" },
+    { sinhala: "වෙසක් කුඩු", english: "Vesak Lantern", pronunciation: "veh-suhk koo-doo", image: "🏮" },
+    { sinhala: "පෙරහර", english: "Procession", pronunciation: "peh-ruh-huh-ruh", image: "🎭" },
+    { sinhala: "කන්දියන් නර්තනය", english: "Kandyan Dance", pronunciation: "kuhn-dee-yuhn nur-thuh-nuh-yuh", image: "💃" },
+    { sinhala: "ඇලවතුර", english: "Traditional Sweet", pronunciation: "ah-luh-vuh-thoo-ruh", image: "🍬" },
+    { sinhala: "අවුරුදු කුමාරි", english: "New Year Queen", pronunciation: "uh-voo-roo-doo koo-maa-ree", image: "👸" },
+    { sinhala: "ගෙදර ඔලුව", english: "Coconut Splashing", pronunciation: "geh-duh-ruh oh-loo-vuh", image: "🥥" },
+    { sinhala: "බණ", english: "Buddhist Sermon", pronunciation: "buh-nuh", image: "🙏" },
+    { sinhala: "පිරිත්", english: "Pirith Chanting", pronunciation: "pee-rith", image: "📿" },
+    { sinhala: "සිල්", english: "Religious Observance", pronunciation: "seel", image: "🧘" },
+    { sinhala: "දන්සල", english: "Free Food Stall", pronunciation: "duhn-suh-luh", image: "🍽️" },
   ];
 
   // Historical places - expanded
   const historicalPlaces = [
-    { sinhala: "අනුරාධපුරය", english: "Anuradhapura", pronunciation: "uh-noo-raa-duh-poo-ruh-yuh" },
-    { sinhala: "පොළොන්නරුව", english: "Polonnaruwa", pronunciation: "poh-lohn-nuh-roo-vuh" },
-    { sinhala: "සිගිරිය", english: "Sigiriya", pronunciation: "see-gee-ree-yuh" },
-    { sinhala: "මිහින්තලේ", english: "Mihintale", pronunciation: "mee-heen-thuh-lay" },
-    { sinhala: "දළදා මාලිගාව", english: "Temple of Tooth", pronunciation: "duh-luh-daa maa-lee-gaa-vuh" },
-    { sinhala: "ගාල්ල කොටුව", english: "Galle Fort", pronunciation: "gaal-luh koh-too-vuh" },
-    { sinhala: "යාපනය", english: "Jaffna", pronunciation: "yaa-puh-nuh-yuh" },
-    { sinhala: "නුවර", english: "Kandy", pronunciation: "noo-vuh-ruh" },
-    { sinhala: "කොළඹ", english: "Colombo", pronunciation: "koh-luhm-buh" },
-    { sinhala: "ත්‍රිකුණාමලය", english: "Trincomalee", pronunciation: "tree-koo-naa-muh-luh-yuh" },
-    { sinhala: "මාතර", english: "Matara", pronunciation: "maa-thuh-ruh" },
-    { sinhala: "රත්නපුරය", english: "Ratnapura", pronunciation: "ruht-nuh-poo-ruh-yuh" },
+    { sinhala: "අනුරාධපුරය", english: "Anuradhapura", pronunciation: "uh-noo-raa-duh-poo-ruh-yuh", image: "🏛️" },
+    { sinhala: "පොළොන්නරුව", english: "Polonnaruwa", pronunciation: "poh-lohn-nuh-roo-vuh", image: "🏯" },
+    { sinhala: "සිගිරිය", english: "Sigiriya", pronunciation: "see-gee-ree-yuh", image: "🗿" },
+    { sinhala: "මිහින්තලේ", english: "Mihintale", pronunciation: "mee-heen-thuh-lay", image: "⛰️" },
+    { sinhala: "දළදා මාලිගාව", english: "Temple of Tooth", pronunciation: "duh-luh-daa maa-lee-gaa-vuh", image: "🛕" },
+    { sinhala: "ගාල්ල කොටුව", english: "Galle Fort", pronunciation: "gaal-luh koh-too-vuh", image: "🏰" },
+    { sinhala: "යාපනය", english: "Jaffna", pronunciation: "yaa-puh-nuh-yuh", image: "🌴" },
+    { sinhala: "නුවර", english: "Kandy", pronunciation: "noo-vuh-ruh", image: "🏔️" },
+    { sinhala: "කොළඹ", english: "Colombo", pronunciation: "koh-luhm-buh", image: "🏙️" },
+    { sinhala: "ත්‍රිකුණාමලය", english: "Trincomalee", pronunciation: "tree-koo-naa-muh-luh-yuh", image: "⚓" },
+    { sinhala: "මාතර", english: "Matara", pronunciation: "maa-thuh-ruh", image: "🌊" },
+    { sinhala: "රත්නපුරය", english: "Ratnapura", pronunciation: "ruht-nuh-poo-ruh-yuh", image: "💎" },
   ];
 
   // Emotions vocabulary
   const emotions = [
-    { sinhala: "සතුට", english: "Happiness", pronunciation: "suh-thoo-tuh" },
-    { sinhala: "දුක", english: "Sadness", pronunciation: "doo-kuh" },
-    { sinhala: "කෝපය", english: "Anger", pronunciation: "koh-puh-yuh" },
-    { sinhala: "බය", english: "Fear", pronunciation: "buh-yuh" },
-    { sinhala: "ආදරය", english: "Love", pronunciation: "aa-duh-ruh-yuh" },
-    { sinhala: "පුදුම", english: "Surprise", pronunciation: "poo-doo-muh" },
-    { sinhala: "ලැජ්ජාව", english: "Shame/Shyness", pronunciation: "lej-jaa-vuh" },
-    { sinhala: "ඊර්ෂ්‍යාව", english: "Jealousy", pronunciation: "eer-shyaa-vuh" },
-    { sinhala: "කම්මැලි", english: "Laziness", pronunciation: "kuhm-meh-lee" },
-    { sinhala: "විස්මය", english: "Wonder", pronunciation: "vis-muh-yuh" },
-    { sinhala: "සැනසීම", english: "Relief", pronunciation: "seh-nuh-see-muh" },
-    { sinhala: "අසරණ", english: "Helpless", pronunciation: "uh-suh-ruh-nuh" },
+    { sinhala: "සතුට", english: "Happiness", pronunciation: "suh-thoo-tuh", image: "😊" },
+    { sinhala: "දුක", english: "Sadness", pronunciation: "doo-kuh", image: "😢" },
+    { sinhala: "කෝපය", english: "Anger", pronunciation: "koh-puh-yuh", image: "😠" },
+    { sinhala: "බය", english: "Fear", pronunciation: "buh-yuh", image: "😨" },
+    { sinhala: "ආදරය", english: "Love", pronunciation: "aa-duh-ruh-yuh", image: "❤️" },
+    { sinhala: "පුදුම", english: "Surprise", pronunciation: "poo-doo-muh", image: "😲" },
+    { sinhala: "ලැජ්ජාව", english: "Shame/Shyness", pronunciation: "lej-jaa-vuh", image: "😳" },
+    { sinhala: "ඊර්ෂ්‍යාව", english: "Jealousy", pronunciation: "eer-shyaa-vuh", image: "😒" },
+    { sinhala: "කම්මැලි", english: "Laziness", pronunciation: "kuhm-meh-lee", image: "😴" },
+    { sinhala: "විස්මය", english: "Wonder", pronunciation: "vis-muh-yuh", image: "🤩" },
+    { sinhala: "සැනසීම", english: "Relief", pronunciation: "seh-nuh-see-muh", image: "😌" },
+    { sinhala: "අසරණ", english: "Helpless", pronunciation: "uh-suh-ruh-nuh", image: "😞" },
   ];
 
   // Nature vocabulary
   const nature = [
-    { sinhala: "කඳු", english: "Mountains", pronunciation: "kuhn-doo" },
-    { sinhala: "ගඟ", english: "River", pronunciation: "guh-nguh" },
-    { sinhala: "මුහුද", english: "Ocean/Sea", pronunciation: "moo-hoo-duh" },
-    { sinhala: "වනාන්තරය", english: "Forest", pronunciation: "vuh-naan-thuh-ruh-yuh" },
-    { sinhala: "අහස", english: "Sky", pronunciation: "uh-huh-suh" },
-    { sinhala: "වළාකුළු", english: "Clouds", pronunciation: "vuh-laa-koo-loo" },
-    { sinhala: "තාරකා", english: "Stars", pronunciation: "thaa-ruh-kaa" },
-    { sinhala: "සඳ", english: "Moon", pronunciation: "suhn-duh" },
-    { sinhala: "හිරු", english: "Sun", pronunciation: "hee-roo" },
-    { sinhala: "වැසි", english: "Rain", pronunciation: "veh-see" },
-    { sinhala: "සුළඟ", english: "Wind", pronunciation: "soo-luh-nguh" },
-    { sinhala: "දිය ඇල්ල", english: "Waterfall", pronunciation: "dee-yuh ehl-luh" },
+    { sinhala: "කඳු", english: "Mountains", pronunciation: "kuhn-doo", image: "⛰️" },
+    { sinhala: "ගඟ", english: "River", pronunciation: "guh-nguh", image: "🏞️" },
+    { sinhala: "මුහුද", english: "Ocean/Sea", pronunciation: "moo-hoo-duh", image: "🌊" },
+    { sinhala: "වනාන්තරය", english: "Forest", pronunciation: "vuh-naan-thuh-ruh-yuh", image: "🌳" },
+    { sinhala: "අහස", english: "Sky", pronunciation: "uh-huh-suh", image: "🌤️" },
+    { sinhala: "වළාකුළු", english: "Clouds", pronunciation: "vuh-laa-koo-loo", image: "☁️" },
+    { sinhala: "තාරකා", english: "Stars", pronunciation: "thaa-ruh-kaa", image: "⭐" },
+    { sinhala: "සඳ", english: "Moon", pronunciation: "suhn-duh", image: "🌙" },
+    { sinhala: "හිරු", english: "Sun", pronunciation: "hee-roo", image: "☀️" },
+    { sinhala: "වැසි", english: "Rain", pronunciation: "veh-see", image: "🌧️" },
+    { sinhala: "සුළඟ", english: "Wind", pronunciation: "soo-luh-nguh", image: "💨" },
+    { sinhala: "දිය ඇල්ල", english: "Waterfall", pronunciation: "dee-yuh ehl-luh", image: "🏔️" },
   ];
 
   // Spices and products
   const spicesProducts = [
-    { sinhala: "ගම්මිරිස්", english: "Cinnamon", pronunciation: "guhm-mee-ris" },
-    { sinhala: "කරපිංචා", english: "Curry Leaves", pronunciation: "kuh-ruh-peen-chaa" },
-    { sinhala: "කහ", english: "Turmeric", pronunciation: "kuh-huh" },
-    { sinhala: "සුදු ළූණු", english: "Garlic", pronunciation: "soo-doo loo-noo" },
-    { sinhala: "රතු ළූණු", english: "Red Onion", pronunciation: "ruh-thoo loo-noo" },
-    { sinhala: "ඉඟුරු", english: "Ginger", pronunciation: "in-goo-roo" },
-    { sinhala: "තේ", english: "Tea", pronunciation: "thay" },
-    { sinhala: "පොල්", english: "Coconut", pronunciation: "pohl" },
-    { sinhala: "වී", english: "Paddy/Rice", pronunciation: "vee" },
-    { sinhala: "මිරිස්", english: "Chilli", pronunciation: "mee-ris" },
-    { sinhala: "සාදික්කා", english: "Nutmeg", pronunciation: "saa-dik-kaa" },
-    { sinhala: "එනසාල්", english: "Cardamom", pronunciation: "eh-nuh-saal" },
+    { sinhala: "ගම්මිරිස්", english: "Cinnamon", pronunciation: "guhm-mee-ris", image: "🪵" },
+    { sinhala: "කරපිංචා", english: "Curry Leaves", pronunciation: "kuh-ruh-peen-chaa", image: "🌿" },
+    { sinhala: "කහ", english: "Turmeric", pronunciation: "kuh-huh", image: "🟡" },
+    { sinhala: "සුදු ළූණු", english: "Garlic", pronunciation: "soo-doo loo-noo", image: "🧄" },
+    { sinhala: "රතු ළූණු", english: "Red Onion", pronunciation: "ruh-thoo loo-noo", image: "🧅" },
+    { sinhala: "ඉඟුරු", english: "Ginger", pronunciation: "in-goo-roo", image: "🫚" },
+    { sinhala: "තේ", english: "Tea", pronunciation: "thay", image: "🍵" },
+    { sinhala: "පොල්", english: "Coconut", pronunciation: "pohl", image: "🥥" },
+    { sinhala: "වී", english: "Paddy/Rice", pronunciation: "vee", image: "🌾" },
+    { sinhala: "මිරිස්", english: "Chilli", pronunciation: "mee-ris", image: "🌶️" },
+    { sinhala: "සාදික්කා", english: "Nutmeg", pronunciation: "saa-dik-kaa", image: "🫛" },
+    { sinhala: "එනසාල්", english: "Cardamom", pronunciation: "eh-nuh-saal", image: "🌱" },
   ];
 
   // Sinhala proverbs
@@ -289,6 +294,11 @@ const Grade4 = () => {
                 බොහෝ සංස්කෘතීන් එකට ජීවත් වෙනවා. සිංහල, දමිළ, මුස්ලිම් ජනතාව සාමයෙන් ජීවත් වෙනවා.
                 ශ්‍රී ලංකාවේ තේ, ගම්මිරිස්, කරපිංචා ලෝකයේ ප්‍රසිද්ධයි. අපේ රට ගැන අපිට ආඩම්බරයි.
               </div>
+              <ReadAloudButton
+                text="ශ්‍රී ලංකාව ඉන්දියන් සාගරයේ ලස්සන දිවයිනක්. එහි පර්වත, වනාන්තර, රාජධානි සහ වෙරළ තීරණ තියෙනවා. බොහෝ සංස්කෘතීන් එකට ජීවත් වෙනවා. සිංහල, දමිළ, මුස්ලිම් ජනතාව සාමයෙන් ජීවත් වෙනවා. ශ්‍රී ලංකාවේ තේ, ගම්මිරිස්, කරපිංචා ලෝකයේ ප්‍රසිද්ධයි. අපේ රට ගැන අපිට ආඩම්බරයි."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Sri Lanka is a beautiful island in the Indian Ocean. It has mountains, forests, capitals and beaches.
                 Many cultures live together. Sinhala, Tamil, Muslim people live peacefully.
@@ -303,6 +313,11 @@ const Grade4 = () => {
                 ගම්මිරිස් කිරි, කොකිස්, කැවුම් හදනවා. වෙසක් පෝය දවසේ ලන්ටර්න් දාලනවා. දන්සල් තියනවා.
                 පොසොන් පෝය දවසේ මිහින්තලේට බොහෝ දෙනෙක් යනවා. මේ උත්සව අපේ සංස්කෘතිය රැක ගන්නවා.
               </div>
+              <ReadAloudButton
+                text="ශ්‍රී ලංකාවේ බොහෝ සම්ප්‍රදායික උත්සව තියෙනවා. සිංහල අලුත් අවුරුද්ද අප්‍රේල් මාසයේ සමරනවා. ගම්මිරිස් කිරි, කොකිස්, කැවුම් හදනවා. වෙසක් පෝය දවසේ ලන්ටර්න් දාලනවා. දන්සල් තියනවා. පොසොන් පෝය දවසේ මිහින්තලේට බොහෝ දෙනෙක් යනවා. මේ උත්සව අපේ සංස්කෘතිය රැක ගන්නවා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Sri Lanka has many traditional festivals. Sinhala New Year is celebrated in April.
                 They make coconut milk rice, kokis, and sweets. On Vesak day lanterns are lit. There are dansals (free food stalls).
@@ -317,6 +332,11 @@ const Grade4 = () => {
                 අනුරාධපුරය, පොළොන්නරුව, කන්දය වගේ පුරාණ රාජධානිවල නටබුන් අදටත් තියෙනවා.
                 සිගිරිය කොටුව ලෝකයේ අටවන පුදුමය කියලා කියනවා. මේ ස්ථාන අපේ පරම්පරාගත කලාව සහ ගිනිකෙළ පෙන්වනවා.
               </div>
+              <ReadAloudButton
+                text="ශ්‍රී ලංකාවට අවුරුදු දෙදහස් හතරකට වඩා පැරණි ඉතිහාසයක් තියෙනවා. අනුරාධපුරය, පොළොන්නරුව, කන්දය වගේ පුරාණ රාජධානිවල නටබුන් අදටත් තියෙනවා. සිගිරිය කොටුව ලෝකයේ අටවන පුදුමය කියලා කියනවා. මේ ස්ථාන අපේ පරම්පරාගත කලාව සහ ගිනිකෙළ පෙන්වනවා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Sri Lanka has a history of more than two thousand four hundred years.
                 Ruins of ancient kingdoms like Anuradhapura, Polonnaruwa, and Kandy still exist today.
@@ -331,6 +351,11 @@ const Grade4 = () => {
                 අලි, දිවියා, වලස්, මුවන් මේ වනෝද්‍යානවල ජීවත් වෙනවා. ශ්‍රී ලංකා අලියා ඉතා ප්‍රසිද්ධයි.
                 අපි මේ සත්ත්වයන් ආරක්ෂා කරන්න ඕනේ.
               </div>
+              <ReadAloudButton
+                text="ශ්‍රී ලංකාවේ විවිධ වන්‍ය සත්ත්ව තියෙනවා. යාල, විල්පත්තු, උදාවළාවේ ජාතික වනෝද්‍යාන තියෙනවා. අලි, දිවියා, වලස්, මුවන් මේ වනෝද්‍යානවල ජීවත් වෙනවා. ශ්‍රී ලංකා අලියා ඉතා ප්‍රසිද්ධයි. අපි මේ සත්ත්වයන් ආරක්ෂා කරන්න ඕනේ."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Sri Lanka has diverse wildlife. There are national parks at Yala, Wilpattu, and Udawalawe.
                 Elephants, leopards, bears, and deer live in these parks. The Sri Lankan elephant is very famous.
@@ -452,6 +477,7 @@ const Grade4 = () => {
                   sinhalaWord={place.sinhala}
                   englishWord={place.english}
                   pronunciation={place.pronunciation}
+                  image={place.image}
                 />
               ))}
             </div>
@@ -466,6 +492,7 @@ const Grade4 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -497,6 +524,7 @@ const Grade4 = () => {
                   sinhalaWord={emotion.sinhala}
                   englishWord={emotion.english}
                   pronunciation={emotion.pronunciation}
+                  image={emotion.image}
                 />
               ))}
             </div>
@@ -550,6 +578,7 @@ const Grade4 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -692,6 +721,7 @@ const Grade4 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -838,7 +868,7 @@ const Grade4 = () => {
         return (
           <section className="section active">
             <h2>Final Assessment Quiz</h2>
-            <Quiz questions={quizQuestions} gradeKey="g4" />
+            <Quiz questions={quizQuestions} gradeKey="g4" gradeNumber={4} />
           </section>
         );
 
@@ -849,21 +879,9 @@ const Grade4 = () => {
 
   return (
     <div className="grade-content active">
-      <div className="grade-info">
-        <h2>🏆 Grade 4 - Advanced Learning</h2>
-        <p>
-          Reading comprehension, complex grammar, emotions, nature, cultural studies, proverbs, and creative writing
-        </p>
+      <div className="grade-info-compact">
+        <h2>Grade 4 - හතරවන ශ්‍රේණිය</h2>
       </div>
-
-      <Navigation
-        sections={sections}
-        currentSection={currentSection}
-        onSectionChange={setCurrentSection}
-        gradeId="g4"
-      />
-
-      <ProgressBar progress={57} />
 
       {renderSection()}
 

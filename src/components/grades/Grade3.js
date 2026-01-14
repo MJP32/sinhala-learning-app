@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import Navigation from "../shared/Navigation";
-import ProgressBar from "../shared/ProgressBar";
+import React, { useState, useEffect } from "react";
 import WordCard from "../shared/WordCard";
 import Quiz from "../shared/Quiz";
 import PronunciationPractice from "../shared/PronunciationPractice";
+import ReadAloudButton from "../shared/ReadAloudButton";
 
-const Grade3 = () => {
+const Grade3 = ({ initialSection }) => {
   const [currentSection, setCurrentSection] = useState("grammar");
+
+  useEffect(() => {
+    if (initialSection) {
+      setCurrentSection(initialSection);
+    }
+  }, [initialSection]);
 
   const sections = [
     { id: "grammar", label: "Grammar" },
@@ -37,66 +42,66 @@ const Grade3 = () => {
 
   // Places vocabulary - expanded
   const places = [
-    { sinhala: "පාසල", english: "School", pronunciation: "paa-suh-luh" },
-    { sinhala: "රෝහල", english: "Hospital", pronunciation: "roh-huh-luh" },
-    { sinhala: "වෙළෙඳසැල", english: "Shop", pronunciation: "veh-leh-duh-seh-luh" },
-    { sinhala: "උයන", english: "Garden", pronunciation: "oo-yuh-nuh" },
-    { sinhala: "පුස්තකාලය", english: "Library", pronunciation: "poos-thuh-kaa-luh-yuh" },
-    { sinhala: "පන්සල", english: "Temple", pronunciation: "puhn-suh-luh" },
-    { sinhala: "බැංකුව", english: "Bank", pronunciation: "ben-koo-vuh" },
-    { sinhala: "තැපැල් කාර්යාලය", english: "Post Office", pronunciation: "theh-pehl kaar-yaa-luh-yuh" },
-    { sinhala: "පොලිස් ස්ථානය", english: "Police Station", pronunciation: "poh-lis sthaa-nuh-yuh" },
-    { sinhala: "දුම්රිය ස්ථානය", english: "Railway Station", pronunciation: "doom-ree-yuh sthaa-nuh-yuh" },
-    { sinhala: "ගුවන් තොටුපළ", english: "Airport", pronunciation: "goo-vuhn thoh-too-puh-luh" },
-    { sinhala: "වෙරළ", english: "Beach", pronunciation: "veh-ruh-luh" },
+    { sinhala: "පාසල", english: "School", pronunciation: "paa-suh-luh", image: "🏫" },
+    { sinhala: "රෝහල", english: "Hospital", pronunciation: "roh-huh-luh", image: "🏥" },
+    { sinhala: "වෙළෙඳසැල", english: "Shop", pronunciation: "veh-leh-duh-seh-luh", image: "🏪" },
+    { sinhala: "උයන", english: "Garden", pronunciation: "oo-yuh-nuh", image: "🌳" },
+    { sinhala: "පුස්තකාලය", english: "Library", pronunciation: "poos-thuh-kaa-luh-yuh", image: "📚" },
+    { sinhala: "පන්සල", english: "Temple", pronunciation: "puhn-suh-luh", image: "🛕" },
+    { sinhala: "බැංකුව", english: "Bank", pronunciation: "ben-koo-vuh", image: "🏦" },
+    { sinhala: "තැපැල් කාර්යාලය", english: "Post Office", pronunciation: "theh-pehl kaar-yaa-luh-yuh", image: "🏤" },
+    { sinhala: "පොලිස් ස්ථානය", english: "Police Station", pronunciation: "poh-lis sthaa-nuh-yuh", image: "🚔" },
+    { sinhala: "දුම්රිය ස්ථානය", english: "Railway Station", pronunciation: "doom-ree-yuh sthaa-nuh-yuh", image: "🚂" },
+    { sinhala: "ගුවන් තොටුපළ", english: "Airport", pronunciation: "goo-vuhn thoh-too-puh-luh", image: "✈️" },
+    { sinhala: "වෙරළ", english: "Beach", pronunciation: "veh-ruh-luh", image: "🏖️" },
   ];
 
   // Actions/Verbs - expanded
   const actions = [
-    { sinhala: "දුවනවා", english: "Running", pronunciation: "doo-vuh-nuh-vaa" },
-    { sinhala: "ඉගෙන ගන්නවා", english: "Learning", pronunciation: "ee-geh-nuh guhn-nuh-vaa" },
-    { sinhala: "ලියනවා", english: "Writing", pronunciation: "lee-yuh-nuh-vaa" },
-    { sinhala: "කියවනවා", english: "Reading", pronunciation: "kee-yuh-vuh-nuh-vaa" },
-    { sinhala: "ගායනා කරනවා", english: "Singing", pronunciation: "gaa-yuh-naa kuh-ruh-nuh-vaa" },
-    { sinhala: "නර්තනය කරනවා", english: "Dancing", pronunciation: "nur-thuh-nuh-yuh kuh-ruh-nuh-vaa" },
-    { sinhala: "පිහිනනවා", english: "Swimming", pronunciation: "pee-hee-nuh-nuh-vaa" },
-    { sinhala: "ඇදගන්නවා", english: "Drawing", pronunciation: "eh-duh-guhn-nuh-vaa" },
-    { sinhala: "සෙල්ලම් කරනවා", english: "Playing", pronunciation: "sehl-luhm kuh-ruh-nuh-vaa" },
-    { sinhala: "උයනවා", english: "Cooking", pronunciation: "oo-yuh-nuh-vaa" },
-    { sinhala: "සෝදනවා", english: "Washing", pronunciation: "soh-duh-nuh-vaa" },
-    { sinhala: "අදිනවා", english: "Wearing", pronunciation: "uh-dee-nuh-vaa" },
+    { sinhala: "දුවනවා", english: "Running", pronunciation: "doo-vuh-nuh-vaa", image: "🏃" },
+    { sinhala: "ඉගෙන ගන්නවා", english: "Learning", pronunciation: "ee-geh-nuh guhn-nuh-vaa", image: "📖" },
+    { sinhala: "ලියනවා", english: "Writing", pronunciation: "lee-yuh-nuh-vaa", image: "✍️" },
+    { sinhala: "කියවනවා", english: "Reading", pronunciation: "kee-yuh-vuh-nuh-vaa", image: "📚" },
+    { sinhala: "ගායනා කරනවා", english: "Singing", pronunciation: "gaa-yuh-naa kuh-ruh-nuh-vaa", image: "🎤" },
+    { sinhala: "නර්තනය කරනවා", english: "Dancing", pronunciation: "nur-thuh-nuh-yuh kuh-ruh-nuh-vaa", image: "💃" },
+    { sinhala: "පිහිනනවා", english: "Swimming", pronunciation: "pee-hee-nuh-nuh-vaa", image: "🏊" },
+    { sinhala: "ඇදගන්නවා", english: "Drawing", pronunciation: "eh-duh-guhn-nuh-vaa", image: "🎨" },
+    { sinhala: "සෙල්ලම් කරනවා", english: "Playing", pronunciation: "sehl-luhm kuh-ruh-nuh-vaa", image: "⚽" },
+    { sinhala: "උයනවා", english: "Cooking", pronunciation: "oo-yuh-nuh-vaa", image: "👨‍🍳" },
+    { sinhala: "සෝදනවා", english: "Washing", pronunciation: "soh-duh-nuh-vaa", image: "🧼" },
+    { sinhala: "අදිනවා", english: "Wearing", pronunciation: "uh-dee-nuh-vaa", image: "👔" },
   ];
 
   // Professions
   const professions = [
-    { sinhala: "ගුරුවරයා", english: "Teacher (male)", pronunciation: "goo-roo-vuh-ruh-yaa" },
-    { sinhala: "ගුරුවරිය", english: "Teacher (female)", pronunciation: "goo-roo-vuh-ree-yuh" },
-    { sinhala: "වෛද්‍යවරයා", english: "Doctor", pronunciation: "vai-dhyuh-vuh-ruh-yaa" },
-    { sinhala: "හෙදිය", english: "Nurse", pronunciation: "heh-dee-yuh" },
-    { sinhala: "ඉංජිනේරු", english: "Engineer", pronunciation: "in-ji-nay-roo" },
-    { sinhala: "නීතිඥ", english: "Lawyer", pronunciation: "nee-thig-nyuh" },
-    { sinhala: "ගොවියා", english: "Farmer", pronunciation: "goh-vee-yaa" },
-    { sinhala: "ධීවරයා", english: "Fisherman", pronunciation: "dhee-vuh-ruh-yaa" },
-    { sinhala: "පොලිස් නිලධාරී", english: "Police Officer", pronunciation: "poh-lis nee-luh-dhaa-ree" },
-    { sinhala: "ගුවන් සේවිකාව", english: "Flight Attendant", pronunciation: "goo-vuhn say-vee-kaa-vuh" },
-    { sinhala: "රියදුරා", english: "Driver", pronunciation: "ree-yuh-doo-raa" },
-    { sinhala: "බේකරු", english: "Baker", pronunciation: "bay-kuh-roo" },
+    { sinhala: "ගුරුවරයා", english: "Teacher (male)", pronunciation: "goo-roo-vuh-ruh-yaa", image: "👨‍🏫" },
+    { sinhala: "ගුරුවරිය", english: "Teacher (female)", pronunciation: "goo-roo-vuh-ree-yuh", image: "👩‍🏫" },
+    { sinhala: "වෛද්‍යවරයා", english: "Doctor", pronunciation: "vai-dhyuh-vuh-ruh-yaa", image: "👨‍⚕️" },
+    { sinhala: "හෙදිය", english: "Nurse", pronunciation: "heh-dee-yuh", image: "👩‍⚕️" },
+    { sinhala: "ඉංජිනේරු", english: "Engineer", pronunciation: "in-ji-nay-roo", image: "👷" },
+    { sinhala: "නීතිඥ", english: "Lawyer", pronunciation: "nee-thig-nyuh", image: "⚖️" },
+    { sinhala: "ගොවියා", english: "Farmer", pronunciation: "goh-vee-yaa", image: "👨‍🌾" },
+    { sinhala: "ධීවරයා", english: "Fisherman", pronunciation: "dhee-vuh-ruh-yaa", image: "🎣" },
+    { sinhala: "පොලිස් නිලධාරී", english: "Police Officer", pronunciation: "poh-lis nee-luh-dhaa-ree", image: "👮" },
+    { sinhala: "ගුවන් සේවිකාව", english: "Flight Attendant", pronunciation: "goo-vuhn say-vee-kaa-vuh", image: "👩‍✈️" },
+    { sinhala: "රියදුරා", english: "Driver", pronunciation: "ree-yuh-doo-raa", image: "🚗" },
+    { sinhala: "බේකරු", english: "Baker", pronunciation: "bay-kuh-roo", image: "👨‍🍳" },
   ];
 
   // Clothing
   const clothing = [
-    { sinhala: "කමිසය", english: "Shirt", pronunciation: "kuh-mee-suh-yuh" },
-    { sinhala: "කලිසම", english: "Trousers", pronunciation: "kuh-lee-suh-muh" },
-    { sinhala: "සාය", english: "Skirt", pronunciation: "saa-yuh" },
-    { sinhala: "ගවුම", english: "Dress", pronunciation: "gow-muh" },
-    { sinhala: "ඇඳුම", english: "Clothes", pronunciation: "ehn-doo-muh" },
-    { sinhala: "සපත්තු", english: "Shoes", pronunciation: "suh-puht-too" },
-    { sinhala: "හිස් වැස්ම", english: "Hat", pronunciation: "his vehs-muh" },
-    { sinhala: "පටිය", english: "Belt", pronunciation: "puh-tee-yuh" },
-    { sinhala: "ජැකට්ටුව", english: "Jacket", pronunciation: "jeh-kuht-too-vuh" },
-    { sinhala: "රෙදිපිළි", english: "Garments", pronunciation: "reh-dee-pee-lee" },
-    { sinhala: "ටී-ෂර්ට්", english: "T-shirt", pronunciation: "tee-shuht" },
-    { sinhala: "සරම", english: "Sarong", pronunciation: "suh-ruh-muh" },
+    { sinhala: "කමිසය", english: "Shirt", pronunciation: "kuh-mee-suh-yuh", image: "👔" },
+    { sinhala: "කලිසම", english: "Trousers", pronunciation: "kuh-lee-suh-muh", image: "👖" },
+    { sinhala: "සාය", english: "Skirt", pronunciation: "saa-yuh", image: "👗" },
+    { sinhala: "ගවුම", english: "Dress", pronunciation: "gow-muh", image: "👗" },
+    { sinhala: "ඇඳුම", english: "Clothes", pronunciation: "ehn-doo-muh", image: "👕" },
+    { sinhala: "සපත්තු", english: "Shoes", pronunciation: "suh-puht-too", image: "👟" },
+    { sinhala: "හිස් වැස්ම", english: "Hat", pronunciation: "his vehs-muh", image: "🎩" },
+    { sinhala: "පටිය", english: "Belt", pronunciation: "puh-tee-yuh", image: "🥋" },
+    { sinhala: "ජැකට්ටුව", english: "Jacket", pronunciation: "jeh-kuht-too-vuh", image: "🧥" },
+    { sinhala: "රෙදිපිළි", english: "Garments", pronunciation: "reh-dee-pee-lee", image: "👚" },
+    { sinhala: "ටී-ෂර්ට්", english: "T-shirt", pronunciation: "tee-shuht", image: "👕" },
+    { sinhala: "සරම", english: "Sarong", pronunciation: "suh-ruh-muh", image: "🩱" },
   ];
 
   // Question words
@@ -496,6 +501,7 @@ const Grade3 = () => {
                   sinhalaWord={place.sinhala}
                   englishWord={place.english}
                   pronunciation={place.pronunciation}
+                  image={place.image}
                 />
               ))}
             </div>
@@ -509,6 +515,7 @@ const Grade3 = () => {
                   sinhalaWord={action.sinhala}
                   englishWord={action.english}
                   pronunciation={action.pronunciation}
+                  image={action.image}
                 />
               ))}
             </div>
@@ -540,6 +547,7 @@ const Grade3 = () => {
                   sinhalaWord={prof.sinhala}
                   englishWord={prof.english}
                   pronunciation={prof.pronunciation}
+                  image={prof.image}
                 />
               ))}
             </div>
@@ -588,6 +596,7 @@ const Grade3 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -631,6 +640,11 @@ const Grade3 = () => {
                 සුනිල් හොඳ ළමයෙක්. ඔහු දවසින් දවස පාසලට යනවා. පාසලේදී ඔහු ගණිතය, සිංහල, ඉංග්‍රීසි ඉගෙන ගන්නවා.
                 ගුරුවරුන් ඔහුට ගොඩක් ආදරේයි. ඔහුගේ මිතුරන් ද ඔහුව ආදරේ කරනවා.
               </div>
+              <ReadAloudButton
+                text="සුනිල් හොඳ ළමයෙක්. ඔහු දවසින් දවස පාසලට යනවා. පාසලේදී ඔහු ගණිතය, සිංහල, ඉංග්‍රීසි ඉගෙන ගන්නවා. ගුරුවරුන් ඔහුට ගොඩක් ආදරේයි. ඔහුගේ මිතුරන් ද ඔහුව ආදරේ කරනවා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Sunil is a good boy. He goes to school every day. At school he learns mathematics, Sinhala, and English.
                 The teachers love him very much. His friends also love him.
@@ -643,6 +657,11 @@ const Grade3 = () => {
                 සෙනසුරාදා දවසේ අම්මා සහ මම කඩ යනවා. කඩේ ගොඩක් එළවළු, පළතුරු තියෙනවා.
                 අම්මා මාළු, බත්, එළවළු ගන්නවා. මම කුකුළු මස් කාන්න ඕනේ. අපි සතුටින් ගෙදරට එනවා.
               </div>
+              <ReadAloudButton
+                text="සෙනසුරාදා දවසේ අම්මා සහ මම කඩ යනවා. කඩේ ගොඩක් එළවළු, පළතුරු තියෙනවා. අම්මා මාළු, බත්, එළවළු ගන්නවා. මම කුකුළු මස් කාන්න ඕනේ. අපි සතුටින් ගෙදරට එනවා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 On Saturday mother and I go to the shop. There are many vegetables and fruits in the shop.
                 Mother buys fish, rice, and vegetables. I want to eat chicken. We come home happily.
@@ -656,6 +675,11 @@ const Grade3 = () => {
                 අලි ගොඩක් ලොකු! වඳුරන් ගස්වල පැන්නා. සිංහයා නිදාගෙන හිටියා. අපි ගොඩක් සතුටු වුණා.
                 සන්දේ වෙලාවට අපි ආපසු ගෙදර ආවා.
               </div>
+              <ReadAloudButton
+                text="අපේ පාසලෙන් ඊයේ චාරිකාවකට ගියා. අපි සත්ව උද්‍යානයට ගියා. එහි අපි අලි, සිංහ, වඳුරන් දැක්කා. අලි ගොඩක් ලොකු! වඳුරන් ගස්වල පැන්නා. සිංහයා නිදාගෙන හිටියා. අපි ගොඩක් සතුටු වුණා. සන්දේ වෙලාවට අපි ආපසු ගෙදර ආවා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Our school went on a trip yesterday. We went to the zoo. There we saw elephants, lions, and monkeys.
                 The elephants were very big! Monkeys jumped on trees. The lion was sleeping. We were very happy.
@@ -828,7 +852,7 @@ const Grade3 = () => {
         return (
           <section className="section active">
             <h2>Grade 3 Quiz</h2>
-            <Quiz questions={quizQuestions} gradeKey="g3" />
+            <Quiz questions={quizQuestions} gradeKey="g3" gradeNumber={3} />
           </section>
         );
 
@@ -839,21 +863,9 @@ const Grade3 = () => {
 
   return (
     <div className="grade-content active">
-      <div className="grade-info">
-        <h2>🎓 Grade 3 - Grammar & Conversation</h2>
-        <p>
-          Learn basic grammar, tenses, longer sentences, everyday conversation, professions, clothing, and reading
-        </p>
+      <div className="grade-info-compact">
+        <h2>Grade 3 - තෙවන ශ්‍රේණිය</h2>
       </div>
-
-      <Navigation
-        sections={sections}
-        currentSection={currentSection}
-        onSectionChange={setCurrentSection}
-        gradeId="g3"
-      />
-
-      <ProgressBar progress={43} />
 
       {renderSection()}
 

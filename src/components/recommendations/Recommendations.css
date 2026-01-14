@@ -1,0 +1,344 @@
+/* Recommendations Panel Styles */
+
+.recommendations-panel {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.recommendations-panel.empty {
+  text-align: center;
+  padding: 30px;
+}
+
+.recommendations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.recommendations-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.header-si {
+  display: block;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.show-more-btn {
+  padding: 6px 14px;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 15px;
+  color: #8d153a;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.show-more-btn:hover {
+  background: #ede7f6;
+}
+
+/* No Recommendations State */
+.no-recommendations {
+  padding: 30px;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.empty-si {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* Health Score Card */
+.health-score-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 12px;
+  border-left: 4px solid #8d153a;
+  margin-bottom: 20px;
+}
+
+.health-icon {
+  font-size: 2rem;
+}
+
+.health-info {
+  flex: 1;
+}
+
+.health-status {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.health-message {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+.health-score {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.health-score strong {
+  font-size: 1.1rem;
+}
+
+/* Recommendations List */
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Recommended Section Card */
+.recommended-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  background: #fafafa;
+  border-radius: 12px;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s ease;
+}
+
+.recommended-section:hover {
+  background: #f5f0ff;
+  border-color: #d4c4f0;
+  transform: translateX(5px);
+}
+
+.recommended-section.priority-1 {
+  border-left: 4px solid #8d153a;
+  background: linear-gradient(90deg, #fce4ec 0%, #fafafa 30%);
+}
+
+.recommended-section.priority-2 {
+  border-left: 4px solid #FF9800;
+}
+
+.recommended-section.priority-3 {
+  border-left: 4px solid #2196F3;
+}
+
+.section-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+}
+
+.action-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.section-info {
+  flex: 1;
+}
+
+.section-title {
+  margin: 0;
+  color: #333;
+  font-size: 1.05rem;
+}
+
+.section-title-si {
+  display: block;
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+.section-reason {
+  color: #888;
+  font-size: 0.85rem;
+  margin: 8px 0 0;
+  line-height: 1.4;
+}
+
+.section-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Score Indicator */
+.score-indicator {
+  text-align: center;
+}
+
+.score-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.score-circle::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+}
+
+.score-value {
+  position: relative;
+  z-index: 1;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.gap-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #FF9800;
+  margin-top: 4px;
+}
+
+/* Action Button */
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #8d153a 0%, #6b1030 100%);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.action-btn:hover {
+  transform: translateX(3px);
+  box-shadow: 0 4px 15px rgba(141, 21, 58, 0.3);
+}
+
+.action-btn.review {
+  background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+}
+
+.action-btn.practice {
+  background: linear-gradient(135deg, #FF9800 0%, #ef6c00 100%);
+}
+
+.action-btn.strengthen {
+  background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+}
+
+.action-btn.maintain {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+}
+
+.btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.action-btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Weak Areas Summary */
+.weak-areas-summary {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.summary-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.area-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.area-tag {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .recommended-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .section-right {
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px dashed #e0e0e0;
+  }
+
+  .health-score-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .action-btn {
+    width: auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .recommendations-panel {
+    padding: 15px;
+  }
+
+  .recommendations-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: 0.95rem;
+  }
+
+  .section-reason {
+    font-size: 0.8rem;
+  }
+
+  .action-btn {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+}

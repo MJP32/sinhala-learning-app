@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import Navigation from "../shared/Navigation";
-import ProgressBar from "../shared/ProgressBar";
+import React, { useState, useEffect } from "react";
 import WordCard from "../shared/WordCard";
 import Quiz from "../shared/Quiz";
 import PronunciationPractice from "../shared/PronunciationPractice";
+import ReadAloudButton from "../shared/ReadAloudButton";
 
-const Grade2 = () => {
+const Grade2 = ({ initialSection }) => {
   const [currentSection, setCurrentSection] = useState("family");
+
+  useEffect(() => {
+    if (initialSection) {
+      setCurrentSection(initialSection);
+    }
+  }, [initialSection]);
 
   const sections = [
     { id: "family", label: "Family" },
@@ -36,31 +41,31 @@ const Grade2 = () => {
   ];
 
   const familyWords = [
-    { sinhala: "අක්කා", english: "Elder Sister", pronunciation: "uhk-kaa" },
-    { sinhala: "අයියා", english: "Elder Brother", pronunciation: "eye-yaa" },
-    { sinhala: "නංගි", english: "Younger Sister", pronunciation: "nuhn-gee" },
-    { sinhala: "මල්ලි", english: "Younger Brother", pronunciation: "muhl-lee" },
-    { sinhala: "මාමා", english: "Uncle", pronunciation: "maa-maa" },
-    { sinhala: "නැන්දා", english: "Aunt", pronunciation: "nahn-daa" },
-    { sinhala: "මස්සිනා", english: "Cousin (male)", pronunciation: "muhs-see-naa" },
-    { sinhala: "නෑනා", english: "Cousin (female)", pronunciation: "nah-naa" },
-    { sinhala: "බාප්පා", english: "Father's Brother", pronunciation: "baap-paa" },
-    { sinhala: "පුංචි අම්මා", english: "Mother's Sister", pronunciation: "poon-chee uhm-maa" },
+    { sinhala: "අක්කා", english: "Elder Sister", pronunciation: "uhk-kaa", image: "👧" },
+    { sinhala: "අයියා", english: "Elder Brother", pronunciation: "eye-yaa", image: "👦" },
+    { sinhala: "නංගි", english: "Younger Sister", pronunciation: "nuhn-gee", image: "👧" },
+    { sinhala: "මල්ලි", english: "Younger Brother", pronunciation: "muhl-lee", image: "👦" },
+    { sinhala: "මාමා", english: "Uncle", pronunciation: "maa-maa", image: "👨" },
+    { sinhala: "නැන්දා", english: "Aunt", pronunciation: "nahn-daa", image: "👩" },
+    { sinhala: "මස්සිනා", english: "Cousin (male)", pronunciation: "muhs-see-naa", image: "🧑" },
+    { sinhala: "නෑනා", english: "Cousin (female)", pronunciation: "nah-naa", image: "👩" },
+    { sinhala: "බාප්පා", english: "Father's Brother", pronunciation: "baap-paa", image: "👨" },
+    { sinhala: "පුංචි අම්මා", english: "Mother's Sister", pronunciation: "poon-chee uhm-maa", image: "👩" },
   ];
 
   const colors = [
-    { sinhala: "රතු", english: "Red", pronunciation: "ruh-thoo" },
-    { sinhala: "නිල්", english: "Blue", pronunciation: "neel" },
-    { sinhala: "කොළ", english: "Green", pronunciation: "koh-luh" },
-    { sinhala: "කහ", english: "Yellow", pronunciation: "kuh-huh" },
-    { sinhala: "සුදු", english: "White", pronunciation: "soo-doo" },
-    { sinhala: "කළු", english: "Black", pronunciation: "kuh-loo" },
-    { sinhala: "දුඹුරු", english: "Brown", pronunciation: "doom-boo-roo" },
-    { sinhala: "රෝස", english: "Pink", pronunciation: "roh-suh" },
-    { sinhala: "තැඹිලි", english: "Orange", pronunciation: "thahm-bee-lee" },
-    { sinhala: "දම්", english: "Purple", pronunciation: "duhm" },
-    { sinhala: "අළු", english: "Gray", pronunciation: "uh-loo" },
-    { sinhala: "රන්", english: "Gold", pronunciation: "ruhn" },
+    { sinhala: "රතු", english: "Red", pronunciation: "ruh-thoo", image: "🔴" },
+    { sinhala: "නිල්", english: "Blue", pronunciation: "neel", image: "🔵" },
+    { sinhala: "කොළ", english: "Green", pronunciation: "koh-luh", image: "🟢" },
+    { sinhala: "කහ", english: "Yellow", pronunciation: "kuh-huh", image: "🟡" },
+    { sinhala: "සුදු", english: "White", pronunciation: "soo-doo", image: "⚪" },
+    { sinhala: "කළු", english: "Black", pronunciation: "kuh-loo", image: "⚫" },
+    { sinhala: "දුඹුරු", english: "Brown", pronunciation: "doom-boo-roo", image: "🟤" },
+    { sinhala: "රෝස", english: "Pink", pronunciation: "roh-suh", image: "🩷" },
+    { sinhala: "තැඹිලි", english: "Orange", pronunciation: "thahm-bee-lee", image: "🟠" },
+    { sinhala: "දම්", english: "Purple", pronunciation: "duhm", image: "🟣" },
+    { sinhala: "අළු", english: "Gray", pronunciation: "uh-loo", image: "🩶" },
+    { sinhala: "රන්", english: "Gold", pronunciation: "ruhn", image: "🥇" },
   ];
 
   const numbersAdvanced = [
@@ -96,46 +101,46 @@ const Grade2 = () => {
   ];
 
   const food = [
-    { sinhala: "බත්", english: "Rice", pronunciation: "buhth" },
-    { sinhala: "පාන්", english: "Bread", pronunciation: "paan" },
-    { sinhala: "කිරි", english: "Milk", pronunciation: "kee-ree" },
-    { sinhala: "බිත්තර", english: "Egg", pronunciation: "bith-thuh-ruh" },
-    { sinhala: "මාළු", english: "Fish", pronunciation: "maa-loo" },
-    { sinhala: "මස්", english: "Meat", pronunciation: "muhs" },
-    { sinhala: "එළවළු", english: "Vegetables", pronunciation: "eh-luh-vuh-loo" },
-    { sinhala: "වතුර", english: "Water", pronunciation: "vuh-thoo-ruh" },
-    { sinhala: "තේ", english: "Tea", pronunciation: "thay" },
-    { sinhala: "කෝපි", english: "Coffee", pronunciation: "koh-pee" },
-    { sinhala: "සීනි", english: "Sugar", pronunciation: "see-nee" },
-    { sinhala: "ලුණු", english: "Salt", pronunciation: "loo-noo" },
+    { sinhala: "බත්", english: "Rice", pronunciation: "buhth", image: "🍚" },
+    { sinhala: "පාන්", english: "Bread", pronunciation: "paan", image: "🍞" },
+    { sinhala: "කිරි", english: "Milk", pronunciation: "kee-ree", image: "🥛" },
+    { sinhala: "බිත්තර", english: "Egg", pronunciation: "bith-thuh-ruh", image: "🥚" },
+    { sinhala: "මාළු", english: "Fish", pronunciation: "maa-loo", image: "🐟" },
+    { sinhala: "මස්", english: "Meat", pronunciation: "muhs", image: "🍖" },
+    { sinhala: "එළවළු", english: "Vegetables", pronunciation: "eh-luh-vuh-loo", image: "🥬" },
+    { sinhala: "වතුර", english: "Water", pronunciation: "vuh-thoo-ruh", image: "💧" },
+    { sinhala: "තේ", english: "Tea", pronunciation: "thay", image: "🍵" },
+    { sinhala: "කෝපි", english: "Coffee", pronunciation: "koh-pee", image: "☕" },
+    { sinhala: "සීනි", english: "Sugar", pronunciation: "see-nee", image: "🍬" },
+    { sinhala: "ලුණු", english: "Salt", pronunciation: "loo-noo", image: "🧂" },
   ];
 
   const weather = [
-    { sinhala: "හිරු", english: "Sun", pronunciation: "hee-roo" },
-    { sinhala: "වැස්ස", english: "Rain", pronunciation: "vahs-suh" },
-    { sinhala: "වලාකුළු", english: "Clouds", pronunciation: "vuh-laa-koo-loo" },
-    { sinhala: "සුළඟ", english: "Wind", pronunciation: "soo-luhn-guh" },
-    { sinhala: "අකුණු", english: "Lightning", pronunciation: "uh-koo-noo" },
-    { sinhala: "ගිගුරුම්", english: "Thunder", pronunciation: "gee-goo-room" },
-    { sinhala: "උණුසුම්", english: "Hot", pronunciation: "oo-noo-soom" },
-    { sinhala: "සීතල", english: "Cold", pronunciation: "see-thuh-luh" },
-    { sinhala: "දේදුන්න", english: "Rainbow", pronunciation: "day-doon-nuh" },
-    { sinhala: "හිම", english: "Snow", pronunciation: "hee-muh" },
+    { sinhala: "හිරු", english: "Sun", pronunciation: "hee-roo", image: "☀️" },
+    { sinhala: "වැස්ස", english: "Rain", pronunciation: "vahs-suh", image: "🌧️" },
+    { sinhala: "වලාකුළු", english: "Clouds", pronunciation: "vuh-laa-koo-loo", image: "☁️" },
+    { sinhala: "සුළඟ", english: "Wind", pronunciation: "soo-luhn-guh", image: "💨" },
+    { sinhala: "අකුණු", english: "Lightning", pronunciation: "uh-koo-noo", image: "⚡" },
+    { sinhala: "ගිගුරුම්", english: "Thunder", pronunciation: "gee-goo-room", image: "🌩️" },
+    { sinhala: "උණුසුම්", english: "Hot", pronunciation: "oo-noo-soom", image: "🥵" },
+    { sinhala: "සීතල", english: "Cold", pronunciation: "see-thuh-luh", image: "🥶" },
+    { sinhala: "දේදුන්න", english: "Rainbow", pronunciation: "day-doon-nuh", image: "🌈" },
+    { sinhala: "හිම", english: "Snow", pronunciation: "hee-muh", image: "❄️" },
   ];
 
   const schoolItems = [
-    { sinhala: "පොත", english: "Book", pronunciation: "poh-thuh" },
-    { sinhala: "පෑන", english: "Pen", pronunciation: "pah-nuh" },
-    { sinhala: "පැන්සල", english: "Pencil", pronunciation: "pahn-suh-luh" },
-    { sinhala: "මකනය", english: "Eraser", pronunciation: "muh-kuh-nuh-yuh" },
-    { sinhala: "රූලරය", english: "Ruler", pronunciation: "roo-luh-ruh-yuh" },
-    { sinhala: "බෑගය", english: "Bag", pronunciation: "bah-guh-yuh" },
-    { sinhala: "පන්තිය", english: "Class", pronunciation: "puhn-thee-yuh" },
-    { sinhala: "ගුරුවරයා", english: "Teacher (male)", pronunciation: "goo-roo-vuh-ruh-yaa" },
-    { sinhala: "ගුරුවරිය", english: "Teacher (female)", pronunciation: "goo-roo-vuh-ree-yuh" },
-    { sinhala: "ශිෂ්‍යයා", english: "Student", pronunciation: "shish-yuh-yaa" },
-    { sinhala: "පාඩම", english: "Lesson", pronunciation: "paa-duh-muh" },
-    { sinhala: "විභාගය", english: "Exam", pronunciation: "vee-bhaa-guh-yuh" },
+    { sinhala: "පොත", english: "Book", pronunciation: "poh-thuh", image: "📚" },
+    { sinhala: "පෑන", english: "Pen", pronunciation: "pah-nuh", image: "🖊️" },
+    { sinhala: "පැන්සල", english: "Pencil", pronunciation: "pahn-suh-luh", image: "✏️" },
+    { sinhala: "මකනය", english: "Eraser", pronunciation: "muh-kuh-nuh-yuh", image: "🧽" },
+    { sinhala: "රූලරය", english: "Ruler", pronunciation: "roo-luh-ruh-yuh", image: "📏" },
+    { sinhala: "බෑගය", english: "Bag", pronunciation: "bah-guh-yuh", image: "🎒" },
+    { sinhala: "පන්තිය", english: "Class", pronunciation: "puhn-thee-yuh", image: "🏫" },
+    { sinhala: "ගුරුවරයා", english: "Teacher (male)", pronunciation: "goo-roo-vuh-ruh-yaa", image: "👨‍🏫" },
+    { sinhala: "ගුරුවරිය", english: "Teacher (female)", pronunciation: "goo-roo-vuh-ree-yuh", image: "👩‍🏫" },
+    { sinhala: "ශිෂ්‍යයා", english: "Student", pronunciation: "shish-yuh-yaa", image: "👨‍🎓" },
+    { sinhala: "පාඩම", english: "Lesson", pronunciation: "paa-duh-muh", image: "📖" },
+    { sinhala: "විභාගය", english: "Exam", pronunciation: "vee-bhaa-guh-yuh", image: "📝" },
   ];
 
   const quizQuestions = [
@@ -254,6 +259,7 @@ const Grade2 = () => {
                   sinhalaWord={word.sinhala}
                   englishWord={word.english}
                   pronunciation={word.pronunciation}
+                  image={word.image}
                 />
               ))}
             </div>
@@ -273,6 +279,7 @@ const Grade2 = () => {
                 මගේ පවුලේ හය දෙනෙක් ඉන්නවා. අම්මා, තාත්තා, අක්කා, මල්ලි, මම සහ ආච්චි.
                 අපි සතුටින් ජීවත් වෙනවා.
               </div>
+              <ReadAloudButton text="මගේ පවුලේ හය දෙනෙක් ඉන්නවා. අම්මා, තාත්තා, අක්කා, මල්ලි, මම සහ ආච්චි. අපි සතුටින් ජීවත් වෙනවා." />
               <div className="sentence-english">
                 There are six people in my family. Mother, father, elder sister, younger brother, me, and grandmother.
                 We live happily.
@@ -292,6 +299,7 @@ const Grade2 = () => {
                   sinhalaWord={color.sinhala}
                   englishWord={color.english}
                   pronunciation={color.pronunciation}
+                  image={color.image}
                 />
               ))}
             </div>
@@ -339,6 +347,7 @@ const Grade2 = () => {
               <div className="sentence-sinhala">
                 එකොළහ, දොළහ, දහතුන, දහහතර, පහළොව, දහසය, දහහත, දහඅට, දහනවය, විස්ස
               </div>
+              <ReadAloudButton text="එකොළහ, දොළහ, දහතුන, දහහතර, පහළොව, දහසය, දහහත, දහඅට, දහනවය, විස්ස" />
             </div>
             <div className="activity-card">
               <h3>Math in Sinhala</h3>
@@ -384,6 +393,7 @@ const Grade2 = () => {
               <h3>Today's Date</h3>
               <p>Practice saying today's date in Sinhala:</p>
               <div className="sentence-sinhala">අද ඉරිදා. මාසය ජනවාරි.</div>
+              <ReadAloudButton text="අද ඉරිදා. මාසය ජනවාරි." />
               <div className="sentence-english">Today is Sunday. The month is January.</div>
             </div>
             <div className="poem-card">
@@ -394,6 +404,7 @@ const Grade2 = () => {
                 බ්‍රහස්පතින්දා, සිකුරාදා<br />
                 සෙනසුරාදා!
               </div>
+              <ReadAloudButton text="ඉරිදා, සඳුදා. අඟහරුවාදා, බදාදා. බ්‍රහස්පතින්දා, සිකුරාදා. සෙනසුරාදා!" />
               <div className="sentence-english">
                 Sunday, Monday<br />
                 Tuesday, Wednesday<br />
@@ -415,6 +426,7 @@ const Grade2 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -423,6 +435,7 @@ const Grade2 = () => {
               <div className="sentence-sinhala">
                 උදේ මම පාන් කනවා. කිරි බොනවා. අම්මා තේ බොනවා. තාත්තා බිත්තර කනවා.
               </div>
+              <ReadAloudButton text="උදේ මම පාන් කනවා. කිරි බොනවා. අම්මා තේ බොනවා. තාත්තා බිත්තර කනවා." />
               <div className="sentence-english">
                 In the morning I eat bread. I drink milk. Mother drinks tea. Father eats eggs.
               </div>
@@ -460,6 +473,7 @@ const Grade2 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -490,6 +504,7 @@ const Grade2 = () => {
                 සුළඟ සිසිලයි<br />
                 දේදුන්න ලස්සනයි!
               </div>
+              <ReadAloudButton text="හිරු එළිය ලස්සනයි. වැස්ස ගසට හොඳයි. සුළඟ සිසිලයි. දේදුන්න ලස්සනයි!" />
               <div className="sentence-english">
                 Sunshine is beautiful<br />
                 Rain is good for trees<br />
@@ -511,6 +526,7 @@ const Grade2 = () => {
                   sinhalaWord={item.sinhala}
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
@@ -520,6 +536,7 @@ const Grade2 = () => {
                 මම උදේ පාසලට යනවා. මගේ බෑගයේ පොත්, පෑන, පැන්සල තියෙනවා.
                 ගුරුතුමිය පාඩම් කියා දෙනවා. මම හොඳින් ඉගෙන ගන්නවා.
               </div>
+              <ReadAloudButton text="මම උදේ පාසලට යනවා. මගේ බෑගයේ පොත්, පෑන, පැන්සල තියෙනවා. ගුරුතුමිය පාඩම් කියා දෙනවා. මම හොඳින් ඉගෙන ගන්නවා." />
               <div className="sentence-english">
                 I go to school in the morning. In my bag there are books, pen, and pencil.
                 The teacher teaches lessons. I learn well.
@@ -592,6 +609,7 @@ const Grade2 = () => {
                 ටොමි කුඩා බල්ලෙක්. ඔහු ගොඩක් හොඳයි. ටොමි ළමයින් සමඟ සෙල්ලම් කරනවා.
                 ඔහු වලිගය සොලවනවා. සියලුදෙනා ටොමිට ආදරේ කරනවා.
               </div>
+              <ReadAloudButton text="ටොමි කුඩා බල්ලෙක්. ඔහු ගොඩක් හොඳයි. ටොමි ළමයින් සමඟ සෙල්ලම් කරනවා. ඔහු වලිගය සොලවනවා. සියලුදෙනා ටොමිට ආදරේ කරනවා." />
               <div className="reading-english">
                 Tommy is a small dog. He is very good. Tommy plays with children.
                 He wags his tail. Everyone loves Tommy.
@@ -603,6 +621,7 @@ const Grade2 = () => {
                 හාතිය ලොකු සතෙක්. ඔහුට දිග නාසයක් තියෙනවා. හාතිය පාර දෙපස ඇවිදිනවා.
                 ඔහු වතුර බොනවා. ඔහු ගස් කොළ කනවා.
               </div>
+              <ReadAloudButton text="හාතිය ලොකු සතෙක්. ඔහුට දිග නාසයක් තියෙනවා. හාතිය පාර දෙපස ඇවිදිනවා. ඔහු වතුර බොනවා. ඔහු ගස් කොළ කනවා." />
               <div className="reading-english">
                 The elephant is a big animal. He has a long nose. The elephant walks on both sides of the road.
                 He drinks water. He eats tree leaves.
@@ -614,6 +633,7 @@ const Grade2 = () => {
                 මගේ හොඳම යාළුවා කමල්. අපි එකට පාසලට යනවා. අපි එකට සෙල්ලම් කරනවා.
                 කමල් හොඳ ළමයෙක්. මම කමල්ට ආදරේ කරනවා.
               </div>
+              <ReadAloudButton text="මගේ හොඳම යාළුවා කමල්. අපි එකට පාසලට යනවා. අපි එකට සෙල්ලම් කරනවා. කමල් හොඳ ළමයෙක්. මම කමල්ට ආදරේ කරනවා." />
               <div className="reading-english">
                 My best friend is Kamal. We go to school together. We play together.
                 Kamal is a good boy. I love Kamal.
@@ -644,7 +664,7 @@ const Grade2 = () => {
         return (
           <section className="section active">
             <h2>Grade 2 Quiz</h2>
-            <Quiz questions={quizQuestions} gradeKey="g2" />
+            <Quiz questions={quizQuestions} gradeKey="g2" gradeNumber={2} />
           </section>
         );
 
@@ -655,21 +675,9 @@ const Grade2 = () => {
 
   return (
     <div className="grade-content active">
-      <div className="grade-info">
-        <h2>Grade 2 - Building Vocabulary</h2>
-        <p>
-          Learn extended family, colors, numbers 11-20, days, months, food, weather, and simple sentences
-        </p>
+      <div className="grade-info-compact">
+        <h2>Grade 2 - දෙවන ශ්‍රේණිය</h2>
       </div>
-
-      <Navigation
-        sections={sections}
-        currentSection={currentSection}
-        onSectionChange={setCurrentSection}
-        gradeId="g2"
-      />
-
-      <ProgressBar progress={29} />
 
       {renderSection()}
     </div>

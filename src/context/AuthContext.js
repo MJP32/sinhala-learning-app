@@ -52,6 +52,14 @@ export function AuthProvider({ children }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Check for guest user in localStorage
+    const guestUser = localStorage.getItem('guestUser');
+    if (guestUser) {
+      setUser(JSON.parse(guestUser));
+      setLoading(false);
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
@@ -93,9 +101,36 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const loginAsGuest = () => {
+    // Check if there's an existing guest user to preserve their progress
+    const existingGuest = localStorage.getItem('guestUser');
+    let guestUser;
+
+    if (existingGuest) {
+      guestUser = JSON.parse(existingGuest);
+    } else {
+      guestUser = {
+        uid: 'guest-user',
+        email: 'guest@local',
+        displayName: 'Guest',
+        isGuest: true,
+      };
+      localStorage.setItem('guestUser', JSON.stringify(guestUser));
+    }
+
+    setUser(guestUser);
+    return guestUser;
+  };
+
   const logout = async () => {
     setError(null);
     try {
+      // Check if guest user
+      if (user?.isGuest) {
+        localStorage.removeItem('guestUser');
+        setUser(null);
+        return;
+      }
       await signOut(auth);
     } catch (err) {
       setError(getErrorMessage(err.code));
@@ -112,6 +147,7 @@ export function AuthProvider({ children }) {
     signup,
     login,
     loginWithGoogle,
+    loginAsGuest,
     logout,
     clearError,
   };

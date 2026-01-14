@@ -4,9 +4,9 @@
   "description": "Free interactive Sinhala language learning app. Master the Sinhala alphabet, vocabulary, grammar, and pronunciation with comprehensive lessons from Grade 1 to Grade 6.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     },
     {
       "src": "logo192.png",

@@ -5,7 +5,7 @@ const LoginPage = ({ onSwitchToSignup }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { login, loginWithGoogle, error, clearError } = useAuth();
+  const { login, loginWithGoogle, loginAsGuest, error, clearError } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +28,10 @@ const LoginPage = ({ onSwitchToSignup }) => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleGuestLogin = () => {
+    loginAsGuest();
   };
 
   return (
@@ -108,6 +112,18 @@ const LoginPage = ({ onSwitchToSignup }) => {
           </svg>
           Continue with Google
         </button>
+
+        <button
+          onClick={handleGuestLogin}
+          className="auth-btn guest"
+          disabled={isLoading}
+        >
+          <span className="guest-icon">👤</span>
+          Continue as Guest
+        </button>
+        <p className="guest-note">
+          Progress won't be saved to cloud
+        </p>
 
         <p className="auth-switch">
           Don't have an account?{" "}

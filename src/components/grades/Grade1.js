@@ -1,13 +1,20 @@
-import React, { useState } from "react";
-import Navigation from "../shared/Navigation";
-import ProgressBar from "../shared/ProgressBar";
+import React, { useState, useEffect } from "react";
 import LetterCard from "../shared/LetterCard";
 import WordCard from "../shared/WordCard";
 import Quiz from "../shared/Quiz";
 import PronunciationPractice from "../shared/PronunciationPractice";
+import ReadAloudButton from "../shared/ReadAloudButton";
+import InteractiveGames from "../interactive/InteractiveGames";
 
-const Grade1 = () => {
+const Grade1 = ({ initialSection }) => {
   const [currentSection, setCurrentSection] = useState("letters");
+
+  // Navigate to section when initialSection prop changes
+  useEffect(() => {
+    if (initialSection) {
+      setCurrentSection(initialSection);
+    }
+  }, [initialSection]);
 
   const sections = [
     { id: "letters", label: "Letters" },
@@ -83,81 +90,81 @@ const Grade1 = () => {
   ];
 
   const numbers = [
-    { sinhala: "එක", english: "One (1)", pronunciation: "eh-kuh" },
-    { sinhala: "දෙක", english: "Two (2)", pronunciation: "deh-kuh" },
-    { sinhala: "තුන", english: "Three (3)", pronunciation: "thoo-nuh" },
-    { sinhala: "හතර", english: "Four (4)", pronunciation: "huh-thuh-ruh" },
-    { sinhala: "පහ", english: "Five (5)", pronunciation: "puh-huh" },
-    { sinhala: "හය", english: "Six (6)", pronunciation: "huh-yuh" },
-    { sinhala: "හත", english: "Seven (7)", pronunciation: "huh-thuh" },
-    { sinhala: "අට", english: "Eight (8)", pronunciation: "uh-tuh" },
-    { sinhala: "නවය", english: "Nine (9)", pronunciation: "nuh-vuh-yuh" },
-    { sinhala: "දහය", english: "Ten (10)", pronunciation: "duh-huh-yuh" },
+    { sinhala: "එක", english: "One (1)", pronunciation: "eh-kuh", image: "1️⃣" },
+    { sinhala: "දෙක", english: "Two (2)", pronunciation: "deh-kuh", image: "2️⃣" },
+    { sinhala: "තුන", english: "Three (3)", pronunciation: "thoo-nuh", image: "3️⃣" },
+    { sinhala: "හතර", english: "Four (4)", pronunciation: "huh-thuh-ruh", image: "4️⃣" },
+    { sinhala: "පහ", english: "Five (5)", pronunciation: "puh-huh", image: "5️⃣" },
+    { sinhala: "හය", english: "Six (6)", pronunciation: "huh-yuh", image: "6️⃣" },
+    { sinhala: "හත", english: "Seven (7)", pronunciation: "huh-thuh", image: "7️⃣" },
+    { sinhala: "අට", english: "Eight (8)", pronunciation: "uh-tuh", image: "8️⃣" },
+    { sinhala: "නවය", english: "Nine (9)", pronunciation: "nuh-vuh-yuh", image: "9️⃣" },
+    { sinhala: "දහය", english: "Ten (10)", pronunciation: "duh-huh-yuh", image: "🔟" },
   ];
 
   const familyWords = [
-    { sinhala: "අම්මා", english: "Mother", pronunciation: "uhm-maa" },
-    { sinhala: "තාත්තා", english: "Father", pronunciation: "thaa-thaa" },
-    { sinhala: "සීයා", english: "Grandfather", pronunciation: "see-yaa" },
-    { sinhala: "ආච්චි", english: "Grandmother", pronunciation: "aah-chee" },
-    { sinhala: "පැටිය", english: "Baby", pronunciation: "pah-tee-yuh" },
-    { sinhala: "ගෙදර", english: "Home", pronunciation: "geh-duh-ruh" },
+    { sinhala: "අම්මා", english: "Mother", pronunciation: "uhm-maa", image: "👩" },
+    { sinhala: "තාත්තා", english: "Father", pronunciation: "thaa-thaa", image: "👨" },
+    { sinhala: "සීයා", english: "Grandfather", pronunciation: "see-yaa", image: "👴" },
+    { sinhala: "ආච්චි", english: "Grandmother", pronunciation: "aah-chee", image: "👵" },
+    { sinhala: "පැටිය", english: "Baby", pronunciation: "pah-tee-yuh", image: "👶" },
+    { sinhala: "ගෙදර", english: "Home", pronunciation: "geh-duh-ruh", image: "🏠" },
   ];
 
   const animals = [
-    { sinhala: "බල්ලා", english: "Dog", pronunciation: "buhl-laa" },
-    { sinhala: "පූසා", english: "Cat", pronunciation: "poo-saa" },
-    { sinhala: "හාතිය", english: "Elephant", pronunciation: "haa-thee-yuh" },
-    { sinhala: "කුරුල්ලා", english: "Bird", pronunciation: "koo-rool-laa" },
-    { sinhala: "මාළුවා", english: "Fish", pronunciation: "maa-loo-vaa" },
-    { sinhala: "වඳුරා", english: "Monkey", pronunciation: "vuhn-doo-raa" },
-    { sinhala: "සිංහයා", english: "Lion", pronunciation: "sin-huh-yaa" },
-    { sinhala: "ගවයා", english: "Cow", pronunciation: "guh-vuh-yaa" },
-    { sinhala: "කුකුළා", english: "Rooster", pronunciation: "koo-koo-laa" },
-    { sinhala: "හාවා", english: "Rabbit", pronunciation: "haa-vaa" },
-    { sinhala: "ඉබ්බා", english: "Turtle", pronunciation: "ib-baa" },
-    { sinhala: "සර්පයා", english: "Snake", pronunciation: "sur-puh-yaa" },
+    { sinhala: "බල්ලා", english: "Dog", pronunciation: "buhl-laa", image: "🐕" },
+    { sinhala: "පූසා", english: "Cat", pronunciation: "poo-saa", image: "🐱" },
+    { sinhala: "හාතිය", english: "Elephant", pronunciation: "haa-thee-yuh", image: "🐘" },
+    { sinhala: "කුරුල්ලා", english: "Bird", pronunciation: "koo-rool-laa", image: "🐦" },
+    { sinhala: "මාළුවා", english: "Fish", pronunciation: "maa-loo-vaa", image: "🐟" },
+    { sinhala: "වඳුරා", english: "Monkey", pronunciation: "vuhn-doo-raa", image: "🐒" },
+    { sinhala: "සිංහයා", english: "Lion", pronunciation: "sin-huh-yaa", image: "🦁" },
+    { sinhala: "ගවයා", english: "Cow", pronunciation: "guh-vuh-yaa", image: "🐄" },
+    { sinhala: "කුකුළා", english: "Rooster", pronunciation: "koo-koo-laa", image: "🐓" },
+    { sinhala: "හාවා", english: "Rabbit", pronunciation: "haa-vaa", image: "🐰" },
+    { sinhala: "ඉබ්බා", english: "Turtle", pronunciation: "ib-baa", image: "🐢" },
+    { sinhala: "සර්පයා", english: "Snake", pronunciation: "sur-puh-yaa", image: "🐍" },
   ];
 
   const fruits = [
-    { sinhala: "ඇපල්", english: "Apple", pronunciation: "ah-puhl" },
-    { sinhala: "කෙසෙල්", english: "Banana", pronunciation: "keh-sehl" },
-    { sinhala: "අඹ", english: "Mango", pronunciation: "uhm-buh" },
-    { sinhala: "පේර", english: "Guava", pronunciation: "pay-ruh" },
-    { sinhala: "අන්නාසි", english: "Pineapple", pronunciation: "uhn-naa-see" },
-    { sinhala: "පොල්", english: "Coconut", pronunciation: "pohl" },
-    { sinhala: "දොඩම්", english: "Orange", pronunciation: "doh-duhm" },
-    { sinhala: "පැපොල්", english: "Papaya", pronunciation: "pah-pohl" },
-    { sinhala: "මිදි", english: "Grapes", pronunciation: "mee-dee" },
-    { sinhala: "කොමඩු", english: "Watermelon", pronunciation: "koh-muh-doo" },
+    { sinhala: "ඇපල්", english: "Apple", pronunciation: "ah-puhl", image: "🍎" },
+    { sinhala: "කෙසෙල්", english: "Banana", pronunciation: "keh-sehl", image: "🍌" },
+    { sinhala: "අඹ", english: "Mango", pronunciation: "uhm-buh", image: "🥭" },
+    { sinhala: "පේර", english: "Guava", pronunciation: "pay-ruh", image: "🍐" },
+    { sinhala: "අන්නාසි", english: "Pineapple", pronunciation: "uhn-naa-see", image: "🍍" },
+    { sinhala: "පොල්", english: "Coconut", pronunciation: "pohl", image: "🥥" },
+    { sinhala: "දොඩම්", english: "Orange", pronunciation: "doh-duhm", image: "🍊" },
+    { sinhala: "පැපොල්", english: "Papaya", pronunciation: "pah-pohl", image: "🍈" },
+    { sinhala: "මිදි", english: "Grapes", pronunciation: "mee-dee", image: "🍇" },
+    { sinhala: "කොමඩු", english: "Watermelon", pronunciation: "koh-muh-doo", image: "🍉" },
   ];
 
   const bodyParts = [
-    { sinhala: "ඇස", english: "Eye", pronunciation: "ah-suh" },
-    { sinhala: "නාසය", english: "Nose", pronunciation: "naa-suh-yuh" },
-    { sinhala: "කන", english: "Ear", pronunciation: "kuh-nuh" },
-    { sinhala: "මුව", english: "Mouth", pronunciation: "moo-vuh" },
-    { sinhala: "අත", english: "Hand", pronunciation: "uh-thuh" },
-    { sinhala: "පාදය", english: "Foot", pronunciation: "paa-duh-yuh" },
-    { sinhala: "හිස", english: "Head", pronunciation: "hee-suh" },
-    { sinhala: "කෙස්", english: "Hair", pronunciation: "kehs" },
-    { sinhala: "දත්", english: "Teeth", pronunciation: "duhth" },
-    { sinhala: "දිව", english: "Tongue", pronunciation: "dee-vuh" },
-    { sinhala: "බඩ", english: "Stomach", pronunciation: "buh-duh" },
-    { sinhala: "පිට", english: "Back", pronunciation: "pee-tuh" },
+    { sinhala: "ඇස", english: "Eye", pronunciation: "ah-suh", image: "👁️" },
+    { sinhala: "නාසය", english: "Nose", pronunciation: "naa-suh-yuh", image: "👃" },
+    { sinhala: "කන", english: "Ear", pronunciation: "kuh-nuh", image: "👂" },
+    { sinhala: "මුව", english: "Mouth", pronunciation: "moo-vuh", image: "👄" },
+    { sinhala: "අත", english: "Hand", pronunciation: "uh-thuh", image: "✋" },
+    { sinhala: "පාදය", english: "Foot", pronunciation: "paa-duh-yuh", image: "🦶" },
+    { sinhala: "හිස", english: "Head", pronunciation: "hee-suh", image: "🗣️" },
+    { sinhala: "කෙස්", english: "Hair", pronunciation: "kehs", image: "💇" },
+    { sinhala: "දත්", english: "Teeth", pronunciation: "duhth", image: "🦷" },
+    { sinhala: "දිව", english: "Tongue", pronunciation: "dee-vuh", image: "👅" },
+    { sinhala: "බඩ", english: "Stomach", pronunciation: "buh-duh", image: "🫃" },
+    { sinhala: "පිට", english: "Back", pronunciation: "pee-tuh", image: "🔙" },
   ];
 
   const colors = [
-    { sinhala: "රතු", english: "Red", pronunciation: "ruh-thoo" },
-    { sinhala: "නිල්", english: "Blue", pronunciation: "neel" },
-    { sinhala: "කොළ", english: "Green", pronunciation: "koh-luh" },
-    { sinhala: "කහ", english: "Yellow", pronunciation: "kuh-huh" },
-    { sinhala: "සුදු", english: "White", pronunciation: "soo-doo" },
-    { sinhala: "කළු", english: "Black", pronunciation: "kuh-loo" },
-    { sinhala: "දුඹුරු", english: "Brown", pronunciation: "doom-boo-roo" },
-    { sinhala: "රෝස", english: "Pink", pronunciation: "roh-suh" },
-    { sinhala: "තැඹිලි", english: "Orange", pronunciation: "thahm-bee-lee" },
-    { sinhala: "දම්", english: "Purple", pronunciation: "duhm" },
+    { sinhala: "රතු", english: "Red", pronunciation: "ruh-thoo", image: "🔴" },
+    { sinhala: "නිල්", english: "Blue", pronunciation: "neel", image: "🔵" },
+    { sinhala: "කොළ", english: "Green", pronunciation: "koh-luh", image: "🟢" },
+    { sinhala: "කහ", english: "Yellow", pronunciation: "kuh-huh", image: "🟡" },
+    { sinhala: "සුදු", english: "White", pronunciation: "soo-doo", image: "⚪" },
+    { sinhala: "කළු", english: "Black", pronunciation: "kuh-loo", image: "⚫" },
+    { sinhala: "දුඹුරු", english: "Brown", pronunciation: "doom-boo-roo", image: "🟤" },
+    { sinhala: "රෝස", english: "Pink", pronunciation: "roh-suh", image: "🩷" },
+    { sinhala: "තැඹිලි", english: "Orange", pronunciation: "thahm-bee-lee", image: "🟠" },
+    { sinhala: "දම්", english: "Purple", pronunciation: "duhm", image: "🟣" },
   ];
 
   const greetings = [
@@ -343,6 +350,7 @@ const Grade1 = () => {
                   sinhalaWord={num.sinhala}
                   englishWord={num.english}
                   pronunciation={num.pronunciation}
+                  image={num.image}
                 />
               ))}
             </div>
@@ -352,6 +360,7 @@ const Grade1 = () => {
               <div className="sentence-sinhala">
                 එක, දෙක, තුන, හතර, පහ, හය, හත, අට, නවය, දහය
               </div>
+              <ReadAloudButton text="එක, දෙක, තුන, හතර, පහ, හය, හත, අට, නවය, දහය" />
               <div className="sentence-english">
                 One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten
               </div>
@@ -385,6 +394,7 @@ const Grade1 = () => {
                   sinhalaWord={word.sinhala}
                   englishWord={word.english}
                   pronunciation={word.pronunciation}
+                  image={word.image}
                 />
               ))}
             </div>
@@ -412,12 +422,14 @@ const Grade1 = () => {
               <div className="sentence-sinhala">
                 "ආයුබෝවන්! ඔබට කොහොමද?"
               </div>
+              <ReadAloudButton text="ආයුබෝවන්! ඔබට කොහොමද?" />
               <div className="sentence-english">
                 "Hello! How are you?"
               </div>
               <div className="sentence-sinhala" style={{ marginTop: "10px" }}>
                 "මට හොඳින්. ස්තූතියි!"
               </div>
+              <ReadAloudButton text="මට හොඳින්. ස්තූතියි!" />
               <div className="sentence-english">
                 "I am fine. Thank you!"
               </div>
@@ -436,6 +448,7 @@ const Grade1 = () => {
                   sinhalaWord={animal.sinhala}
                   englishWord={animal.english}
                   pronunciation={animal.pronunciation}
+                  image={animal.image}
                 />
               ))}
             </div>
@@ -444,6 +457,7 @@ const Grade1 = () => {
               <div className="sentence-sinhala">
                 හාතිය ලොකු සතෙක්. බල්ලා කුඩා සතෙක්. සිංහයා වනයේ රජු.
               </div>
+              <ReadAloudButton text="හාතිය ලොකු සතෙක්. බල්ලා කුඩා සතෙක්. සිංහයා වනයේ රජු." />
               <div className="sentence-english">
                 The elephant is a big animal. The dog is a small animal. The lion is the king of the forest.
               </div>
@@ -469,6 +483,7 @@ const Grade1 = () => {
                   sinhalaWord={fruit.sinhala}
                   englishWord={fruit.english}
                   pronunciation={fruit.pronunciation}
+                  image={fruit.image}
                 />
               ))}
             </div>
@@ -477,6 +492,7 @@ const Grade1 = () => {
               <div className="sentence-sinhala">
                 මම කෙසෙල් කන්න කැමතියි. අඹ රසයි. පොල් ගෙඩි ලොකුයි.
               </div>
+              <ReadAloudButton text="මම කෙසෙල් කන්න කැමතියි. අඹ රසයි. පොල් ගෙඩි ලොකුයි." />
               <div className="sentence-english">
                 I like to eat bananas. Mangoes are delicious. Coconuts are big.
               </div>
@@ -502,6 +518,7 @@ const Grade1 = () => {
                   sinhalaWord={part.sinhala}
                   englishWord={part.english}
                   pronunciation={part.pronunciation}
+                  image={part.image}
                 />
               ))}
             </div>
@@ -521,6 +538,7 @@ const Grade1 = () => {
                 හිස, උරහිස, දණහිස, පාද<br />
                 දණහිස, පාද!
               </div>
+              <ReadAloudButton text="හිස, උරහිස, දණහිස, පාද. දණහිස, පාද! හිස, උරහිස, දණහිස, පාද. දණහිස, පාද!" />
               <div className="sentence-english">
                 Head, shoulders, knees, and toes<br />
                 Knees and toes!<br />
@@ -542,6 +560,7 @@ const Grade1 = () => {
                   sinhalaWord={color.sinhala}
                   englishWord={color.english}
                   pronunciation={color.pronunciation}
+                  image={color.image}
                 />
               ))}
             </div>
@@ -561,6 +580,7 @@ const Grade1 = () => {
                 මේ වර්ණ සියල්ලම<br />
                 දේදුන්නේ තියෙනවා!
               </div>
+              <ReadAloudButton text="රතු, තැඹිලි, කහ. කොළ, නිල්, දම්. මේ වර්ණ සියල්ලම දේදුන්නේ තියෙනවා!" />
               <div className="sentence-english">
                 Red, orange, yellow<br />
                 Green, blue, purple<br />
@@ -620,44 +640,92 @@ const Grade1 = () => {
         );
 
       case "games":
+        // Game data for Grade 1
+        const grade1FlashcardData = [
+          { id: 1, front: "අම්මා", back: "Mother", pronunciation: "uhm-maa" },
+          { id: 2, front: "තාත්තා", back: "Father", pronunciation: "thaa-thaa" },
+          { id: 3, front: "බල්ලා", back: "Dog", pronunciation: "bul-laa" },
+          { id: 4, front: "පූසා", back: "Cat", pronunciation: "poo-saa" },
+          { id: 5, front: "අඹ", back: "Mango", pronunciation: "uhm-buh" },
+          { id: 6, front: "කෙසෙල්", back: "Banana", pronunciation: "ke-sel" },
+          { id: 7, front: "එක", back: "One", pronunciation: "e-ka" },
+          { id: 8, front: "දෙක", back: "Two", pronunciation: "de-ka" },
+        ];
+
+        const grade1MatchData = [
+          { id: 1, sinhala: "අම්මා", english: "Mother" },
+          { id: 2, sinhala: "තාත්තා", english: "Father" },
+          { id: 3, sinhala: "බල්ලා", english: "Dog" },
+          { id: 4, sinhala: "පූසා", english: "Cat" },
+          { id: 5, sinhala: "හාතිය", english: "Elephant" },
+          { id: 6, sinhala: "කුරුල්ලා", english: "Bird" },
+        ];
+
+        const grade1ScrambleData = [
+          { sinhala: "බල්ලා", english: "Dog", hint: "A pet that barks" },
+          { sinhala: "පූසා", english: "Cat", hint: "A pet that meows" },
+          { sinhala: "අම්මා", english: "Mother", hint: "Your mom" },
+          { sinhala: "එක", english: "One", hint: "The first number" },
+          { sinhala: "දෙක", english: "Two", hint: "Comes after one" },
+        ];
+
+        const grade1SentenceData = [
+          { sinhala: "මම හොඳයි", english: "I am good", hint: "Common greeting response" },
+          { sinhala: "ඔබට කොහොමද", english: "How are you?", hint: "A greeting question" },
+          { sinhala: "බල්ලා ලොකුයි", english: "The dog is big", hint: "About size" },
+        ];
+
+        const grade1MemoryData = [
+          { id: 1, sinhala: "අම්මා", english: "Mother" },
+          { id: 2, sinhala: "තාත්තා", english: "Father" },
+          { id: 3, sinhala: "බල්ලා", english: "Dog" },
+          { id: 4, sinhala: "පූසා", english: "Cat" },
+          { id: 5, sinhala: "එක", english: "One" },
+          { id: 6, sinhala: "දෙක", english: "Two" },
+          { id: 7, sinhala: "අඹ", english: "Mango" },
+          { id: 8, sinhala: "රතු", english: "Red" },
+        ];
+
+        const grade1SpeedQuizData = [
+          { question: "What is 'Mother' in Sinhala?", questionSi: "'අම්මා' යනු කුමක්ද?", options: ["අම්මා", "තාත්තා", "බල්ලා", "පූසා"], correct: 0 },
+          { question: "What is 'Dog' in Sinhala?", questionSi: "'බල්ලා' යනු කුමක්ද?", options: ["පූසා", "බල්ලා", "හාතිය", "කුරුල්ලා"], correct: 1 },
+          { question: "What number is 'එක'?", questionSi: "'එක' යනු කුමන අංකයද?", options: ["One", "Two", "Three", "Four"], correct: 0 },
+          { question: "What animal is 'හාතිය'?", questionSi: "'හාතිය' යනු කුමන සතෙක්ද?", options: ["Dog", "Cat", "Elephant", "Bird"], correct: 2 },
+          { question: "What color is 'රතු'?", questionSi: "'රතු' යනු කුමන වර්ණයද?", options: ["Blue", "Green", "Red", "Yellow"], correct: 2 },
+          { question: "What fruit is 'අඹ'?", questionSi: "'අඹ' යනු කුමන ඵලයද?", options: ["Apple", "Mango", "Banana", "Orange"], correct: 1 },
+          { question: "What is 'Cat' in Sinhala?", questionSi: "'පූසා' යනු කුමක්ද?", options: ["බල්ලා", "පූසා", "හාතිය", "සිංහයා"], correct: 1 },
+          { question: "What is 'Father' in Sinhala?", questionSi: "'තාත්තා' යනු කුමක්ද?", options: ["අම්මා", "තාත්තා", "අයියා", "නංගි"], correct: 1 },
+        ];
+
+        const grade1ListeningData = [
+          { sinhala: "අම්මා", english: "Mother" },
+          { sinhala: "තාත්තා", english: "Father" },
+          { sinhala: "බල්ලා", english: "Dog" },
+          { sinhala: "පූසා", english: "Cat" },
+          { sinhala: "හාතිය", english: "Elephant" },
+          { sinhala: "එක", english: "One" },
+        ];
+
+        const grade1FillBlankData = [
+          { sentence: "මගේ ___ හොඳයි", answer: "අම්මා", options: ["අම්මා", "බල්ලා", "එක"], english: "My mother is good", hint: "A family member" },
+          { sentence: "___ ලොකු සතෙක්", answer: "හාතිය", options: ["හාතිය", "පූසා", "හාවා"], english: "Elephant is a big animal", hint: "The largest land animal" },
+          { sentence: "මට අවුරුදු ___", answer: "හය", options: ["හය", "සිය", "දහය"], english: "I am six years old", hint: "A number" },
+        ];
+
         return (
           <section className="section active">
             <h2>Fun Learning Games - ක්‍රීඩා</h2>
-            <div className="game-card">
-              <h3>Letter Matching Game</h3>
-              <p>Match the Sinhala letter with its sound! Click to play.</p>
-              <div className="activity-card">
-                <p>
-                  <strong>ක, ම, ස, හ</strong>
-                </p>
-                <p>Can you match these letters with "ka, ma, sa, ha"?</p>
-              </div>
-            </div>
-            <div className="game-card">
-              <h3>Word Hunt</h3>
-              <p>Find and count how many animals you learned today!</p>
-              <div className="activity-card">
-                <p>බල්ලා, පූසා, හාතිය, කුරුල්ලා, සිංහයා, හාවා</p>
-                <p>How many animals did you spot? Count them!</p>
-              </div>
-            </div>
-            <div className="game-card">
-              <h3>Memory Game</h3>
-              <p>Look at these words for 10 seconds, then cover them:</p>
-              <div className="activity-card">
-                <p><strong>අම්මා, තාත්තා, ගෙදර, බල්ලා, පූසා</strong></p>
-                <p>Now write down as many words as you remember!</p>
-              </div>
-            </div>
-            <div className="game-card">
-              <h3>Counting Challenge</h3>
-              <p>Count the objects in Sinhala:</p>
-              <div className="activity-card">
-                <p>How many eyes do you have? <strong>දෙක</strong> (Two)</p>
-                <p>How many fingers on one hand? <strong>පහ</strong> (Five)</p>
-                <p>How many ears do you have? <strong>දෙක</strong> (Two)</p>
-              </div>
-            </div>
+            <InteractiveGames
+              gradeKey="grade1"
+              flashcardData={grade1FlashcardData}
+              matchData={grade1MatchData}
+              scrambleData={grade1ScrambleData}
+              sentenceData={grade1SentenceData}
+              memoryData={grade1MemoryData}
+              speedQuizData={grade1SpeedQuizData}
+              listeningData={grade1ListeningData}
+              fillBlankData={grade1FillBlankData}
+            />
           </section>
         );
 
@@ -673,6 +741,7 @@ const Grade1 = () => {
                 එන්න කියන්න මෙන්න<br />
                 සිංහල හොඳයි!
               </div>
+              <ReadAloudButton text="අ ආ ඇ ඈ. ඉ ඊ උ ඌ. එන්න කියන්න මෙන්න. සිංහල හොඳයි!" />
               <div className="sentence-english">
                 A, Aa, Ae, Aae<br />
                 I, Ii, U, Uu<br />
@@ -688,6 +757,7 @@ const Grade1 = () => {
                 බල්ලා දුවනවා<br />
                 මම හොඳ ළමයෙක්!
               </div>
+              <ReadAloudButton text="හාතිය ලොකුයි. පූසා කුඩායි. බල්ලා දුවනවා. මම හොඳ ළමයෙක්!" />
               <div className="sentence-english">
                 Elephant is big<br />
                 Cat is small<br />
@@ -703,6 +773,7 @@ const Grade1 = () => {
                 සුභ උදෑසනක්!<br />
                 සියලුදෙනාට!
               </div>
+              <ReadAloudButton text="සුභ උදෑසනක්! අම්මට, තාත්තාට. සුභ උදෑසනක්! සියලුදෙනාට!" />
               <div className="sentence-english">
                 Good morning!<br />
                 To mother, to father<br />
@@ -718,6 +789,7 @@ const Grade1 = () => {
                 හත අට නවය<br />
                 දහය වෙනකන්!
               </div>
+              <ReadAloudButton text="එක දෙක තුන. හතර පහ හය. හත අට නවය. දහය වෙනකන්!" />
               <div className="sentence-english">
                 One two three<br />
                 Four five six<br />
@@ -732,7 +804,7 @@ const Grade1 = () => {
         return (
           <section className="section active">
             <h2>Grade 1 Quiz</h2>
-            <Quiz questions={quizQuestions} gradeKey="g1" />
+            <Quiz questions={quizQuestions} gradeKey="g1" gradeNumber={1} />
           </section>
         );
 
@@ -743,21 +815,9 @@ const Grade1 = () => {
 
   return (
     <div className="grade-content active">
-      <div className="grade-info">
-        <h2>Grade 1 - Basic Sinhala Learning</h2>
-        <p>
-          Learn letters, numbers, simple words, colors, animals, and fun activities
-        </p>
+      <div className="grade-info-compact">
+        <h2>Grade 1 - පළමු ශ්‍රේණිය</h2>
       </div>
-
-      <Navigation
-        sections={sections}
-        currentSection={currentSection}
-        onSectionChange={setCurrentSection}
-        gradeId="g1"
-      />
-
-      <ProgressBar progress={14} />
 
       {renderSection()}
     </div>
