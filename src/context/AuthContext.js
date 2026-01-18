@@ -52,16 +52,21 @@ export function AuthProvider({ children }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Check for guest user in localStorage
-    const guestUser = localStorage.getItem('guestUser');
-    if (guestUser) {
-      setUser(JSON.parse(guestUser));
-      setLoading(false);
-      return;
-    }
-
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    // Always set up the Firebase auth listener
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        // Real user logged in - clear any guest user
+        localStorage.removeItem('guestUser');
+        setUser(firebaseUser);
+      } else {
+        // No Firebase user - check for guest user
+        const guestUser = localStorage.getItem('guestUser');
+        if (guestUser) {
+          setUser(JSON.parse(guestUser));
+        } else {
+          setUser(null);
+        }
+      }
       setLoading(false);
     });
 
