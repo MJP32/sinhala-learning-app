@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useGamification } from "../context/GamificationContext";
 import { useChallenges } from "../context/ChallengesContext";
 import SoundControls from "./shared/SoundControls";
+import ThemeToggle from "./shared/ThemeToggle";
 import XPDisplay from "./gamification/XPDisplay";
 import StreakIndicator from "./gamification/StreakIndicator";
 import AchievementsModal from "./gamification/AchievementsModal";
@@ -80,6 +81,7 @@ const Header = ({ user, onLogout }) => {
               </button>
 
               <SoundControls />
+              <ThemeToggle />
             </div>
 
             {/* User Section */}

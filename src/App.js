@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import { ThemeProvider } from "./context/ThemeContext";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { ProgressProvider } from "./context/ProgressContext";
 import { GamificationProvider } from "./context/GamificationContext";
@@ -94,17 +95,19 @@ function AppContent() {
 
 function App() {
   return (
-    <AuthProvider>
-      <ProgressProvider>
-        <GamificationProvider>
-          <AnalyticsProvider>
-            <ChallengesProvider>
-              <AppContent />
-            </ChallengesProvider>
-          </AnalyticsProvider>
-        </GamificationProvider>
-      </ProgressProvider>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <ProgressProvider>
+          <GamificationProvider>
+            <AnalyticsProvider>
+              <ChallengesProvider>
+                <AppContent />
+              </ChallengesProvider>
+            </AnalyticsProvider>
+          </GamificationProvider>
+        </ProgressProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
