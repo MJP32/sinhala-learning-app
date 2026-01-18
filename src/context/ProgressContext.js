@@ -86,8 +86,10 @@ export const ProgressProvider = ({ children }) => {
             setUnlockedGrades([1]);
           }
         } catch (error) {
-          console.error('Error loading from Firebase (using localStorage):', error);
-          // Already loaded from localStorage above, so no action needed
+          // Silently handle offline errors - already loaded from localStorage above
+          if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+            console.warn('Error loading from Firebase (using localStorage fallback)');
+          }
         } finally {
           setIsLoading(false);
         }
@@ -123,7 +125,10 @@ export const ProgressProvider = ({ children }) => {
         await setDoc(docRef, { progress: newProgress }, { merge: true });
         console.log('Saved to Firebase successfully');
       } catch (error) {
-        console.error('Error saving to Firebase (localStorage backup exists):', error);
+        // Silently handle offline errors - localStorage backup already saved
+        if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+          console.warn('Error saving to Firebase (localStorage backup exists)');
+        }
       }
     }
   }, [user]);
@@ -144,7 +149,10 @@ export const ProgressProvider = ({ children }) => {
         const docRef = doc(db, 'users', user.uid);
         await setDoc(docRef, { unlockedGrades: grades }, { merge: true });
       } catch (error) {
-        console.error('Error saving unlocked grades to Firebase:', error);
+        // Silently handle offline errors - localStorage backup already saved
+        if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+          console.warn('Error saving unlocked grades to Firebase (localStorage backup exists)');
+        }
       }
     }
   }, [user]);
@@ -257,7 +265,13 @@ export const ProgressProvider = ({ children }) => {
           localStorage.removeItem(`sinhala-progress-${user.uid}`);
           localStorage.removeItem(`sinhala-unlocked-${user.uid}`);
         } catch (error) {
-          console.error('Error resetting progress:', error);
+          // Silently handle offline errors
+          if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+            console.warn('Error resetting progress in Firebase');
+          }
+          // Still clear localStorage
+          localStorage.removeItem(`sinhala-progress-${user.uid}`);
+          localStorage.removeItem(`sinhala-unlocked-${user.uid}`);
         }
       }
     }

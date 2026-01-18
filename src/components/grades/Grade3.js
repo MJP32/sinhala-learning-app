@@ -3,6 +3,7 @@ import WordCard from "../shared/WordCard";
 import Quiz from "../shared/Quiz";
 import PronunciationPractice from "../shared/PronunciationPractice";
 import ReadAloudButton from "../shared/ReadAloudButton";
+import SEO, { gradeSEOConfig, generateBreadcrumbs } from "../shared/SEO";
 
 const Grade3 = ({ initialSection }) => {
   const [currentSection, setCurrentSection] = useState("grammar");
@@ -861,8 +862,18 @@ const Grade3 = ({ initialSection }) => {
     }
   };
 
+  // Get SEO config for current section
+  const seoConfig = gradeSEOConfig[3];
+
   return (
     <div className="grade-content active">
+      <SEO
+        title={seoConfig.title}
+        description={seoConfig.description}
+        keywords={seoConfig.keywords}
+        canonicalPath={`/#grade3-${currentSection}`}
+        structuredData={generateBreadcrumbs(3, currentSection)}
+      />
       <div className="grade-info-compact">
         <h2>Grade 3 - තෙවන ශ්‍රේණිය</h2>
       </div>

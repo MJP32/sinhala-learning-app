@@ -49,7 +49,10 @@ export const AnalyticsProvider = ({ children }) => {
             setWeeklyActivity(data.weeklyActivity || {});
           }
         } catch (error) {
-          console.error('Error loading analytics:', error);
+          // Silently handle offline errors - fall back to localStorage
+          if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+            console.warn('Error loading analytics (using localStorage fallback)');
+          }
           const saved = localStorage.getItem(`sinhala-analytics-${user.uid}`);
           if (saved) {
             const data = JSON.parse(saved);
@@ -142,7 +145,10 @@ export const AnalyticsProvider = ({ children }) => {
       await setDoc(docRef, { analytics: data }, { merge: true });
       localStorage.setItem(`sinhala-analytics-${user.uid}`, JSON.stringify(data));
     } catch (error) {
-      console.error('Error saving analytics:', error);
+      // Silently handle offline errors - localStorage backup saved anyway
+      if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+        console.warn('Error saving analytics (localStorage backup saved)');
+      }
       localStorage.setItem(`sinhala-analytics-${user.uid}`, JSON.stringify(data));
     }
   }, [user, totalTimeSpent, sessionsCount, quizHistory, categoryPerformance, dailyActivity, weeklyActivity]);

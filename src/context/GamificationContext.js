@@ -90,7 +90,10 @@ export const GamificationProvider = ({ children }) => {
             setAchievements(data.achievements || {});
           }
         } catch (error) {
-          console.error('Error loading gamification:', error);
+          // Silently handle offline errors
+          if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+            console.warn('Error loading gamification (using localStorage fallback)');
+          }
           // Fall back to localStorage
           const saved = localStorage.getItem(`sinhala-gamification-${user.uid}`);
           if (saved) {
@@ -127,7 +130,10 @@ export const GamificationProvider = ({ children }) => {
         await setDoc(docRef, { gamification: data }, { merge: true });
         localStorage.setItem(`sinhala-gamification-${user.uid}`, JSON.stringify(data));
       } catch (error) {
-        console.error('Error saving gamification:', error);
+        // Silently handle offline errors - localStorage backup is saved anyway
+        if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+          console.warn('Error saving gamification (localStorage backup saved)');
+        }
         localStorage.setItem(`sinhala-gamification-${user.uid}`, JSON.stringify(data));
       }
     }

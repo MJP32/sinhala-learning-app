@@ -77,10 +77,23 @@ export const ChallengesProvider = ({ children }) => {
         });
       }
     } catch (error) {
-      console.error('Error loading challenges:', error);
+      // Silently handle offline errors - generate challenges locally
+      if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+        console.warn('Error loading challenges (using local fallback):', error.code || error.message);
+      }
       // Generate challenges locally if Firebase fails
       const newChallenges = generateDailyChallenges(new Date());
       setChallenges(newChallenges);
+      setDailyProgress({
+        quizzesCompleted: 0,
+        highestQuizScore: 0,
+        xpEarnedToday: 0,
+        flashcardsReviewed: 0,
+        sectionsCompleted: 0,
+        gamesPlayed: 0,
+        streakMaintained: false,
+        pronunciationsPracticed: 0,
+      });
     }
   }, [user]);
 
@@ -99,7 +112,10 @@ export const ChallengesProvider = ({ children }) => {
         date: today,
       });
     } catch (error) {
-      console.error('Error saving challenges:', error);
+      // Silently handle offline errors
+      if (error.code !== 'unavailable' && !error.message?.includes('offline')) {
+        console.warn('Error saving challenges:', error.code || error.message);
+      }
     }
   }, [user]);
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import soundService from '../../utils/soundService';
 import './Interactive.css';
 
 const Flashcard = ({
@@ -21,17 +22,8 @@ const Flashcard = ({
 
   const handleSpeak = (e, text) => {
     e.stopPropagation();
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.7;
-      // Try to find a Sinhala voice
-      const voices = speechSynthesis.getVoices();
-      const sinhalaVoice = voices.find(v => v.lang.includes('si'));
-      if (sinhalaVoice) {
-        utterance.voice = sinhalaVoice;
-      }
-      speechSynthesis.speak(utterance);
-    }
+    // Use soundService which prioritizes pre-recorded audio files
+    soundService.speakSinhalaWord(text, pronunciation);
   };
 
   return (

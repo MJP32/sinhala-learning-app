@@ -1,41 +1,24 @@
 import React, { useState } from 'react';
+import soundService from '../../utils/soundService';
 
 const ReadAloudButton = ({ text, label = "Listen", labelSinhala = "අසන්න" }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handleSpeak = () => {
-    if ('speechSynthesis' in window) {
-      // Stop any current speech
-      speechSynthesis.cancel();
+  const handleSpeak = async () => {
+    if (isPlaying) {
+      soundService.stop();
+      setIsPlaying(false);
+      return;
+    }
 
-      if (isPlaying) {
-        setIsPlaying(false);
-        return;
-      }
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.7; // Slower for clearer pronunciation
-      utterance.pitch = 1;
-
-      // Try to find a Sinhala voice
-      const voices = speechSynthesis.getVoices();
-      const sinhalaVoice = voices.find(v =>
-        v.lang.includes('si') ||
-        v.lang.includes('sin') ||
-        v.name.toLowerCase().includes('sinhala')
-      );
-
-      if (sinhalaVoice) {
-        utterance.voice = sinhalaVoice;
-      }
-
-      utterance.onstart = () => setIsPlaying(true);
-      utterance.onend = () => setIsPlaying(false);
-      utterance.onerror = () => setIsPlaying(false);
-
-      speechSynthesis.speak(utterance);
-    } else {
-      alert('Text-to-speech is not supported in your browser.');
+    setIsPlaying(true);
+    try {
+      // Use soundService which prioritizes pre-recorded audio files
+      await soundService.speakSinhalaWord(text);
+    } catch (error) {
+      console.error('Audio playback error:', error);
+    } finally {
+      setIsPlaying(false);
     }
   };
 

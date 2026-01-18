@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useGamification } from '../../context/GamificationContext';
 import { useChallenges } from '../../context/ChallengesContext';
 import { celebrateGameWin } from '../gamification/ConfettiCelebration';
+import soundService from '../../utils/soundService';
 import './Interactive.css';
 
 const ListeningChallenge = ({
@@ -55,37 +56,20 @@ const ListeningChallenge = ({
     setHasPlayed(false);
   }, [currentIndex, getOptions]);
 
-  const playAudio = useCallback(() => {
+  const playAudio = useCallback(async () => {
     if (isPlaying) return;
 
     setIsPlaying(true);
     setHasPlayed(true);
 
-    // Use Web Speech API
-    const utterance = new SpeechSynthesisUtterance(currentItem.sinhala);
-
-    // Try to find a Sinhala voice
-    const voices = window.speechSynthesis.getVoices();
-    const sinhalaVoice = voices.find(voice =>
-      voice.lang.includes('si') || voice.lang.includes('sin')
-    );
-
-    if (sinhalaVoice) {
-      utterance.voice = sinhalaVoice;
+    // Use soundService which prioritizes pre-recorded audio files
+    try {
+      await soundService.speakSinhalaWord(currentItem.sinhala, currentItem.pronunciation);
+    } catch (error) {
+      console.error('Audio playback error:', error);
+    } finally {
+      setIsPlaying(false);
     }
-
-    utterance.rate = 0.8;
-    utterance.pitch = 1;
-
-    utterance.onend = () => {
-      setIsPlaying(false);
-    };
-
-    utterance.onerror = () => {
-      setIsPlaying(false);
-    };
-
-    window.speechSynthesis.speak(utterance);
   }, [currentItem, isPlaying]);
 
   const handleReplay = () => {

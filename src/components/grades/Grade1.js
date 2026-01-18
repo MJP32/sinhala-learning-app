@@ -5,6 +5,7 @@ import Quiz from "../shared/Quiz";
 import PronunciationPractice from "../shared/PronunciationPractice";
 import ReadAloudButton from "../shared/ReadAloudButton";
 import InteractiveGames from "../interactive/InteractiveGames";
+import SEO, { gradeSEOConfig, generateBreadcrumbs } from "../shared/SEO";
 
 const Grade1 = ({ initialSection }) => {
   const [currentSection, setCurrentSection] = useState("letters");
@@ -813,8 +814,19 @@ const Grade1 = ({ initialSection }) => {
     }
   };
 
+  // Get SEO config for current section
+  const seoConfig = gradeSEOConfig[1];
+  const sectionSEO = seoConfig.sections[currentSection] || {};
+
   return (
     <div className="grade-content active">
+      <SEO
+        title={sectionSEO.title || seoConfig.title}
+        description={sectionSEO.description || seoConfig.description}
+        keywords={seoConfig.keywords}
+        canonicalPath={`/#grade1-${currentSection}`}
+        structuredData={generateBreadcrumbs(1, currentSection)}
+      />
       <div className="grade-info-compact">
         <h2>Grade 1 - පළමු ශ්‍රේණිය</h2>
       </div>

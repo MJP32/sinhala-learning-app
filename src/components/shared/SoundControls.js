@@ -12,7 +12,10 @@ const SoundControls = () => {
   };
 
   const testSinhalaSound = () => {
-    soundService.speakSinhalaLetter("ආයුබෝවන්");
+    // Play audio directly
+    const audio = new Audio('/audio/words/4LaF4La44LeK4La44LeP.mp3');
+    audio.volume = volume;
+    audio.play();
   };
 
   const testEnglishSound = () => {

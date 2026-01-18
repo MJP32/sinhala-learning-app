@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import soundService from '../../utils/soundService';
 
 const PronunciationPractice = ({ words, title = "Pronunciation Practice" }) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -199,25 +200,8 @@ const PronunciationPractice = ({ words, title = "Pronunciation Practice" }) => {
   };
 
   const speakWord = () => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel(); // Cancel any ongoing speech
-
-      const utterance = new SpeechSynthesisUtterance(currentWord.sinhala);
-
-      // Try to find a Sinhala voice
-      const voices = window.speechSynthesis.getVoices();
-      const sinhalaVoice = voices.find(voice =>
-        voice.lang.startsWith('si') || voice.name.toLowerCase().includes('sinhala')
-      );
-
-      if (sinhalaVoice) {
-        utterance.voice = sinhalaVoice;
-      }
-
-      utterance.rate = 0.7;
-      utterance.pitch = 1;
-      window.speechSynthesis.speak(utterance);
-    }
+    // Use soundService which prioritizes pre-recorded audio files
+    soundService.speakSinhalaWord(currentWord.sinhala, currentWord.pronunciation);
   };
 
   const resetPractice = () => {
