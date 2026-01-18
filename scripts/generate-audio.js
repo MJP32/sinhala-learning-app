@@ -586,8 +586,8 @@ function cyrb53(str) {
 // Get filename for a word (base64 encoded, or hash for long texts)
 function getWordFilename(word) {
   const base64 = Buffer.from(word, 'utf8').toString('base64').replace(/\//g, '_').replace(/\+/g, '-');
-  // Use hash for long filenames to avoid Windows path length issues
-  if (base64.length > 100) {
+  // Use hash for long filenames to avoid Windows path length issues (max 50 chars)
+  if (base64.length > 50) {
     return 'h_' + cyrb53(word);
   }
   return base64;

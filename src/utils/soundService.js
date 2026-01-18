@@ -36,9 +36,9 @@ class SoundService {
     const encoded = btoa(unescape(encodeURIComponent(sinhalaWord)))
       .replace(/\//g, '_')
       .replace(/\+/g, '-');
-    // Use hash for long filenames to match generate-audio.js
+    // Use hash for long filenames to match generate-audio.js (max 50 chars)
     let filename;
-    if (encoded.length > 100) {
+    if (encoded.length > 50) {
       filename = 'h_' + cyrb53(sinhalaWord);
     } else {
       filename = encoded;
