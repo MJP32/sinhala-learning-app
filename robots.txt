@@ -1,11 +1,11 @@
 # robots.txt for Learn Sinhala App
-# https://sinhala-learning.web.app/
+# https://www.sringlish.com/
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://sinhala-learning.web.app/sitemap.xml
+Sitemap: https://www.sringlish.com/sitemap.xml
 
 # Crawl-delay for politeness
 Crawl-delay: 1
