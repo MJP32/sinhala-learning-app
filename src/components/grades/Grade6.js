@@ -74,6 +74,54 @@ const Grade6 = ({ initialSection }) => {
     { sinhala: "ප්‍රතිරූපකය", english: "Imagery", pronunciation: "pruh-thi-roo-puh-kuh-yuh", image: "🖼️" },
   ];
 
+  // Advanced professions/careers
+  const advancedProfessions = [
+    { sinhala: "මහාචාර්ය", english: "Professor", pronunciation: "muh-haa-chaar-yuh", image: "👨‍🏫" },
+    { sinhala: "විද්‍යාඥ", english: "Scientist", pronunciation: "vid-yaa-gnyuh", image: "🔬" },
+    { sinhala: "ජනාධිපති", english: "President", pronunciation: "juh-naa-dhee-puh-thee", image: "🏛️" },
+    { sinhala: "අගමැති", english: "Prime Minister", pronunciation: "uh-guh-meh-thee", image: "👔" },
+    { sinhala: "තානාපති", english: "Ambassador", pronunciation: "thaa-naa-puh-thee", image: "🌐" },
+    { sinhala: "විනිසුරු", english: "Judge", pronunciation: "vee-nee-soo-roo", image: "⚖️" },
+    { sinhala: "ගෘහ නිර්මාණ ශිල්පී", english: "Architect", pronunciation: "groo-huh nir-maa-nuh shil-pee", image: "📐" },
+    { sinhala: "ගුවන් නියමු", english: "Pilot", pronunciation: "goo-vuhn nee-yuh-moo", image: "👨‍✈️" },
+    { sinhala: "ශල්‍ය වෛද්‍ය", english: "Surgeon", pronunciation: "shul-yuh vaid-yuh", image: "🏥" },
+    { sinhala: "පුවත්පත් කලාවේදී", english: "Journalist", pronunciation: "poo-vuht-puhth kuh-laa-vay-dee", image: "📰" },
+    { sinhala: "ව්‍යවසායක", english: "Entrepreneur", pronunciation: "vyuh-vuh-saa-yuh-kuh", image: "💼" },
+    { sinhala: "පරිගණක ඉංජිනේරු", english: "Software Engineer", pronunciation: "puh-ri-guh-nuh-kuh in-jee-nay-roo", image: "💻" },
+  ];
+
+  // Environmental vocabulary
+  const environmentalTerms = [
+    { sinhala: "දේශගුණ විපර්යාසය", english: "Climate Change", pronunciation: "day-shuh-goo-nuh vi-pur-yaa-suh-yuh", image: "🌡️" },
+    { sinhala: "ගෝලීය උණුසුම", english: "Global Warming", pronunciation: "goh-lee-yuh oo-noo-soo-muh", image: "🔥" },
+    { sinhala: "පුනර්ජනනීය බලශක්ති", english: "Renewable Energy", pronunciation: "poo-nur-juh-nuh-nee-yuh buh-luh-shuhk-thee", image: "♻️" },
+    { sinhala: "සූර්ය බලශක්තිය", english: "Solar Energy", pronunciation: "soor-yuh buh-luh-shuhk-thee-yuh", image: "☀️" },
+    { sinhala: "වනාන්තර විනාශය", english: "Deforestation", pronunciation: "vuh-naan-thuh-ruh vee-naa-shuh-yuh", image: "🪓" },
+    { sinhala: "ජල දූෂණය", english: "Water Pollution", pronunciation: "juh-luh doo-shuh-nuh-yuh", image: "🚰" },
+    { sinhala: "වාතය දූෂණය", english: "Air Pollution", pronunciation: "vaa-thuh-yuh doo-shuh-nuh-yuh", image: "💨" },
+    { sinhala: "ජෛව විවිධත්වය", english: "Biodiversity", pronunciation: "jai-vuh vee-vee-dhuh-thvuh-yuh", image: "🦋" },
+    { sinhala: "පරිසර ආරක්ෂණය", english: "Environmental Protection", pronunciation: "puh-ri-suh-ruh aa-ruhk-shuh-nuh-yuh", image: "🌳" },
+    { sinhala: "කාබන් පියසටහන", english: "Carbon Footprint", pronunciation: "kaa-buhn pee-yuh-suh-tuh-huh-nuh", image: "👣" },
+    { sinhala: "ප්ලාස්ටික් දූෂණය", english: "Plastic Pollution", pronunciation: "plaas-tik doo-shuh-nuh-yuh", image: "🥤" },
+    { sinhala: "නැවත භාවිතය", english: "Recycling", pronunciation: "neh-vuh-thuh bhaa-vee-thuh-yuh", image: "♻️" },
+  ];
+
+  // Advanced transportation
+  const advancedTransportation = [
+    { sinhala: "අධිවේගී දුම්රිය", english: "High-Speed Train", pronunciation: "uh-dhee-vay-gee doom-ree-yuh", image: "🚄" },
+    { sinhala: "භූගත දුම්රිය", english: "Subway/Metro", pronunciation: "bhoo-guh-thuh doom-ree-yuh", image: "🚇" },
+    { sinhala: "හෙලිකොප්ටරය", english: "Helicopter", pronunciation: "heh-lee-kohp-tuh-ruh-yuh", image: "🚁" },
+    { sinhala: "නෞකාව", english: "Ship", pronunciation: "now-kaa-vuh", image: "🚢" },
+    { sinhala: "යාත්‍රාව", english: "Yacht", pronunciation: "yaath-raa-vuh", image: "🛥️" },
+    { sinhala: "ට්‍රෑම් රථය", english: "Tram", pronunciation: "trem ruh-thuh-yuh", image: "🚋" },
+    { sinhala: "ප්‍රදර්ශන යානය", english: "Exhibition Vehicle", pronunciation: "pruh-dur-shuh-nuh yaa-nuh-yuh", image: "🚐" },
+    { sinhala: "විදුලි මෝටර් රථය", english: "Electric Car", pronunciation: "vee-doo-lee moh-tur ruh-thuh-yuh", image: "🔋" },
+    { sinhala: "ස්කූටරය", english: "Scooter", pronunciation: "skoo-tuh-ruh-yuh", image: "🛵" },
+    { sinhala: "ලෝරිය", english: "Lorry/Truck", pronunciation: "loh-ree-yuh", image: "🚛" },
+    { sinhala: "ගුවන් යානය", english: "Aircraft", pronunciation: "goo-vuhn yaa-nuh-yuh", image: "🛩️" },
+    { sinhala: "අභ්‍යවකාශ යානය", english: "Spacecraft", pronunciation: "uhb-yuh-vuh-kaa-shuh yaa-nuh-yuh", image: "🚀" },
+  ];
+
   // Academic and formal vocabulary
   const academicVocabulary = [
     { sinhala: "පර්යේෂණය", english: "Research", pronunciation: "pur-yay-shuh-nuh-yuh", image: "🔍" },
@@ -441,6 +489,51 @@ const Grade6 = ({ initialSection }) => {
                 ))}
               </div>
             </div>
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Advanced Professions - උසස් වෘත්තීන්
+            </h3>
+            <div className="word-grid">
+              {advancedProfessions.map((prof, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={prof.sinhala}
+                  englishWord={prof.english}
+                  pronunciation={prof.pronunciation}
+                  image={prof.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Environmental Terms - පරිසර පද
+            </h3>
+            <div className="word-grid">
+              {environmentalTerms.map((term, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={term.sinhala}
+                  englishWord={term.english}
+                  pronunciation={term.pronunciation}
+                  image={term.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Advanced Transportation - උසස් ප්‍රවාහනය
+            </h3>
+            <div className="word-grid">
+              {advancedTransportation.map((transport, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={transport.sinhala}
+                  englishWord={transport.english}
+                  pronunciation={transport.pronunciation}
+                  image={transport.image}
+                />
+              ))}
+            </div>
+
             <div className="activity-card">
               <h3>Academic Word Families</h3>
               <p><strong>Root: සංවර්ධන (development)</strong></p>

@@ -61,6 +61,54 @@ const Grade5 = ({ initialSection }) => {
     { sinhala: "පුරාණ ශිලාලේඛන", english: "Ancient Inscriptions", pronunciation: "poo-raa-nuh shee-laa-lay-khuh-nuh", image: "📝" },
   ];
 
+  // Sports
+  const sports = [
+    { sinhala: "ක්‍රිකට්", english: "Cricket", pronunciation: "kri-kuht", image: "🏏" },
+    { sinhala: "පාපන්දු", english: "Football", pronunciation: "paa-puhn-doo", image: "⚽" },
+    { sinhala: "රග්බි", english: "Rugby", pronunciation: "ruhg-bee", image: "🏉" },
+    { sinhala: "පිහිනීම", english: "Swimming", pronunciation: "pee-hee-nee-muh", image: "🏊" },
+    { sinhala: "මල්ලව පොර", english: "Wrestling", pronunciation: "muhl-luh-vuh poh-ruh", image: "🤼" },
+    { sinhala: "බැඩ්මින්ටන්", english: "Badminton", pronunciation: "bed-min-tuhn", image: "🏸" },
+    { sinhala: "මේස පන්දු", english: "Table Tennis", pronunciation: "may-suh puhn-doo", image: "🏓" },
+    { sinhala: "කබඩි", english: "Kabaddi", pronunciation: "kuh-buh-dee", image: "🤾" },
+    { sinhala: "ඇතුලාංගන ක්‍රීඩා", english: "Athletics", pronunciation: "eh-thoo-laan-guh-nuh kree-daa", image: "🏃" },
+    { sinhala: "මලල ක්‍රීඩා", english: "Track and Field", pronunciation: "muh-luh-luh kree-daa", image: "🏅" },
+    { sinhala: "පැදීම", english: "Cycling", pronunciation: "peh-dee-muh", image: "🚴" },
+    { sinhala: "තේනිස්", english: "Tennis", pronunciation: "tay-nis", image: "🎾" },
+  ];
+
+  // Buildings and structures
+  const buildings = [
+    { sinhala: "විහාරය", english: "Temple", pronunciation: "vee-haa-ruh-yuh", image: "🛕" },
+    { sinhala: "කොටුව", english: "Fort", pronunciation: "koh-too-vuh", image: "🏰" },
+    { sinhala: "මාලිගාව", english: "Palace", pronunciation: "maa-lee-gaa-vuh", image: "🏛️" },
+    { sinhala: "දාගැබ", english: "Stupa", pronunciation: "daa-geh-buh", image: "🕌" },
+    { sinhala: "පාලම", english: "Bridge", pronunciation: "paa-luh-muh", image: "🌉" },
+    { sinhala: "සොහොන", english: "Cemetery", pronunciation: "soh-hoh-nuh", image: "🪦" },
+    { sinhala: "වේවැල", english: "Reservoir/Tank", pronunciation: "vay-veh-luh", image: "💧" },
+    { sinhala: "ප්‍රතිමාව", english: "Statue", pronunciation: "pruh-thee-maa-vuh", image: "🗿" },
+    { sinhala: "කුළුණ", english: "Tower", pronunciation: "koo-loo-nuh", image: "🗼" },
+    { sinhala: "කෞතුකාගාරය", english: "Museum", pronunciation: "kow-thoo-kaa-gaa-ruh-yuh", image: "🏛️" },
+    { sinhala: "පුස්තකාලය", english: "Library", pronunciation: "poos-thuh-kaa-luh-yuh", image: "📚" },
+    { sinhala: "ක්‍රීඩාංගණය", english: "Stadium", pronunciation: "kree-daan-guh-nuh-yuh", image: "🏟️" },
+  ];
+
+  // Musical instruments
+  const musicalInstruments = [
+    { sinhala: "බෙරය", english: "Drum", pronunciation: "beh-ruh-yuh", image: "🥁" },
+    { sinhala: "වීණාව", english: "Veena", pronunciation: "vee-naa-vuh", image: "🪕" },
+    { sinhala: "හක් ගෙඩිය", english: "Conch Shell", pronunciation: "huhk geh-dee-yuh", image: "🐚" },
+    { sinhala: "තාලම්පට", english: "Cymbals", pronunciation: "thaa-luhm-puh-tuh", image: "🎶" },
+    { sinhala: "හොරණෑව", english: "Clarinet/Flute", pronunciation: "hoh-ruh-neh-vuh", image: "🎺" },
+    { sinhala: "වයලිනය", english: "Violin", pronunciation: "vuh-yuh-lee-nuh-yuh", image: "🎻" },
+    { sinhala: "ගිටාරය", english: "Guitar", pronunciation: "gee-taa-ruh-yuh", image: "🎸" },
+    { sinhala: "පියානෝව", english: "Piano", pronunciation: "pee-yaa-noh-vuh", image: "🎹" },
+    { sinhala: "රබාන", english: "Rabana", pronunciation: "ruh-baa-nuh", image: "🪘" },
+    { sinhala: "උඩැක්කිය", english: "Udakkiya", pronunciation: "oo-dehk-kee-yuh", image: "🥁" },
+    { sinhala: "දවුල", english: "Dawula", pronunciation: "duh-voo-luh", image: "🥁" },
+    { sinhala: "සැක්සෆෝන්", english: "Saxophone", pronunciation: "seks-fohn", image: "🎷" },
+  ];
+
   // Literary terms - expanded
   const literaryTerms = [
     { sinhala: "කවිය", english: "Poetry", pronunciation: "kuh-vi-yuh", image: "📝" },
@@ -568,6 +616,51 @@ const Grade5 = ({ initialSection }) => {
                   englishWord={item.english}
                   pronunciation={item.pronunciation}
                   image={item.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Sports - ක්‍රීඩා
+            </h3>
+            <div className="word-grid">
+              {sports.map((sport, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={sport.sinhala}
+                  englishWord={sport.english}
+                  pronunciation={sport.pronunciation}
+                  image={sport.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Buildings & Structures - ගොඩනැගිලි සහ ව්‍යුහයන්
+            </h3>
+            <div className="word-grid">
+              {buildings.map((building, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={building.sinhala}
+                  englishWord={building.english}
+                  pronunciation={building.pronunciation}
+                  image={building.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Musical Instruments - වාද්‍ය භාණ්ඩ
+            </h3>
+            <div className="word-grid">
+              {musicalInstruments.map((instrument, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={instrument.sinhala}
+                  englishWord={instrument.english}
+                  pronunciation={instrument.pronunciation}
+                  image={instrument.image}
                 />
               ))}
             </div>

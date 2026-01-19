@@ -93,6 +93,70 @@ const Grade4 = ({ initialSection }) => {
     { sinhala: "දිය ඇල්ල", english: "Waterfall", pronunciation: "dee-yuh ehl-luh", image: "🏔️" },
   ];
 
+  // Animals
+  const animals = [
+    { sinhala: "අලියා", english: "Elephant", pronunciation: "uh-lee-yaa", image: "🐘" },
+    { sinhala: "සිංහයා", english: "Lion", pronunciation: "sin-huh-yaa", image: "🦁" },
+    { sinhala: "දිවියා", english: "Leopard", pronunciation: "dee-vee-yaa", image: "🐆" },
+    { sinhala: "වලසා", english: "Bear", pronunciation: "vuh-luh-saa", image: "🐻" },
+    { sinhala: "මුවා", english: "Deer", pronunciation: "moo-vaa", image: "🦌" },
+    { sinhala: "වඳුරා", english: "Monkey", pronunciation: "vuhn-doo-raa", image: "🐒" },
+    { sinhala: "කිඹුලා", english: "Crocodile", pronunciation: "kim-boo-laa", image: "🐊" },
+    { sinhala: "කැස්බෑවා", english: "Turtle", pronunciation: "kehs-beh-vaa", image: "🐢" },
+    { sinhala: "මී හරකා", english: "Buffalo", pronunciation: "mee huh-ruh-kaa", image: "🐃" },
+    { sinhala: "ඉබ්බා", english: "Tortoise", pronunciation: "ib-baa", image: "🐢" },
+    { sinhala: "මොනරා", english: "Peacock", pronunciation: "moh-nuh-raa", image: "🦚" },
+    { sinhala: "කොවුලා", english: "Cuckoo", pronunciation: "koh-voo-laa", image: "🐦" },
+  ];
+
+  // Fruits
+  const fruits = [
+    { sinhala: "කෙසෙල්", english: "Banana", pronunciation: "keh-sehl", image: "🍌" },
+    { sinhala: "අඹ", english: "Mango", pronunciation: "uhm-buh", image: "🥭" },
+    { sinhala: "පේර", english: "Guava", pronunciation: "pay-ruh", image: "🍐" },
+    { sinhala: "පැපොල්", english: "Papaya", pronunciation: "peh-pohl", image: "🍈" },
+    { sinhala: "අන්නාසි", english: "Pineapple", pronunciation: "uhn-naa-see", image: "🍍" },
+    { sinhala: "දොඩම්", english: "Orange", pronunciation: "doh-duhm", image: "🍊" },
+    { sinhala: "ජම්බු", english: "Rose apple", pronunciation: "juhm-boo", image: "🍎" },
+    { sinhala: "අමරු", english: "Soursop", pronunciation: "uh-muh-roo", image: "🍈" },
+    { sinhala: "රඹුටන්", english: "Rambutan", pronunciation: "ruhm-boo-tuhn", image: "🍇" },
+    { sinhala: "මැංගුස්", english: "Mangosteen", pronunciation: "mehn-goos", image: "🍑" },
+    { sinhala: "පොල්", english: "Coconut", pronunciation: "pohl", image: "🥥" },
+    { sinhala: "ලෙමන්", english: "Lemon", pronunciation: "leh-muhn", image: "🍋" },
+  ];
+
+  // Vegetables
+  const vegetables = [
+    { sinhala: "කැරට්", english: "Carrot", pronunciation: "keh-ruht", image: "🥕" },
+    { sinhala: "තක්කාලි", english: "Tomato", pronunciation: "thuhk-kaa-lee", image: "🍅" },
+    { sinhala: "බටු", english: "Eggplant", pronunciation: "buh-too", image: "🍆" },
+    { sinhala: "මිරිස්", english: "Chilli", pronunciation: "mee-ris", image: "🌶️" },
+    { sinhala: "ලූණු", english: "Onion", pronunciation: "loo-noo", image: "🧅" },
+    { sinhala: "සුදු ලූණු", english: "Garlic", pronunciation: "soo-doo loo-noo", image: "🧄" },
+    { sinhala: "අල", english: "Potato", pronunciation: "uh-luh", image: "🥔" },
+    { sinhala: "බෝංචි", english: "Beans", pronunciation: "bohn-chee", image: "🫛" },
+    { sinhala: "කරවිල", english: "Bitter gourd", pronunciation: "kuh-ruh-vee-luh", image: "🥒" },
+    { sinhala: "වට්ටක්කා", english: "Pumpkin", pronunciation: "vuht-tuhk-kaa", image: "🎃" },
+    { sinhala: "ගෝවා", english: "Cabbage", pronunciation: "goh-vaa", image: "🥬" },
+    { sinhala: "බීට්රූට්", english: "Beetroot", pronunciation: "beet-root", image: "🫒" },
+  ];
+
+  // Household items
+  const householdItems = [
+    { sinhala: "පුටුව", english: "Chair", pronunciation: "poo-too-vuh", image: "🪑" },
+    { sinhala: "මේසය", english: "Table", pronunciation: "may-suh-yuh", image: "🪵" },
+    { sinhala: "ඇඳ", english: "Bed", pronunciation: "ehn-duh", image: "🛏️" },
+    { sinhala: "කවුළුව", english: "Window", pronunciation: "kuh-voo-loo-vuh", image: "🪟" },
+    { sinhala: "දොර", english: "Door", pronunciation: "doh-ruh", image: "🚪" },
+    { sinhala: "රූපවාහිනිය", english: "Television", pronunciation: "roo-puh-vaa-hee-nee-yuh", image: "📺" },
+    { sinhala: "ශීතකරණය", english: "Refrigerator", pronunciation: "shee-thuh-kuh-ruh-nuh-yuh", image: "🧊" },
+    { sinhala: "උදුන", english: "Stove", pronunciation: "oo-doo-nuh", image: "🔥" },
+    { sinhala: "විදුලි පංකාව", english: "Fan", pronunciation: "vee-doo-lee puhn-kaa-vuh", image: "🌀" },
+    { sinhala: "ලාම්පුව", english: "Lamp", pronunciation: "laam-poo-vuh", image: "💡" },
+    { sinhala: "කෝප්පය", english: "Cup", pronunciation: "kohp-puh-yuh", image: "🍵" },
+    { sinhala: "පිඟාන", english: "Plate", pronunciation: "pin-gaa-nuh", image: "🍽️" },
+  ];
+
   // Spices and products
   const spicesProducts = [
     { sinhala: "ගම්මිරිස්", english: "Cinnamon", pronunciation: "guhm-mee-ris", image: "🪵" },
@@ -476,6 +540,66 @@ const Grade4 = ({ initialSection }) => {
             </h3>
             <div className="word-grid">
               {spicesProducts.map((item, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={item.sinhala}
+                  englishWord={item.english}
+                  pronunciation={item.pronunciation}
+                  image={item.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Animals - සත්ත්වයන්
+            </h3>
+            <div className="word-grid">
+              {animals.map((animal, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={animal.sinhala}
+                  englishWord={animal.english}
+                  pronunciation={animal.pronunciation}
+                  image={animal.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Fruits - පලතුරු
+            </h3>
+            <div className="word-grid">
+              {fruits.map((fruit, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={fruit.sinhala}
+                  englishWord={fruit.english}
+                  pronunciation={fruit.pronunciation}
+                  image={fruit.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Vegetables - එළවළු
+            </h3>
+            <div className="word-grid">
+              {vegetables.map((veg, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={veg.sinhala}
+                  englishWord={veg.english}
+                  pronunciation={veg.pronunciation}
+                  image={veg.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Household Items - ගෘහ භාණ්ඩ
+            </h3>
+            <div className="word-grid">
+              {householdItems.map((item, index) => (
                 <WordCard
                   key={index}
                   sinhalaWord={item.sinhala}

@@ -77,6 +77,54 @@ const Grade3 = ({ initialSection }) => {
     { sinhala: "බේකරු", english: "Baker", pronunciation: "bay-kuh-roo", image: "👨‍🍳" },
   ];
 
+  // Vehicles
+  const vehicles = [
+    { sinhala: "මෝටර් රථය", english: "Car", pronunciation: "moh-tur ruh-thuh-yuh", image: "🚗" },
+    { sinhala: "බස් රථය", english: "Bus", pronunciation: "bus ruh-thuh-yuh", image: "🚌" },
+    { sinhala: "ත්‍රීවීලය", english: "Three-wheeler", pronunciation: "three-vee-luh-yuh", image: "🛺" },
+    { sinhala: "යතුරුපැදිය", english: "Motorcycle", pronunciation: "yuh-thoo-roo-peh-dee-yuh", image: "🏍️" },
+    { sinhala: "බයිසිකලය", english: "Bicycle", pronunciation: "by-si-kuh-luh-yuh", image: "🚲" },
+    { sinhala: "දුම්රිය", english: "Train", pronunciation: "doom-ree-yuh", image: "🚆" },
+    { sinhala: "ගුවන් යානය", english: "Airplane", pronunciation: "goo-vuhn yaa-nuh-yuh", image: "✈️" },
+    { sinhala: "බෝට්ටුව", english: "Boat", pronunciation: "boht-too-vuh", image: "⛵" },
+    { sinhala: "ලොරිය", english: "Truck", pronunciation: "loh-ree-yuh", image: "🚚" },
+    { sinhala: "ටැක්සිය", english: "Taxi", pronunciation: "tek-see-yuh", image: "🚕" },
+    { sinhala: "ඇම්බියුලන්ස්", english: "Ambulance", pronunciation: "em-bee-yoo-luhns", image: "🚑" },
+    { sinhala: "ගිනි නිවන රථය", english: "Fire truck", pronunciation: "gee-nee ni-vuhn ruh-thuh-yuh", image: "🚒" },
+  ];
+
+  // Body parts
+  const bodyParts = [
+    { sinhala: "හිස", english: "Head", pronunciation: "hee-suh", image: "🗣️" },
+    { sinhala: "ඇස", english: "Eye", pronunciation: "eh-suh", image: "👁️" },
+    { sinhala: "කන", english: "Ear", pronunciation: "kuh-nuh", image: "👂" },
+    { sinhala: "නාසය", english: "Nose", pronunciation: "naa-suh-yuh", image: "👃" },
+    { sinhala: "කට", english: "Mouth", pronunciation: "kuh-tuh", image: "👄" },
+    { sinhala: "අත", english: "Hand", pronunciation: "uh-thuh", image: "✋" },
+    { sinhala: "පාදය", english: "Foot", pronunciation: "paa-duh-yuh", image: "🦶" },
+    { sinhala: "කකුල", english: "Leg", pronunciation: "kuh-koo-luh", image: "🦵" },
+    { sinhala: "බඩ", english: "Stomach", pronunciation: "buh-duh", image: "🫃" },
+    { sinhala: "හදවත", english: "Heart", pronunciation: "huh-duh-vuh-thuh", image: "❤️" },
+    { sinhala: "දත්", english: "Teeth", pronunciation: "duhth", image: "🦷" },
+    { sinhala: "කෙස්", english: "Hair", pronunciation: "kehs", image: "💇" },
+  ];
+
+  // Weather
+  const weather = [
+    { sinhala: "අව්ව", english: "Sunshine", pronunciation: "uhv-vuh", image: "☀️" },
+    { sinhala: "වැස්ස", english: "Rain", pronunciation: "vehs-suh", image: "🌧️" },
+    { sinhala: "වළාකුළු", english: "Clouds", pronunciation: "vuh-laa-koo-loo", image: "☁️" },
+    { sinhala: "සුළඟ", english: "Wind", pronunciation: "soo-luhn-guh", image: "💨" },
+    { sinhala: "අකුණු", english: "Lightning", pronunciation: "uh-koo-noo", image: "⚡" },
+    { sinhala: "ගිගුරුම්", english: "Thunder", pronunciation: "gee-goo-room", image: "🌩️" },
+    { sinhala: "දේදුන්න", english: "Rainbow", pronunciation: "day-doon-nuh", image: "🌈" },
+    { sinhala: "මීදුම", english: "Fog", pronunciation: "mee-doo-muh", image: "🌫️" },
+    { sinhala: "හිම", english: "Snow", pronunciation: "hee-muh", image: "❄️" },
+    { sinhala: "උණුසුම", english: "Hot weather", pronunciation: "oo-noo-soo-muh", image: "🥵" },
+    { sinhala: "සීතල", english: "Cold weather", pronunciation: "see-thuh-luh", image: "🥶" },
+    { sinhala: "කුණාටුව", english: "Storm", pronunciation: "koo-naa-too-vuh", image: "🌪️" },
+  ];
+
   // Clothing
   const clothing = [
     { sinhala: "කමිසය", english: "Shirt", pronunciation: "kuh-mee-suh-yuh", image: "👔" },
@@ -505,6 +553,51 @@ const Grade3 = ({ initialSection }) => {
                   englishWord={action.english}
                   pronunciation={action.pronunciation}
                   image={action.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Vehicles - වාහන
+            </h3>
+            <div className="word-grid">
+              {vehicles.map((vehicle, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={vehicle.sinhala}
+                  englishWord={vehicle.english}
+                  pronunciation={vehicle.pronunciation}
+                  image={vehicle.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Body Parts - ශරීර කොටස්
+            </h3>
+            <div className="word-grid">
+              {bodyParts.map((part, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={part.sinhala}
+                  englishWord={part.english}
+                  pronunciation={part.pronunciation}
+                  image={part.image}
+                />
+              ))}
+            </div>
+
+            <h3 style={{ color: "#667eea", margin: "30px 0 20px 0", textAlign: "center" }}>
+              Weather - කාලගුණය
+            </h3>
+            <div className="word-grid">
+              {weather.map((item, index) => (
+                <WordCard
+                  key={index}
+                  sinhalaWord={item.sinhala}
+                  englishWord={item.english}
+                  pronunciation={item.pronunciation}
+                  image={item.image}
                 />
               ))}
             </div>
