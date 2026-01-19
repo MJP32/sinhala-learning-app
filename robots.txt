@@ -1,0 +1,30 @@
+# robots.txt for Learn Sinhala App
+# https://sinhala-learning.web.app/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sinhala-learning.web.app/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /

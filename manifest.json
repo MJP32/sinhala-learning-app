@@ -1,0 +1,58 @@
+{
+  "short_name": "Learn Sinhala",
+  "name": "Learn Sinhala - සිංහල ඉගෙන ගන්න",
+  "description": "Free interactive Sinhala language learning app. Master the Sinhala alphabet, vocabulary, grammar, and pronunciation with comprehensive lessons from Grade 1 to Grade 6.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#8d153a",
+  "background_color": "#ffffff",
+  "categories": ["education", "language", "books"],
+  "lang": "en",
+  "dir": "ltr",
+  "iarc_rating_id": "",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Grade 1 - Basics",
+      "short_name": "Grade 1",
+      "description": "Learn Sinhala alphabet and basic words",
+      "url": "/?grade=1",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Grade 2 - Vocabulary",
+      "short_name": "Grade 2",
+      "description": "Build your Sinhala vocabulary",
+      "url": "/?grade=2",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Grade 3 - Grammar",
+      "short_name": "Grade 3",
+      "description": "Learn Sinhala grammar and conversation",
+      "url": "/?grade=3",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    }
+  ]
+}
