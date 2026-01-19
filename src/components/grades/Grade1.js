@@ -103,7 +103,7 @@ const Grade1 = ({ initialSection }) => {
   const animals = [
     { sinhala: "බල්ලා", english: "Dog", pronunciation: "buhl-laa", image: "🐕" },
     { sinhala: "පූසා", english: "Cat", pronunciation: "poo-saa", image: "🐱" },
-    { sinhala: "හාතිය", english: "Elephant", pronunciation: "haa-thee-yuh", image: "🐘" },
+    { sinhala: "අලියා", english: "Elephant", pronunciation: "aa-li-yaa", image: "🐘" },
     { sinhala: "කුරුල්ලා", english: "Bird", pronunciation: "koo-rool-laa", image: "🐦" },
     { sinhala: "මාළුවා", english: "Fish", pronunciation: "maa-loo-vaa", image: "🐟" },
     { sinhala: "වඳුරා", english: "Monkey", pronunciation: "vuhn-doo-raa", image: "🐒" },
@@ -593,7 +593,7 @@ const Grade1 = ({ initialSection }) => {
           // Animals
           { sinhala: "බල්ලා", english: "Dog", pronunciation: "bal-laa" },
           { sinhala: "පූසා", english: "Cat", pronunciation: "poo-saa" },
-          { sinhala: "හාතිය", english: "Elephant", pronunciation: "haa-thi-ya" },
+          { sinhala: "අලියා", english: "Elephant", pronunciation: "aa-li-yaa" },
           // Fruits
           { sinhala: "කෙසෙල්", english: "Banana", pronunciation: "ke-sel" },
           { sinhala: "අඹ", english: "Mango", pronunciation: "am-ba" },
@@ -646,7 +646,7 @@ const Grade1 = ({ initialSection }) => {
           { id: 2, sinhala: "තාත්තා", english: "Father" },
           { id: 3, sinhala: "බල්ලා", english: "Dog" },
           { id: 4, sinhala: "පූසා", english: "Cat" },
-          { id: 5, sinhala: "හාතිය", english: "Elephant" },
+          { id: 5, sinhala: "අලියා", english: "Elephant" },
           { id: 6, sinhala: "කුරුල්ලා", english: "Bird" },
         ];
 
@@ -677,12 +677,12 @@ const Grade1 = ({ initialSection }) => {
 
         const grade1SpeedQuizData = [
           { question: "What is 'Mother' in Sinhala?", questionSi: "'අම්මා' යනු කුමක්ද?", options: ["අම්මා", "තාත්තා", "බල්ලා", "පූසා"], correct: 0 },
-          { question: "What is 'Dog' in Sinhala?", questionSi: "'බල්ලා' යනු කුමක්ද?", options: ["පූසා", "බල්ලා", "හාතිය", "කුරුල්ලා"], correct: 1 },
+          { question: "What is 'Dog' in Sinhala?", questionSi: "'බල්ලා' යනු කුමක්ද?", options: ["පූසා", "බල්ලා", "අලියා", "කුරුල්ලා"], correct: 1 },
           { question: "What number is 'එක'?", questionSi: "'එක' යනු කුමන අංකයද?", options: ["One", "Two", "Three", "Four"], correct: 0 },
-          { question: "What animal is 'හාතිය'?", questionSi: "'හාතිය' යනු කුමන සතෙක්ද?", options: ["Dog", "Cat", "Elephant", "Bird"], correct: 2 },
+          { question: "What animal is 'අලියා'?", questionSi: "'අලියා' යනු කුමන සතෙක්ද?", options: ["Dog", "Cat", "Elephant", "Bird"], correct: 2 },
           { question: "What color is 'රතු'?", questionSi: "'රතු' යනු කුමන වර්ණයද?", options: ["Blue", "Green", "Red", "Yellow"], correct: 2 },
           { question: "What fruit is 'අඹ'?", questionSi: "'අඹ' යනු කුමන ඵලයද?", options: ["Apple", "Mango", "Banana", "Orange"], correct: 1 },
-          { question: "What is 'Cat' in Sinhala?", questionSi: "'පූසා' යනු කුමක්ද?", options: ["බල්ලා", "පූසා", "හාතිය", "සිංහයා"], correct: 1 },
+          { question: "What is 'Cat' in Sinhala?", questionSi: "'පූසා' යනු කුමක්ද?", options: ["බල්ලා", "පූසා", "අලියා", "සිංහයා"], correct: 1 },
           { question: "What is 'Father' in Sinhala?", questionSi: "'තාත්තා' යනු කුමක්ද?", options: ["අම්මා", "තාත්තා", "අයියා", "නංගි"], correct: 1 },
         ];
 
@@ -691,13 +691,13 @@ const Grade1 = ({ initialSection }) => {
           { sinhala: "තාත්තා", english: "Father" },
           { sinhala: "බල්ලා", english: "Dog" },
           { sinhala: "පූසා", english: "Cat" },
-          { sinhala: "හාතිය", english: "Elephant" },
+          { sinhala: "අලියා", english: "Elephant" },
           { sinhala: "එක", english: "One" },
         ];
 
         const grade1FillBlankData = [
           { sentence: "මගේ ___ හොඳයි", answer: "අම්මා", options: ["අම්මා", "බල්ලා", "එක"], english: "My mother is good", hint: "A family member" },
-          { sentence: "___ ලොකු සතෙක්", answer: "හාතිය", options: ["හාතිය", "පූසා", "හාවා"], english: "Elephant is a big animal", hint: "The largest land animal" },
+          { sentence: "___ ලොකු සතෙක්", answer: "අලියා", options: ["අලියා", "පූසා", "හාවා"], english: "Elephant is a big animal", hint: "The largest land animal" },
           { sentence: "මට අවුරුදු ___", answer: "හය", options: ["හය", "සිය", "දහය"], english: "I am six years old", hint: "A number" },
         ];
 
