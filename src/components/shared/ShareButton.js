@@ -5,7 +5,7 @@ const ShareButton = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const websiteUrl = "https://sringlish.com";
+  const websiteUrl = "https://www.sringlish.com";
   const shareText = "Learn Sinhala with Sringlish - Master the beautiful language of Sri Lanka!";
 
   const shareLinks = {

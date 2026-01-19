@@ -12,7 +12,7 @@ const SEO = ({
   structuredData = null
 }) => {
   const baseTitle = 'Learn Sinhala';
-  const baseUrl = 'https://sinhala-learning.web.app';
+  const baseUrl = 'https://www.sringlish.com';
 
   useEffect(() => {
     // Update document title
@@ -197,13 +197,13 @@ export const generateBreadcrumbs = (grade, section = null) => {
         '@type': 'ListItem',
         'position': 1,
         'name': 'Home',
-        'item': 'https://sinhala-learning.web.app/'
+        'item': 'https://www.sringlish.com/'
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': `Grade ${grade}`,
-        'item': `https://sinhala-learning.web.app/#grade${grade}`
+        'item': `https://www.sringlish.com/#grade${grade}`
       }
     ]
   };
@@ -213,7 +213,7 @@ export const generateBreadcrumbs = (grade, section = null) => {
       '@type': 'ListItem',
       'position': 3,
       'name': section,
-      'item': `https://sinhala-learning.web.app/#grade${grade}-${section}`
+      'item': `https://www.sringlish.com/#grade${grade}-${section}`
     });
   }
 
