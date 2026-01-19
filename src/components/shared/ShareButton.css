@@ -1,0 +1,136 @@
+.share-button-container {
+  position: relative;
+  display: inline-flex;
+  z-index: 100;
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.share-btn:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.share-btn:active {
+  transform: translateY(0);
+}
+
+.share-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+  min-width: 180px;
+  z-index: 1000;
+  animation: slideIn 0.2s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.share-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.share-option:hover {
+  background: var(--bg-card-hover);
+}
+
+.share-option svg {
+  flex-shrink: 0;
+}
+
+.share-option.facebook:hover {
+  background: rgba(24, 119, 242, 0.1);
+  color: #1877F2;
+}
+
+.share-option.twitter:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+}
+
+.share-option.whatsapp:hover {
+  background: rgba(37, 211, 102, 0.1);
+  color: #25D366;
+}
+
+.share-option.linkedin:hover {
+  background: rgba(10, 102, 194, 0.1);
+  color: #0A66C2;
+}
+
+.share-option.copy:hover {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+}
+
+.share-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .share-menu {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 20px 20px 0 0;
+    padding: 16px;
+    min-width: auto;
+  }
+
+  .share-option {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}

@@ -27,7 +27,7 @@ class SoundService {
     // Use Unicode code point as filename to avoid file system issues
     const codePoint = sinhalaLetter.codePointAt(0).toString(16);
     // Add cache buster to force fresh load
-    return `${process.env.PUBLIC_URL}/audio/letters/${codePoint}.mp3?v=8`;
+    return `${process.env.PUBLIC_URL}/audio/letters/${codePoint}.mp3?v=10`;
   }
 
   // Get audio file path for a word

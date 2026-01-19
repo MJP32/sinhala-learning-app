@@ -3,6 +3,7 @@ import { useGamification } from "../context/GamificationContext";
 import { useChallenges } from "../context/ChallengesContext";
 import SoundControls from "./shared/SoundControls";
 import ThemeToggle from "./shared/ThemeToggle";
+import ShareButton from "./shared/ShareButton";
 import XPDisplay from "./gamification/XPDisplay";
 import StreakIndicator from "./gamification/StreakIndicator";
 import AchievementsModal from "./gamification/AchievementsModal";
@@ -82,6 +83,7 @@ const Header = ({ user, onLogout }) => {
 
               <SoundControls />
               <ThemeToggle />
+              <ShareButton />
             </div>
 
             {/* User Section */}
