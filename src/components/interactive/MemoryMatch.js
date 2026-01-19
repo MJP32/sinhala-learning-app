@@ -95,6 +95,7 @@ const MemoryMatch = ({
     if (matchedPairs.length > 0 && matchedPairs.length === cards.length / 2) {
       finishGame();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [matchedPairs, cards.length]);
 
   const handleCardClick = useCallback((card) => {

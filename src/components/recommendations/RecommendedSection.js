@@ -2,7 +2,7 @@ import React from 'react';
 import './Recommendations.css';
 
 const RecommendedSection = ({ recommendation, index, onNavigate }) => {
-  const { sectionName, sectionNameSi, currentScore, gap, reason, reasonSi, actionType, section, grade } = recommendation;
+  const { sectionName, sectionNameSi, currentScore, gap, reason, actionType, section, grade } = recommendation;
 
   const getActionIcon = () => {
     switch (actionType) {

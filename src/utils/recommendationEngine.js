@@ -318,10 +318,12 @@ export const calculateLearningHealth = (analytics) => {
   };
 };
 
-export default {
+const recommendationEngine = {
   analyzeWeakAreas,
   generateRecommendations,
   generateQuickReviewQuestions,
   calculateLearningHealth,
   categoryToSectionMap,
 };
+
+export default recommendationEngine;

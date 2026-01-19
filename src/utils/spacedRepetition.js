@@ -125,7 +125,6 @@ export const calculateQuality = (correct, responseTime, usedHint = false) => {
  */
 export const getFlashcardStats = (flashcards) => {
   const cards = Object.values(flashcards);
-  const now = new Date();
 
   const stats = {
     total: cards.length,

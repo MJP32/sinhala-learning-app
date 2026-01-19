@@ -17,19 +17,7 @@ const Grade1 = ({ initialSection }) => {
     }
   }, [initialSection]);
 
-  const sections = [
-    { id: "letters", label: "Letters" },
-    { id: "numbers", label: "Numbers" },
-    { id: "words", label: "Simple Words" },
-    { id: "animals", label: "Animals" },
-    { id: "fruits", label: "Fruits" },
-    { id: "body", label: "Body Parts" },
-    { id: "colors", label: "Colors" },
-    { id: "games", label: "Fun Games" },
-    { id: "songs", label: "Songs & Rhymes" },
-    { id: "practice", label: "Speak & Learn" },
-    { id: "quiz", label: "Quiz" },
-  ];
+  // Section definitions moved to GRADE_SECTIONS config
 
   const vowels = [
     { sinhala: "අ", roman: "a", sound: "uh" },

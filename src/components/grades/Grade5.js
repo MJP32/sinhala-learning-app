@@ -14,19 +14,7 @@ const Grade5 = ({ initialSection }) => {
     }
   }, [initialSection]);
 
-  const sections = [
-    { id: "reading", label: "Advanced Reading" },
-    { id: "grammar", label: "Complex Grammar" },
-    { id: "writing", label: "Formal Writing" },
-    { id: "vocabulary", label: "Academic Words" },
-    { id: "idioms", label: "Idioms & Phrases" },
-    { id: "literature", label: "Classical Literature" },
-    { id: "culture", label: "Heritage & Identity" },
-    { id: "formal", label: "Formal Language" },
-    { id: "projects", label: "Research Projects" },
-    { id: "practice", label: "Speak & Learn" },
-    { id: "quiz", label: "Comprehensive Quiz" },
-  ];
+  // Section definitions moved to GRADE_SECTIONS config
 
   const practiceWords = [
     { sinhala: "විද්‍යාව", english: "Science", pronunciation: "vid-yaa-vuh" },

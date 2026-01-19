@@ -95,6 +95,7 @@ export const ChallengesProvider = ({ children }) => {
         pronunciationsPracticed: 0,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   // Save challenges to Firebase

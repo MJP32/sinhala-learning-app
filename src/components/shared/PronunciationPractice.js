@@ -11,7 +11,6 @@ const PronunciationPractice = ({ words, title = "Pronunciation Practice" }) => {
   const [recognition, setRecognition] = useState(null);
   const [isSupported, setIsSupported] = useState(true);
   const [showHint, setShowHint] = useState(false);
-  const [sinhalaVoiceAvailable, setSinhalaVoiceAvailable] = useState(false);
 
   const currentWord = words[currentWordIndex];
   const checkPronunciationRef = useRef(null);
@@ -57,20 +56,6 @@ const PronunciationPractice = ({ words, title = "Pronunciation Practice" }) => {
     };
 
     setRecognition(recognitionInstance);
-
-    // Check for Sinhala voice availability
-    if ('speechSynthesis' in window) {
-      const checkVoices = () => {
-        const voices = window.speechSynthesis.getVoices();
-        const sinhalaVoice = voices.find(voice =>
-          voice.lang.startsWith('si') || voice.name.toLowerCase().includes('sinhala')
-        );
-        setSinhalaVoiceAvailable(!!sinhalaVoice);
-      };
-
-      checkVoices();
-      window.speechSynthesis.onvoiceschanged = checkVoices;
-    }
 
     return () => {
       if (recognitionInstance) {

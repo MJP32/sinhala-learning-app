@@ -14,19 +14,7 @@ const Grade6 = ({ initialSection }) => {
     }
   }, [initialSection]);
 
-  const sections = [
-    { id: "reading", label: "Critical Reading" },
-    { id: "grammar", label: "Advanced Grammar" },
-    { id: "writing", label: "Academic Writing" },
-    { id: "vocabulary", label: "Advanced Vocabulary" },
-    { id: "literature", label: "Literary Analysis" },
-    { id: "culture", label: "Contemporary Issues" },
-    { id: "media", label: "Media Literacy" },
-    { id: "speaking", label: "Public Speaking" },
-    { id: "projects", label: "Capstone Project" },
-    { id: "practice", label: "Speak & Learn" },
-    { id: "quiz", label: "Final Examination" },
-  ];
+  // Section definitions moved to GRADE_SECTIONS config
 
   const practiceWords = [
     { sinhala: "ප්‍රජාතන්ත්‍රවාදය", english: "Democracy", pronunciation: "pruh-jaa-thun-thruh-vaa-duh-yuh" },

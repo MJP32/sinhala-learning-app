@@ -106,6 +106,7 @@ export const AnalyticsProvider = ({ children }) => {
       clearInterval(interval);
       clearInterval(saveInterval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   // Save analytics data

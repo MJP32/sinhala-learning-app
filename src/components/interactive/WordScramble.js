@@ -113,8 +113,6 @@ const WordScramble = ({
   };
 
   if (isComplete) {
-    const accuracy = Math.round((score / (words.length * 5)) * 100);
-
     return (
       <div className="game-complete">
         <h3>Word Scramble Complete! / වචන පැටලිලි අවසන්!</h3>

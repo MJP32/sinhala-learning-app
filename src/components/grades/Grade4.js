@@ -14,19 +14,7 @@ const Grade4 = ({ initialSection }) => {
     }
   }, [initialSection]);
 
-  const sections = [
-    { id: "reading", label: "Reading" },
-    { id: "grammar", label: "Advanced Grammar" },
-    { id: "vocabulary", label: "Vocabulary" },
-    { id: "emotions", label: "Emotions" },
-    { id: "nature", label: "Nature" },
-    { id: "writing", label: "Creative Writing" },
-    { id: "culture", label: "Culture & History" },
-    { id: "proverbs", label: "Proverbs" },
-    { id: "literature", label: "Literature" },
-    { id: "practice", label: "Speak & Learn" },
-    { id: "quiz", label: "Final Quiz" },
-  ];
+  // Section definitions moved to GRADE_SECTIONS config
 
   const practiceWords = [
     { sinhala: "අනුරාධපුරය", english: "Anuradhapura", pronunciation: "uh-noo-raa-duh-poo-ruh-yuh" },

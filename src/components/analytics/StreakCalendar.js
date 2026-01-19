@@ -1,5 +1,5 @@
 import React from 'react';
-import { format, startOfMonth, endOfMonth, eachDayOfInterval, isToday } from 'date-fns';
+import { format, startOfMonth, endOfMonth, eachDayOfInterval, isToday } from 'date-fns'; // eslint-disable-line no-unused-vars
 import './Analytics.css';
 
 const StreakCalendar = ({ dailyActivity }) => {

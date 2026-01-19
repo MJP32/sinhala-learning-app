@@ -14,19 +14,7 @@ const Grade2 = ({ initialSection }) => {
     }
   }, [initialSection]);
 
-  const sections = [
-    { id: "family", label: "Family" },
-    { id: "colors", label: "Colors" },
-    { id: "numbers", label: "Numbers 11-20" },
-    { id: "days", label: "Days & Months" },
-    { id: "food", label: "Food" },
-    { id: "weather", label: "Weather" },
-    { id: "school", label: "School" },
-    { id: "sentences", label: "Simple Sentences" },
-    { id: "stories", label: "Short Stories" },
-    { id: "practice", label: "Speak & Learn" },
-    { id: "quiz", label: "Quiz" },
-  ];
+  // Section definitions moved to GRADE_SECTIONS config
 
   const practiceWords = [
     { sinhala: "අක්කා", english: "Elder Sister", pronunciation: "uhk-kaa" },

@@ -29,6 +29,7 @@ const GradeSelector = ({ currentGrade, onGradeChange, onSectionChange }) => {
       }
     });
     return items;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [expandedGrade, isGradeUnlocked]);
 
   // Close dropdown when clicking outside
@@ -129,6 +130,7 @@ const GradeSelector = ({ currentGrade, onGradeChange, onSectionChange }) => {
       default:
         break;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focusedIndex, getNavigableItems, expandedGrade, findGradeIndex]);
 
   // Focus the current item when focusedIndex changes
@@ -215,7 +217,7 @@ const GradeSelector = ({ currentGrade, onGradeChange, onSectionChange }) => {
           const gradeRefIndex = refIndex++;
 
           return (
-            <div key={grade} className="grade-item" role="treeitem" aria-expanded={isExpanded}>
+            <div key={grade} className="grade-item" role="treeitem" aria-expanded={isExpanded} aria-selected={currentGrade === grade}>
               {/* Grade Header */}
               <button
                 ref={(el) => (itemRefs.current[gradeRefIndex] = el)}
@@ -261,6 +263,7 @@ const GradeSelector = ({ currentGrade, onGradeChange, onSectionChange }) => {
                         }}
                         tabIndex={0}
                         role="treeitem"
+                        aria-selected={false}
                         aria-label={`${section.label}, ${isComplete ? 'completed' : 'not completed'}`}
                       >
                         <button

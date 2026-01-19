@@ -14,19 +14,7 @@ const Grade3 = ({ initialSection }) => {
     }
   }, [initialSection]);
 
-  const sections = [
-    { id: "grammar", label: "Grammar" },
-    { id: "tenses", label: "Tenses" },
-    { id: "conversation", label: "Conversation" },
-    { id: "vocabulary", label: "Vocabulary" },
-    { id: "professions", label: "Professions" },
-    { id: "clothing", label: "Clothing" },
-    { id: "reading", label: "Reading" },
-    { id: "writing", label: "Writing" },
-    { id: "stories", label: "Stories" },
-    { id: "practice", label: "Speak & Learn" },
-    { id: "quiz", label: "Quiz" },
-  ];
+  // Section definitions moved to GRADE_SECTIONS config
 
   const practiceWords = [
     { sinhala: "පාසල", english: "School", pronunciation: "paa-suh-luh" },

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useGamification } from '../../context/GamificationContext';
 import { useChallenges } from '../../context/ChallengesContext';
-import { calculateNextReview, calculateQuality, getFlashcardStats } from '../../utils/spacedRepetition';
+import { calculateNextReview, getFlashcardStats } from '../../utils/spacedRepetition';
 import { celebrateFlashcardMastery } from '../gamification/ConfettiCelebration';
 import Flashcard from './Flashcard';
 import './Interactive.css';
@@ -22,13 +22,11 @@ const FlashcardDeck = ({
     incorrect: 0
   });
   const [showComplete, setShowComplete] = useState(false);
-  const [startTime, setStartTime] = useState(null);
 
   const { addXP } = useGamification();
   const { trackFlashcardReview } = useChallenges();
 
   useEffect(() => {
-    setStartTime(Date.now());
     // Load saved card data from localStorage
     const saved = localStorage.getItem(`flashcards-${gradeKey}`);
     if (saved) {
@@ -51,7 +49,6 @@ const FlashcardDeck = ({
     // quality: 1 = wrong, 3 = hard, 4 = good, 5 = easy
     const cardId = currentCard.id;
     const existingData = cardData[cardId] || {};
-    const responseTime = Date.now() - startTime;
 
     const newData = calculateNextReview(existingData, quality);
 
@@ -84,7 +81,6 @@ const FlashcardDeck = ({
     if (currentIndex < cards.length - 1) {
       setCurrentIndex(prev => prev + 1);
       setIsFlipped(false);
-      setStartTime(Date.now());
     } else {
       finishDeck();
     }
@@ -110,7 +106,6 @@ const FlashcardDeck = ({
     setIsFlipped(false);
     setSessionStats({ reviewed: 0, correct: 0, incorrect: 0 });
     setShowComplete(false);
-    setStartTime(Date.now());
   };
 
   const stats = getFlashcardStats(cardData);
