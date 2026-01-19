@@ -29,9 +29,10 @@
     <meta property="og:url" content="https://www.sringlish.com/" />
     <meta property="og:title" content="Learn Sinhala Online | Free Sinhala Language Lessons" />
     <meta property="og:description" content="Learn Sinhala language online for free. Interactive lessons covering alphabet, vocabulary, grammar, and pronunciation. Perfect for beginners and advanced learners." />
-    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:image" content="https://www.sringlish.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Learn Sinhala - Free online Sinhala language learning app with interactive lessons" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="si_LK" />
     <meta property="og:site_name" content="Learn Sinhala" />
@@ -41,7 +42,8 @@
     <meta name="twitter:url" content="https://www.sringlish.com/" />
     <meta name="twitter:title" content="Learn Sinhala Online | Free Sinhala Language Lessons" />
     <meta name="twitter:description" content="Learn Sinhala language online for free. Interactive lessons covering alphabet, vocabulary, grammar, and pronunciation." />
-    <meta name="twitter:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta name="twitter:image" content="https://www.sringlish.com/og-image.png" />
+    <meta name="twitter:image:alt" content="Learn Sinhala - Free online Sinhala language learning app" />
 
     <!-- Alternate Languages -->
     <link rel="alternate" hreflang="en" href="https://www.sringlish.com/" />
@@ -177,6 +179,119 @@
       ]
     }
     </script>
+
+    <!-- Structured Data - WebSite with SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Learn Sinhala",
+      "alternateName": ["Sringlish", "සිංහල ඉගෙන ගන්න"],
+      "url": "https://www.sringlish.com/",
+      "description": "Free interactive Sinhala language learning platform",
+      "inLanguage": ["en", "si"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.sringlish.com/?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Structured Data - EducationalOrganization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Learn Sinhala",
+      "alternateName": "Sringlish",
+      "url": "https://www.sringlish.com/",
+      "logo": "https://www.sringlish.com/logo512.png",
+      "description": "Free online platform for learning Sinhala language through interactive lessons",
+      "areaServed": "Worldwide",
+      "availableLanguage": ["English", "Sinhala"],
+      "sameAs": []
+    }
+    </script>
+
+    <!-- Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.sringlish.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Grade 1 - Basic Sinhala",
+          "item": "https://www.sringlish.com/?grade=1"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Grade 2 - Vocabulary",
+          "item": "https://www.sringlish.com/?grade=2"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Grade 3 - Grammar",
+          "item": "https://www.sringlish.com/?grade=3"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Grade 4 - Advanced",
+          "item": "https://www.sringlish.com/?grade=4"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Grade 5 - Intermediate",
+          "item": "https://www.sringlish.com/?grade=5"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Grade 6 - Mastery",
+          "item": "https://www.sringlish.com/?grade=6"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data - ItemList for Course Navigation -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Sinhala Learning Grades",
+      "description": "Progressive Sinhala language courses from beginner to advanced",
+      "numberOfItems": 6,
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Grade 1 - Letters, Numbers, Animals, Fruits, Colors", "url": "https://www.sringlish.com/?grade=1"},
+        {"@type": "ListItem", "position": 2, "name": "Grade 2 - Family, Days, Months, Food", "url": "https://www.sringlish.com/?grade=2"},
+        {"@type": "ListItem", "position": 3, "name": "Grade 3 - Grammar, Tenses, Conversation", "url": "https://www.sringlish.com/?grade=3"},
+        {"@type": "ListItem", "position": 4, "name": "Grade 4 - Reading, Culture, Complex Grammar", "url": "https://www.sringlish.com/?grade=4"},
+        {"@type": "ListItem", "position": 5, "name": "Grade 5 - Formal Writing, Idioms, Literature", "url": "https://www.sringlish.com/?grade=5"},
+        {"@type": "ListItem", "position": 6, "name": "Grade 6 - Academic Writing, Literary Analysis", "url": "https://www.sringlish.com/?grade=6"}
+      ]
+    }
+    </script>
+
+    <!-- Search Engine Verification (replace YOUR_CODE with actual verification codes) -->
+    <!-- <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" /> -->
+    <!-- <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE" /> -->
+    <!-- <meta name="yandex-verification" content="YOUR_YANDEX_VERIFICATION_CODE" /> -->
   </head>
   <body>
     <noscript>
