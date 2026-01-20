@@ -487,21 +487,25 @@ const Grade4 = ({ initialSection }) => {
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">මම පාසලට ගියා <strong>සහ</strong> මිතුරන් මුණගැසුණා.</div>
+              <ReadAloudButton text="මම පාසලට ගියා සහ මිතුරන් මුණගැසුණා." />
               <div className="sentence-english">I went to school <strong>and</strong> met friends.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">ඔහු ඉගෙන ගත්තා <strong>නමුත්</strong> විභාගය සමත් වුණේ නෑ.</div>
+              <ReadAloudButton text="ඔහු ඉගෙන ගත්තා නමුත් විභාගය සමත් වුණේ නෑ." />
               <div className="sentence-english">He studied <strong>but</strong> didn't pass the exam.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">මම ගෙදර හිටියා <strong>නිසා</strong> වැස්ස ඇවිත්.</div>
+              <ReadAloudButton text="මම ගෙදර හිටියා නිසා වැස්ස ඇවිත්." />
               <div className="sentence-english">I stayed home <strong>because</strong> it rained.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">වැස්ස නතර වුණා <strong>නම්</strong> අපි පිටත යන්නම්.</div>
+              <ReadAloudButton text="වැස්ස නතර වුණා නම් අපි පිටත යන්නම්." />
               <div className="sentence-english"><strong>If</strong> the rain stops, we will go outside.</div>
             </div>
 
@@ -653,16 +657,19 @@ const Grade4 = ({ initialSection }) => {
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">ඔහුට ඉතා සතුටුයි විභාගය සමත් වුණු නිසා.</div>
+              <ReadAloudButton text="ඔහුට ඉතා සතුටුයි විභාගය සමත් වුණු නිසා." />
               <div className="sentence-english">He is very happy because he passed the exam.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">ඇය ලැජ්ජයි නිසා ඇය කතා කරන්නේ නෑ.</div>
+              <ReadAloudButton text="ඇය ලැජ්ජයි නිසා ඇය කතා කරන්නේ නෑ." />
               <div className="sentence-english">She doesn't speak because she is shy.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">ළමයින්ට විස්මයයි අලියා දැක්කම.</div>
+              <ReadAloudButton text="ළමයින්ට විස්මයයි අලියා දැක්කම." />
               <div className="sentence-english">The children are amazed when they see the elephant.</div>
             </div>
 
@@ -703,6 +710,11 @@ const Grade4 = ({ initialSection }) => {
                 වනාන්තරවල විවිධ සත්ත්ව සහ ශාක ජීවත් වෙනවා. අහසේ තාරකා දිලිසෙනවා.
                 හිරු උදාව සහ හිරු බැසීම ඉතා ලස්සනයි. අපි මේ ස්වභාවය ආරක්ෂා කරන්න ඕනේ.
               </div>
+              <ReadAloudButton
+                text="ශ්‍රී ලංකාව ස්වභාව සෞන්දර්යයෙන් පිරුණු රටක්. මෙහි උස් කඳුකර, ගලායන ගංගා, සුන්දර දිය ඇලි තියෙනවා. වනාන්තරවල විවිධ සත්ත්ව සහ ශාක ජීවත් වෙනවා. අහසේ තාරකා දිලිසෙනවා. හිරු උදාව සහ හිරු බැසීම ඉතා ලස්සනයි. අපි මේ ස්වභාවය ආරක්ෂා කරන්න ඕනේ."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Sri Lanka is a country full of natural beauty. It has high mountains, flowing rivers, and beautiful waterfalls.
                 Various animals and plants live in the forests. Stars twinkle in the sky.
@@ -721,11 +733,13 @@ const Grade4 = ({ initialSection }) => {
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">හිරු නැගෙනකොට අහස රතු පැහැයෙන් බබලනවා.</div>
+              <ReadAloudButton text="හිරු නැගෙනකොට අහස රතු පැහැයෙන් බබලනවා." />
               <div className="sentence-english">When the sun rises, the sky shines red.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">වළාකුළු එකතු වෙනවා වැසි වහින්න කලින්.</div>
+              <ReadAloudButton text="වළාකුළු එකතු වෙනවා වැසි වහින්න කලින්." />
               <div className="sentence-english">Clouds gather before it rains.</div>
             </div>
           </section>
@@ -751,6 +765,7 @@ const Grade4 = ({ initialSection }) => {
                   අපි ලන්ටර්න් හදනවා සහ දන්සල් පිහිටුවනවා. මම මේ උත්සවයට ආදරේ කරනවා
                   කරුණාව සහ සැමට ආදරය ගැන ඉගෙන ගන්න පුළුවන් නිසා. අපේ පවුල එකට ලන්ටර්න් හදනවා සහ පිරිත් අහනවා.
                 </div>
+                <ReadAloudButton text="මගේ ප්‍රියතම උත්සවය වෙසක් පෝය. මේ උත්සවය මැයි මාසයේ සමරනවා. අපි ලන්ටර්න් හදනවා සහ දන්සල් පිහිටුවනවා. මම මේ උත්සවයට ආදරේ කරනවා කරුණාව සහ සැමට ආදරය ගැන ඉගෙන ගන්න පුළුවන් නිසා. අපේ පවුල එකට ලන්ටර්න් හදනවා සහ පිරිත් අහනවා." />
               </div>
             </div>
 
@@ -775,6 +790,7 @@ const Grade4 = ({ initialSection }) => {
                   ආදරණීය,<br />
                   [ඔබේ නම]
                 </div>
+                <ReadAloudButton text="ප්‍රිය මිතුරා, කොහොමද? මගේ පාසල ගැන කියන්නම්. ආදරණීය," />
               </div>
             </div>
 
@@ -790,6 +806,7 @@ const Grade4 = ({ initialSection }) => {
                   A: මම පාසලෙන් එනවා. ඔබ මොකද කරන්නේ?<br />
                   B: මම ගෙදර යනවා...
                 </div>
+                <ReadAloudButton text="ආයුබෝවන්! කොහොමද? හොඳින්! ඔබ කොහෙන්ද එන්නේ? මම පාසලෙන් එනවා. ඔබ මොකද කරන්නේ? මම ගෙදර යනවා." />
               </div>
             </div>
 
@@ -870,6 +887,7 @@ const Grade4 = ({ initialSection }) => {
                 <div className="sentence-sinhala" style={{ fontSize: "1.3em", marginBottom: "10px" }}>
                   "{proverb.sinhala}"
                 </div>
+                <ReadAloudButton text={proverb.sinhala} />
                 <div className="sentence-english" style={{ fontStyle: "italic", marginBottom: "5px" }}>
                   "{proverb.english}"
                 </div>
@@ -901,6 +919,7 @@ const Grade4 = ({ initialSection }) => {
                 ජීවිතේ එහෙම තමයි<br />
                 සුවද දුකද එකට එනවා
               </div>
+              <ReadAloudButton text="මල් පිපෙන්නේ සුවද සුවදට. මල් වැරදෙන්නේ සීත සීතට. ජීවිතේ එහෙම තමයි. සුවද දුකද එකට එනවා." />
               <div className="sentence-english">
                 Flowers bloom in fragrant waves<br />
                 Flowers wither in the cold<br />
@@ -916,6 +935,11 @@ const Grade4 = ({ initialSection }) => {
                 ඔහුගේ ලොකු සුන්දර ඇස්වලට කදුළු පිරිලා. "මම කොහේ ගිහින්ද?" ඔහු හිතුවා.
                 "මගේ ගෝලයට ආපසු යන්න පුළුවන්ද?"
               </div>
+              <ReadAloudButton
+                text="පුංචි ප්‍රින්ස් කුමරු අහස බලාගෙන හිටියා. තාරකාවන් දිලිසෙනවා දැක්කා. ඔහුගේ ලොකු සුන්දර ඇස්වලට කදුළු පිරිලා. මම කොහේ ගිහින්ද ඔහු හිතුවා. මගේ ගෝලයට ආපසු යන්න පුළුවන්ද?"
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 The little prince was looking at the sky. He saw the stars shining.
                 His big beautiful eyes filled with tears. "Where am I going?" he thought.
@@ -931,6 +955,7 @@ const Grade4 = ({ initialSection }) => {
                 සමනලයෝ නටනවා<br />
                 අපේ ලස්සන ශ්‍රී ලංකාවේ
               </div>
+              <ReadAloudButton text="කඳුළු ගඟ වගේ ගලනවා. මල් මල් මතු පාවෙනවා. සමනලයෝ නටනවා. අපේ ලස්සන ශ්‍රී ලංකාවේ." />
               <div className="reading-english">
                 Rivers flow like tears<br />
                 Flowers float on the surface<br />
@@ -947,6 +972,7 @@ const Grade4 = ({ initialSection }) => {
                 ආදරයෙන් ගත කරන<br />
                 සතුටු ජීවිතය මගේ
               </div>
+              <ReadAloudButton text="ගෙදර එකයි මගෙ හිත. අම්මා තාත්තා එකට. ආදරයෙන් ගත කරන. සතුටු ජීවිතය මගේ." />
               <div className="reading-english">
                 My home is my heart<br />
                 With mother and father together<br />

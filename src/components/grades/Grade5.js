@@ -494,16 +494,19 @@ const Grade5 = ({ initialSection }) => {
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">මම මේ පොත කියවලා තියෙනවා.</div>
+              <ReadAloudButton text="මම මේ පොත කියවලා තියෙනවා." />
               <div className="sentence-english">I have read this book.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">වැස්ස ආවොත් අපි ගෙදර ඉන්නවා.</div>
+              <ReadAloudButton text="වැස්ස ආවොත් අපි ගෙදර ඉන්නවා." />
               <div className="sentence-english">If it rains, we will stay home.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">ගුරුවරයා කිව්වා හෙට පරීක්ෂණයක් තියෙනවා කියලා.</div>
+              <ReadAloudButton text="ගුරුවරයා කිව්වා හෙට පරීක්ෂණයක් තියෙනවා කියලා." />
               <div className="sentence-english">The teacher said that there is an exam tomorrow.</div>
             </div>
           </section>
@@ -558,6 +561,7 @@ const Grade5 = ({ initialSection }) => {
                   ස්තූතියි,<br />
                   කමල් පෙරේරා
                 </div>
+                <ReadAloudButton text="ගරු විදුහල්පති මහතා, ආනන්ද විද්‍යාලය, කොළඹ. ගරු මහත්මයා, නිවාඩු ඉල්ලීම පිළිබඳව. මා ඔබගේ පාසලේ 10 ශ්‍රේණියේ සිසුවෙක් වන අතර, පවුල් කටයුත්තක් නිසා නිවාඩු අවශ්‍ය වේ. කරුණාකර මට මෙම නිවාඩු ලබාදෙන මෙන් ඉල්ලා සිටිමි. ස්තූතියි, කමල් පෙරේරා" />
               </div>
             </div>
 
@@ -698,6 +702,7 @@ const Grade5 = ({ initialSection }) => {
                 <div className="sentence-sinhala" style={{ fontSize: "1.3em", marginBottom: "10px" }}>
                   {idiom.sinhala}
                 </div>
+                <ReadAloudButton text={idiom.sinhala} />
                 <div style={{ marginBottom: "5px", fontStyle: "italic" }}>
                   <strong>Literal:</strong> {idiom.literal}
                 </div>
@@ -738,6 +743,7 @@ const Grade5 = ({ initialSection }) => {
                 නොමැත නොමැතැයි කීවත්<br />
                 අපට අපේ රටමයි ලස්සන
               </div>
+              <ReadAloudButton text="සිරි ලක සිරි ලකට වඩා. රනින් රිදීන් බබලන තැන්. නොමැත නොමැතැයි කීවත්. අපට අපේ රටමයි ලස්සන." />
               <div className="sentence-english">
                 Though places shining with gold and silver<br />
                 May be more prosperous than Sri Lanka<br />
@@ -753,6 +759,11 @@ const Grade5 = ({ initialSection }) => {
                 ඔවුන් ලංකාවේ බටහිර වෙරළේ ගොඩබැස්සෝය. එම දිනයෙහි බුදුරජාණන්
                 වහන්සේ පිරිනිවන් පෑහ. මේ ලංකාවේ සිංහල ජාතියේ ආරම්භය විය.
               </div>
+              <ReadAloudButton
+                text="විජය කුමාරයා සිය අනුගාමිකයන් සත්සියයක් සමඟ ලංකාවට පැමිණියේය. ඔවුන් ලංකාවේ බටහිර වෙරළේ ගොඩබැස්සෝය. එම දිනයෙහි බුදුරජාණන් වහන්සේ පිරිනිවන් පෑහ. මේ ලංකාවේ සිංහල ජාතියේ ආරම්භය විය."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Prince Vijaya arrived in Lanka with seven hundred followers.
                 They landed on the western coast of Lanka. On that day, Lord
@@ -781,6 +792,7 @@ const Grade5 = ({ initialSection }) => {
                 කුඹුරු කොළ පැහැයෙන් දිලෙයි<br />
                 ගොවියෝ සතුටින් වෙසෙයි
               </div>
+              <ReadAloudButton text="අපේ ගම ලස්සන ගමක්. එහි වැව් ගං ඇලත් ඇත්. කුඹුරු කොළ පැහැයෙන් දිලෙයි. ගොවියෝ සතුටින් වෙසෙයි." />
               <div className="sentence-english">
                 Our village is a beautiful village<br />
                 It has tanks, rivers, and streams<br />
@@ -797,6 +809,7 @@ const Grade5 = ({ initialSection }) => {
                 නමෝ නමෝ නමෝ නමෝ මාතා<br />
                 සුන්දර ශ්‍රී බරණී
               </div>
+              <ReadAloudButton text="නමෝ නමෝ මාතා. අපේ ශ්‍රී ලංකා. නමෝ නමෝ නමෝ නමෝ මාතා. සුන්දර ශ්‍රී බරණී." />
               <div className="sentence-english">
                 Salutations, Mother<br />
                 Our Sri Lanka<br />

@@ -487,6 +487,7 @@ const Grade3 = ({ initialSection }) => {
             {conversations.map((conv, index) => (
               <div key={index} className="sentence-practice">
                 <div className="sentence-sinhala">{conv.sinhala}</div>
+                <ReadAloudButton text={conv.sinhala} />
                 <div className="sentence-english">{conv.english}</div>
                 <div className="sentence-pronunciation">{conv.pronunciation}</div>
               </div>
@@ -507,6 +508,7 @@ const Grade3 = ({ initialSection }) => {
                   }}>
                     <strong>{line.speaker}:</strong>
                     <div className="sentence-sinhala" style={{ fontSize: "1.1em" }}>{line.sinhala}</div>
+                    <ReadAloudButton text={line.sinhala} />
                     <div className="sentence-english">{line.english}</div>
                     <div className="sentence-pronunciation" style={{ fontSize: "0.9em", color: "#888" }}>
                       {line.pronunciation}
@@ -652,12 +654,14 @@ const Grade3 = ({ initialSection }) => {
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">මගේ තාත්තා ගොවියෙක්. ඔහු ගොවිතැනේ වැඩ කරනවා.</div>
+              <ReadAloudButton text="මගේ තාත්තා ගොවියෙක්. ඔහු ගොවිතැනේ වැඩ කරනවා." />
               <div className="sentence-english">My father is a farmer. He works in the farm.</div>
               <div className="sentence-pronunciation">Mage thaththa goviyek. Ohu govithane veda karanawa.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">මගේ අම්මා ගුරුවරියක්. ඇය පාසලේ ඉගැන්වනවා.</div>
+              <ReadAloudButton text="මගේ අම්මා ගුරුවරියක්. ඇය පාසලේ ඉගැන්වනවා." />
               <div className="sentence-english">My mother is a teacher. She teaches at school.</div>
               <div className="sentence-pronunciation">Mage amma guruvariyak. Eya pasale igenvnawa.</div>
             </div>
@@ -700,12 +704,14 @@ const Grade3 = ({ initialSection }) => {
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">පාසල් යන්න මම නිල ඇඳුම අඳිනවා.</div>
+              <ReadAloudButton text="පාසල් යන්න මම නිල ඇඳුම අඳිනවා." />
               <div className="sentence-english">I wear the school uniform to go to school.</div>
               <div className="sentence-pronunciation">Pasal yanna mama nila enduma adinawa.</div>
             </div>
 
             <div className="sentence-practice">
               <div className="sentence-sinhala">අද හිරු කරනවා. මම හිස් වැස්මක් අඳිනවා.</div>
+              <ReadAloudButton text="අද හිරු කරනවා. මම හිස් වැස්මක් අඳිනවා." />
               <div className="sentence-english">It's sunny today. I am wearing a hat.</div>
               <div className="sentence-pronunciation">Ada hiru karanawa. Mama his vesmak adinawa.</div>
             </div>
@@ -849,6 +855,11 @@ const Grade3 = ({ initialSection }) => {
                 ගමේ ලොකු ගසක් තිබුණා. ඒ ගස ගොඩක් මිනිස්සුන්ට උදව් කළා. හිරු කරන දවස්වල මිනිස්සු ගස යට හිටියා.
                 වර්ෂාකාලයේ ගස ආරක්ෂාව දුන්නා. කුරුල්ලන්ට ගහේ කූඩු හදන්න ඉඩ දුන්නා. සියලුදෙනා ගසට ස්තූති කළා.
               </div>
+              <ReadAloudButton
+                text="ගමේ ලොකු ගසක් තිබුණා. ඒ ගස ගොඩක් මිනිස්සුන්ට උදව් කළා. හිරු කරන දවස්වල මිනිස්සු ගස යට හිටියා. වර්ෂාකාලයේ ගස ආරක්ෂාව දුන්නා. කුරුල්ලන්ට ගහේ කූඩු හදන්න ඉඩ දුන්නා. සියලුදෙනා ගසට ස්තූති කළා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 There was a big tree in the village. That tree helped many people. On sunny days people stayed under the tree.
                 In rainy season the tree gave protection. It let birds build nests on the tree. Everyone thanked the tree.
@@ -861,6 +872,11 @@ const Grade3 = ({ initialSection }) => {
                 කුඩා හාවෙක් වනයේ ජීවත් වුණා. ඔහු ගොඩක් බුද්ධිමත්. දිනක් ලොකු අලියෙක් හාවාගේ ගෙදර කඩන්න ආවා.
                 හාවා කීවා "මම ඔබට මගේ නිධානය පෙන්වන්නම්." අලියා නිධානය දැක්කම තෘප්ත වුණා. ඔවුන් මිතුරන් වුණා.
               </div>
+              <ReadAloudButton
+                text="කුඩා හාවෙක් වනයේ ජීවත් වුණා. ඔහු ගොඩක් බුද්ධිමත්. දිනක් ලොකු අලියෙක් හාවාගේ ගෙදර කඩන්න ආවා. හාවා කීවා මම ඔබට මගේ නිධානය පෙන්වන්නම්. අලියා නිධානය දැක්කම තෘප්ත වුණා. ඔවුන් මිතුරන් වුණා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 A small rabbit lived in the forest. He was very clever. One day a big elephant came to break the rabbit's house.
                 The rabbit said "I will show you my treasure." When the elephant saw the treasure, he was satisfied. They became friends.
@@ -877,6 +893,11 @@ const Grade3 = ({ initialSection }) => {
                 දවසක් දැලක් සිංහයාව අල්ලගත්තා. සිංහයාට යන්න බැරි වුණා. මීයා ආවා.
                 මීයා දැල කපලා සිංහයාව බේරගත්තා. සිංහයා මීයාට ස්තූති කළා.
               </div>
+              <ReadAloudButton
+                text="දිනක් ලොකු සිංහයෙක් නිදාගෙන හිටියා. කුඩා මීයෙක් සිංහයාගේ මුහුණ උඩින් දිව්වා. සිංහයා අවදි වුණා. ඔහු මීයා අල්ලගත්තා. මීයා කීවා කරුණාකර මාව යන්න දෙන්න. මම ඔබට උදව් කරන්නම්. සිංහයා මීයාට යන්න දුන්නා. දවසක් දැලක් සිංහයාව අල්ලගත්තා. සිංහයාට යන්න බැරි වුණා. මීයා ආවා. මීයා දැල කපලා සිංහයාව බේරගත්තා. සිංහයා මීයාට ස්තූති කළා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 One day a big lion was sleeping. A small mouse ran over the lion's face. The lion woke up.
                 He caught the mouse. The mouse said "Please let me go. I will help you."
@@ -906,6 +927,11 @@ const Grade3 = ({ initialSection }) => {
                 අවසානයේ ඔහුගේම යකඩ පොරව ගෙනැවිත් දුන්නා. දරු කපන්නා "ඔව්, මේ මගේ පොරව" කීවා.
                 පණිවිඩකාරයා ඔහුගේ අවංකභාවයට සතුටු වී තුන්ම පොරව ඔහුට දුන්නා.
               </div>
+              <ReadAloudButton
+                text="දිනක් දරු කපන්නෙක් ගඟ අසලට ගියා. ඔහුගේ පොරව ගඟට වැටුණා. ඔහු ඉතා දුකට පත් වුණා. දෙවියන්ගේ පණිවිඩකාරයෙක් ආවා. ඔහු රන් පොරවක් ගෙනැවිත් මේ ඔබේ පොරවද කියා ඇහුවා. දරු කපන්නා නෑ කීවා. ඊට පසු රිදී පොරවක් ගෙනැවිත් ඇහුවා. දරු කපන්නා නෑ කීවා. අවසානයේ ඔහුගේම යකඩ පොරව ගෙනැවිත් දුන්නා. දරු කපන්නා ඔව් මේ මගේ පොරව කීවා. පණිවිඩකාරයා ඔහුගේ අවංකභාවයට සතුටු වී තුන්ම පොරව ඔහුට දුන්නා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 One day a woodcutter went near the river. His axe fell into the river. He became very sad.
 

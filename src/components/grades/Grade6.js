@@ -360,11 +360,13 @@ const Grade6 = ({ initialSection }) => {
             </div>
             <div className="sentence-practice">
               <div className="sentence-sinhala">මෙම ලිපියට ඔබගේ ප්‍රතිචාරයක් ලබා දෙන මෙන් කාරුණිකව ඉල්ලා සිටිමි.</div>
+              <ReadAloudButton text="මෙම ලිපියට ඔබගේ ප්‍රතිචාරයක් ලබා දෙන මෙන් කාරුණිකව ඉල්ලා සිටිමි." />
               <div className="sentence-english">I kindly request that you provide a response to this letter.</div>
               <div className="sentence-pronunciation">Mema lipiyata obagay prathichaarayak laba dena men kaarunikawa illa sitimi.</div>
             </div>
             <div className="sentence-practice">
               <div className="sentence-sinhala">වැස්ස ආවද, ක්‍රීඩා තරඟය පැවැත්වුණා.</div>
+              <ReadAloudButton text="වැස්ස ආවද, ක්‍රීඩා තරඟය පැවැත්වුණා." />
               <div className="sentence-english">Even though it rained, the sports event was held.</div>
               <div className="sentence-pronunciation">Wessa aawada, kreeda tharangaya pawaththunaa.</div>
             </div>
@@ -389,6 +391,7 @@ const Grade6 = ({ initialSection }) => {
                   <strong>Thesis:</strong> තාක්ෂණය නිසි ලෙස භාවිතා කළහොත් අධ්‍යාපනයට
                   ඉතා හිතකර වේ.
                 </div>
+                <ReadAloudButton text="තාක්ෂණය අධ්‍යාපනයට හිතකරද? තාක්ෂණය නිසි ලෙස භාවිතා කළහොත් අධ්‍යාපනයට ඉතා හිතකර වේ." />
               </div>
             </div>
             <div className="activity-card">
@@ -560,6 +563,11 @@ const Grade6 = ({ initialSection }) => {
                 කර තියෙනවා. සීගිරි ගීත් ලෝකයේ පැරණිතම කවි අතර වෙනවා. මේ කවිවල
                 ප්‍රේමය, ස්වභාවය සහ සෞන්දර්යය ගැන කතා කරනවා.
               </div>
+              <ReadAloudButton
+                text="සිංහල සාහිත්‍යයට වසර දෙදහසකට වඩා පැරණි ඉතිහාසයක් තියෙනවා. මහාවංශය, දීපවංශය වැනි ග්‍රන්ථ අපේ ඉතිහාසය සහ සාහිත්‍යය සංරක්ෂණය කර තියෙනවා. සීගිරි ගීත් ලෝකයේ පැරණිතම කවි අතර වෙනවා. මේ කවිවල ප්‍රේමය, ස්වභාවය සහ සෞන්දර්යය ගැන කතා කරනවා."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Sinhala literature has a history of more than two thousand years.
                 Works like Mahavamsa and Dipavamsa have preserved our history and
@@ -575,6 +583,7 @@ const Grade6 = ({ initialSection }) => {
                 නුඹෙ නමින් මා සිත<br />
                 රිදවූයෙ කෙසේදැයි නොදනිමි
               </div>
+              <ReadAloudButton text="සිත් සෙනෙහෙ ගත් මියුරු බස්. අසා ගියෙමි සිහින් කත. නුඹෙ නමින් මා සිත. රිදවූයෙ කෙසේදැයි නොදනිමි." />
               <div className="sentence-english">
                 Hearing the sweet words that captured my heart<br />
                 I went in a dream-like state<br />
@@ -599,6 +608,7 @@ const Grade6 = ({ initialSection }) => {
                 ලොව සැමට සැප සදා<br />
                 ඉසුරු දෙන මිනිසා වේවා
               </div>
+              <ReadAloudButton text="දුක සැපත එක සේ බලා. හිමට මහතෙක් මෙන් විඳ. ලොව සැමට සැප සදා. ඉසුරු දෙන මිනිසා වේවා." />
               <p>Questions:</p>
               <p>1. What is the main message of this verse?</p>
               <p>2. What literary devices are used?</p>
@@ -711,6 +721,11 @@ const Grade6 = ({ initialSection }) => {
                 <br />
                 • <strong>සීමිත කාල පිරිනැමීම්:</strong> "අද පමණි!" වැනි පණිවිඩ
               </div>
+              <ReadAloudButton
+                text="දැන්වීම් බලගතු මාධ්‍ය ආකාරයකි. ඒවා අපව නිශ්චිත නිෂ්පාදන මිලදී ගැනීමට හෝ යම් ආකාරයකින් සිතීමට පොළඹවයි. දැන්වීම් විශ්ලේෂණය කරන විට, ඔවුන් භාවිතා කරන උපක්‍රම හඳුනා ගැනීම වැදගත්. හැඟීම්වලට ආයාචනය, සතුට, බය, ආදරය භාවිතා කිරීම. ප්‍රසිද්ධ පුද්ගලයන්, නළුවන්, ක්‍රීඩකයන් භාවිතය. පුනරාවර්තනය, එකම පණිවිඩය නැවත නැවත පෙන්වීම. සීමිත කාල පිරිනැමීම්, අද පමණි වැනි පණිවිඩ."
+                label="Listen in Sinhala"
+                labelSinhala="සිංහලෙන් අසන්න"
+              />
               <div className="reading-english">
                 Advertisements are a powerful form of media. They persuade us to buy
                 certain products or think in certain ways. When analyzing ads, it's
